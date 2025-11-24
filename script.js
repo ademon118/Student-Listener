@@ -870,68 +870,86 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Knowledge Page Vocabulary Audio ---
-    // Use event delegation to handle dynamically loaded buttons
-    function setupVocabAudio() {
-        // Remove any existing listeners to avoid duplicates
-        const vocabButtons = document.querySelectorAll('.vocab-audio-btn');
-        vocabButtons.forEach(btn => {
-            // Remove old listeners by cloning
-            const newBtn = btn.cloneNode(true);
-            btn.parentNode.replaceChild(newBtn, btn);
-        });
+    function speakWord(word, targetElement) {
+        const normalizedWord = word?.trim();
+        if (!normalizedWord) {
+            console.error('No word data found for pronunciation');
+            return;
+        }
         
-        // Add event listeners to all vocab audio buttons
+        if (!('speechSynthesis' in window)) {
+            alert('Your browser does not support text-to-speech. Please use a modern browser.');
+            return;
+        }
+        
+        if (speechSynthesis.speaking) {
+            speechSynthesis.cancel();
+        }
+        
+        const utterance = new SpeechSynthesisUtterance(normalizedWord);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.85;
+        utterance.pitch = 1;
+        utterance.volume = 1;
+        
+        const toggleActiveState = (isActive) => {
+            if (!targetElement) return;
+            if (targetElement.classList.contains('vocab-word')) {
+                targetElement.classList.toggle('speaking', isActive);
+            } else {
+                targetElement.style.background = isActive ? 'var(--color-blue)' : 'var(--color-pumpkin)';
+            }
+        };
+        
+        utterance.onstart = () => toggleActiveState(true);
+        utterance.onend = () => toggleActiveState(false);
+        utterance.onerror = (event) => {
+            console.error('Speech synthesis error:', event);
+            toggleActiveState(false);
+        };
+        
+        speechSynthesis.speak(utterance);
+        
+        if (targetElement) {
+            targetElement.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                targetElement.style.transform = '';
+            }, 160);
+        }
+    }
+    
+    function setupVocabAudio() {
         document.querySelectorAll('.vocab-audio-btn').forEach(btn => {
+            if (btn.dataset.audioReady === 'true') return;
+            btn.dataset.audioReady = 'true';
+            
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                
-                const word = this.dataset.word;
-                
-                if (!word) {
-                    console.error('No word data found on button');
-                    return;
+                speakWord(this.dataset.word, this);
+            });
+        });
+        
+        document.querySelectorAll('.vocab-word').forEach(wordEl => {
+            if (wordEl.dataset.audioReady === 'true') return;
+            wordEl.dataset.audioReady = 'true';
+            
+            if (!wordEl.hasAttribute('tabindex')) {
+                wordEl.setAttribute('tabindex', '0');
+            }
+            wordEl.setAttribute('role', 'button');
+            
+            const pronounce = (event) => {
+                event.preventDefault();
+                const word = wordEl.dataset.word || wordEl.textContent;
+                speakWord(word, wordEl);
+            };
+            
+            wordEl.addEventListener('click', pronounce);
+            wordEl.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    pronounce(event);
                 }
-                
-                if (!('speechSynthesis' in window)) {
-                    alert('Your browser does not support text-to-speech. Please use a modern browser.');
-                    return;
-                }
-                
-                // Cancel any ongoing speech
-                if (speechSynthesis.speaking) {
-                    speechSynthesis.cancel();
-                }
-                
-                // Create and configure utterance
-                const utterance = new SpeechSynthesisUtterance(word);
-                utterance.lang = 'en-US';
-                utterance.rate = 0.8;
-                utterance.pitch = 1;
-                utterance.volume = 1;
-                
-                // Handle events
-                utterance.onstart = () => {
-                    this.style.background = 'var(--color-blue)';
-                };
-                
-                utterance.onend = () => {
-                    this.style.background = 'var(--color-pumpkin)';
-                };
-                
-                utterance.onerror = (event) => {
-                    console.error('Speech synthesis error:', event);
-                    this.style.background = 'var(--color-pumpkin)';
-                };
-                
-                // Speak the word
-                speechSynthesis.speak(utterance);
-                
-                // Visual feedback
-                this.style.transform = 'scale(0.9)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 200);
             });
         });
     }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,12 @@
     <!-- Import Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
     <!-- External CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div class="video-background">
@@ -21,7 +24,7 @@
         </video>
     </div>
 
-        <!-- Header (Loaded from components) -->
+    <!-- Header (Loaded from components) -->
     <div data-include="header.html"></div>
 
     <main id="app-container">
@@ -42,38 +45,74 @@
                     </ul>
                 </div>
             </div>
-            
+
             <button id="open-lesson2-questions" class="btn btn-primary speak-btn">
-                <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1.2-9.1c0-.66.54-1.2 1.2-1.2s1.2.54 1.2 1.2v6.2c0 .66-.54 1.2-1.2 1.2s-1.2-.54-1.2-1.2V4.9zM17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"></path></svg>
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1.2-9.1c0-.66.54-1.2 1.2-1.2s1.2.54 1.2 1.2v6.2c0 .66-.54 1.2-1.2 1.2s-1.2-.54-1.2-1.2V4.9zM17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z">
+                    </path>
+                </svg>
                 Speaking Practice
             </button>
-            
+
             <h3 style="margin-top: 2rem;">2. Read the texts</h3>
             <h4 style="color: #ccc;">Breakfast</h4>
             <div class="content-grid" style="margin-top: 1rem;">
                 <div class="glass-box">
                     <!-- REPLACE ENGLISH TEXT HERE -->
                     <p id="text-kaythi">
-                        Kaythi had a glass of <span class="vocab-word" data-word="milk">milk</span> and two <span class="vocab-word" data-word="sardine">sardine</span> <span class="vocab-word" data-word="sandwiches">sandwiches</span> for her <span class="vocab-word" data-word="breakfast">breakfast</span> this morning at the school <span class="vocab-word" data-word="canteen">canteen</span>. Milk Is rich in <span class="vocab-word" data-word="calcium">calcium</span> that makes <span class="vocab-word" data-word="bones">bones</span> and teeth stronger. <span class="vocab-word" data-word="omega3">Omega-3</span> <span class="vocab-word" data-word="fattyacids">fatty acids</span> in sardines are good for our <span class="vocab-word" data-word="skin">skin</span> and <span class="vocab-word" data-word="brain">brain</span>.
+                        Yesterday, Kaythi had fried <span class="vocab-word" data-word="noodles">noodles</span> with
+                        <span class="vocab-word" data-word="chicken">chicken</span> and <span class="vocab-word"
+                            data-word="broccoli">broccoli</span> for lunch. Noodles contain <span class="vocab-word"
+                            data-word="carbohydrates">carbohydrates</span> which are important for energy. Chicken
+                        contains <span class="vocab-word" data-word="protein">protein</span> for the body to grow well.
+                        Broccoli has <span class="vocab-word" data-word="vitamink">vitamin K</span>, which is good for
+                        memory. For dessert, Kaythi had a bar of <span class="vocab-word"
+                            data-word="darkchocolate">dark chocolate</span>. Having 150 calories of dark chocolate a day
+                        is good for the skin. Kaythi usually has healthy food because she wants to be taller and do well
+                        in her studies.
                     </p>
                     <button class="translation-toggle-btn" data-target="translation-kaythi">See Translation</button>
                     <!-- REPLACE BURMESE TEXT HERE -->
-                    <div id="translation-kaythi" style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
-                        ကေတီက ကျောင်းမုန့်ဆိုင်မှာ မနက်စာကို နွားနိုတစ်ခွက်နဲ့ ဆာဒင်းအသားညှပ်ပေါင်မုန့်စားခဲ့တယ်။နွားနိ ကယ်လ်ဆီယမ်ဓာတ်ကြွယ်ဝလို အရိုးနဲ့ သွားတွေကို ခိုင်မာစေတယ်။ဆာဒင်းမှာ Omega 3 fatty acids ပါဝင်လို ကျန်တော်တိုရဲ့ အသားအရေကို ကောင်းမွန်စေတယ်။                    </div>
+                    <div id="translation-kaythi"
+                        style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
+                        မနေ့က နေ့လယ်စာအတွက် Kaythi က ကြက်သားနဲ့ ဘရိုကိုလီနဲ့ ခေါက်ဆွဲကြော်စားခဲ့တယ်- ခေါက်ဆွဲတွေမှာ
+                        စွမ်းအင်အတွက် အရေးကြီးတဲ့ ကာဗိုဟိုက်ဒရိတ် ပါဝင်ပါတယ်။ ကြက်သားမှာ ပရိုတင်းဓာတ်ပါဝင်တာကြောင့်
+                        ခန္ဓာကိုယ်ကြီးထွားဖို့ ကောင်းမွန်ပါတယ်။ ဘရိုကိုလီမှာ ဗီတာမင် K ပါတာကြောင့်
+                        မှတ်ဉာဏ်ကောင်းစေပါတယ်။ အချိုပွဲအတွက် Kaythi သည် အနက်ရောင်ချောကလက်တစ်ဘားရှိသည်။ တစ်နေ့ကို
+                        အနက်ရောင် ချောကလက် ၁၅၀ ကယ်လိုရီရှိခြင်းက အသားအရေအတွက် ကောင်းမွန်ပါတယ်။ Kaythi သည်
+                        ပုံမှန်အားဖြင့် ကျန်းမာရေးနှင့် ညီညွတ်သော အစားအစာများကို စားသုံးလေ့ရှိသည်။ ဘာကြောင့်လဲဆိုတော့
+                        သူမဟာ အရပ်ရှည်ချင်ပြီး စာသင်တာကို ကောင်းကောင်း လုပ်ချင်တာကြောင့်ပါ။ </div>
                 </div>
                 <div class="glass-box">
                     <!-- REPLACE ENGLISH TEXT HERE -->
                     <p id="text-zawnaing">
-                        Yesterday, Zaw Naing had fried rice with <span class="vocab-word" data-word="peas">peas</span> and a fried egg for breakfast with his parents at home. Eggs and peas <span class="vocab-word" data-word="contain">contain</span> <span class="vocab-word" data-word="proteins">proteins</span> and rice has <span class="vocab-word" data-word="carbohydrates">carbohydrates</span>. Proteins and carbohydrates can build our body <span class="vocab-word" data-word="muscles">muscles</span>.
+                        For lunch, Zaw Naing ate <span class="vocab-word" data-word="rice">rice</span>, <span
+                            class="vocab-word" data-word="fishcurry">fish curry</span> and <span class="vocab-word"
+                            data-word="stringbeans">fried string beans</span>. He had two <span class="vocab-word"
+                            data-word="bananas">bananas</span> after lunch. Rice contains <span class="vocab-word"
+                            data-word="carbohydrates">carbohydrates</span> and fish has <span class="vocab-word"
+                            data-word="protein">protein</span>. Proteins and carbohydrates are rich in nutrients for
+                        body growth and energy. String beans are rich in <span class="vocab-word"
+                            data-word="fibre">fibre</span> which is good for blood flow. Besides, green and yellow
+                        <span class="vocab-word" data-word="vegetables">vegetables</span> are good for the <span
+                            class="vocab-word" data-word="eyes">eyes</span>. Zaw Naing wants to be stronger so that he
+                        will be able to play <span class="vocab-word" data-word="basketball">basketball</span> better.
                     </p>
                     <button class="translation-toggle-btn" data-target="translation-zawnaing">See Translation</button>
                     <!-- REPLACE BURMESE TEXT HERE -->
-                    <div id="translation-zawnaing" style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
-                        မနေ့က ဇော်နိုင်က သူ့အိမ်မှာ သူ့မိဘတွေနဲ့အတူ ထမင်းကြော်ကို စတော်ပဲ နဲ့ ကြက်ဥ ကြော်နဲ့ စားခဲ့တယ်။နဲ့ ပဲ က ပရိုတင်းဓာတ်ပါဝင်ပြီး ထမင်း မှာ ကာဗွန်ဟိုက်ဒရိတ် ပါဝင်သည်။ ပရိုတင်းနဲ့ ကာဗွန်ဟိုက်ဒရိတ်က ကျွန်တော်တို ခန္ဓာကိုယ်ရဲ့ ကြွက်သား တွေကို တည်ဆောက်ပေးတယ်။
+                    <div id="translation-zawnaing"
+                        style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
+                        နေ့လယ်စာအတွက် ကိုဇော်နိုင်က ထမင်း၊ ငါးဟင်းနဲ့ ပဲကြော်ကို စားတယ်။ နေ့လယ်စာစားပြီးနောက်
+                        ငှက်ပျောသီးနှစ်လုံး စားခဲ့သည်။ ဆန်တွင် ကာဗိုဟိုက်ဒရိတ်ပါဝင်ပြီး ငါးတွင် ပရိုတင်းဓာတ်ရှိသည်။
+                        ပရိုတင်းနှင့် ကာဗိုဟိုက်ဒရိတ်တို့သည် ခန္ဓာကိုယ်ကြီးထွားမှုနှင့် စွမ်းအင်အတွက် အာဟာရဓာတ်များ
+                        ကြွယ်ဝသည်။ ပဲအမျိုးမျိုးမှာ အမျှင်ဓာတ်ကြွယ်ဝပြီး သွေးစီးဆင်းမှုကို ကောင်းမွန်စေပါတယ်။ ဒါ့အပြင်
+                        အစိမ်းရောင်နဲ့ အဝါရောင် အသီးအရွက်တွေက မျက်လုံးအတွက် ကောင်းမွန်ပါတယ်။ ဇော်နိုင်က ဘတ်စကတ်ဘောကစားတာ
+                        ပိုကောင်းပါတယ်။ ဒါမှ သူ ခံနိုင်ရည်ရှိဖို့ ပိုသန်မာချင်တယ်။
                     </div>
                 </div>
             </div>
-            
+
             <!-- ✨ GEMINI API FEATURE ADDED HERE ✨ -->
             <div class="glass-box" style="margin-top: 2rem; text-align: center;">
                 <h3>✨ AI Healthy Meal Planner</h3>
@@ -82,25 +121,29 @@
                 </p>
                 <button id="open-gemini-planner" class="btn btn-gemini">✨ Generate Meal Plan</button>
             </div>
-            
+
             <h3 style="margin-top: 2rem;">Video Lesson</h3>
             <div class="video-container">
-                <!-- <!-- REPLACE VIDEO HERE --> -->
-                <div class="video-placeholder">Replaceable Video 3</div>
-                <!-- <!-- REPLACE VIDEO HERE --> -->
-                <div class="video-placeholder">Replaceable Video 4</div>
+                <video class="lesson-video" controls preload="metadata">
+                    <source src="images/lesson2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <video class="lesson-video" controls preload="metadata">
+                    <source src="images/lesson2part2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
-            
+
             <a href="games.html">→</a>
-        
+
         </section>
     </main>
 
-<!-- 4. Footer -->
+    <!-- 4. Footer -->
     <!-- Footer (Loaded from components) -->
     <div data-include="footer.html"></div>
-    
-<!-- 5. Modals (Hidden by default) -->
+
+    <!-- 5. Modals (Hidden by default) -->
 
     <!-- Lesson 1 Questions Modal -->
     <div id="lesson1-questions-modal" class="modal-overlay">
@@ -122,7 +165,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Lesson 2 Questions Modal -->
     <div id="lesson2-questions-modal" class="modal-overlay">
         <div class="modal-content glass-box">
@@ -141,7 +184,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Vocabulary Modal -->
     <div id="vocab-modal" class="modal-overlay">
         <div class="modal-content">
@@ -159,7 +202,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Game Win/Lose Modal -->
     <div id="game-message-modal" class="modal-overlay">
         <div class="modal-content glass-box text-center">
@@ -185,15 +228,15 @@
 
     <!-- 6. Audio Elements -->
 
-<!-- 6. Audio Elements -->
-    <!-- <!-- REPLACE AUDIO HERE --> -->
+    <!-- 6. Audio Elements -->
     <audio id="click-sound" src="audio/click-placeholder.mp3"></audio>
     <audio id="vocab-audio" src=""></audio>
 
     <!-- 7. External JavaScript -->
-        <script src="components.js"></script>
+    <script src="components.js"></script>
     <script src="include.js"></script>
     <script src="script.js"></script>
 
 </body>
+
 </html>
