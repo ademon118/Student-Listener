@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 6 - Unit 6 - Home</title>
+    <!-- Import Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline aria-hidden="true">
+            <source src="https://cdn.coverr.co/videos/coverr-students-in-classroom-2693/1080p.mp4" type="video/mp4">
+            <source src="videos/background-placeholder.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- 2. Navbar -->
+    <div data-include="header.html"></div>
+
+    <!-- 3. Main App Container -->
+    <main id="app-container">
+        <!-- Page: Home -->
+        <section class="page active" id="page-home" data-page="home">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title animate-fade-in">Grade 6</h1>
+                    <h2 class="hero-subtitle animate-slide-up">UNIT 6</h2>
+                    <p class="hero-description animate-slide-up-delay">Interactive Learning Platform for English Language</p>
+                    <div class="hero-buttons animate-fade-in-delay">
+                        <a href="lessons.html" class="btn btn-primary hero-btn">Start Learning</a>
+                        <a href="objectives.html" class="btn btn-secondary hero-btn">View Objectives</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="features-section">
+                <h2 class="section-title animate-fade-in">What You'll Learn</h2>
+                <div class="features-grid">
+                    <div class="feature-card glass-box animate-card">
+                        <div class="feature-icon">🍽️</div>
+                        <h3>Lesson 1</h3>
+                        <h4>Let's Eat Out</h4>
+                        <p>Learn how to order food and drinks, talk about prices, and practice restaurant conversations.</p>
+                        <a href="lesson1.html" class="feature-link">Explore Lesson →</a>
+                    </div>
+                    <div class="feature-card glass-box animate-card">
+                        <div class="feature-icon">🥗</div>
+                        <h3>Lesson 2</h3>
+                        <h4>Do You Eat Healthy Food?</h4>
+                        <p>Discover food items, health benefits, and learn about nutrition and healthy eating habits.</p>
+                        <a href="lesson2.html" class="feature-link">Explore Lesson →</a>
+                    </div>
+                    <div class="feature-card glass-box animate-card">
+                        <div class="feature-icon">🎮</div>
+                        <h3>Interactive Games</h3>
+                        <h4>Practice & Learn</h4>
+                        <p>Engage with fun games including Hangman, Multiple Choice, Listening, and Sentence Ordering.</p>
+                        <a href="games.html" class="feature-link">Play Games →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-section">
+                <div class="stats-container">
+                    <div class="stat-item animate-counter">
+                        <div class="stat-number" data-target="2">0</div>
+                        <div class="stat-label">Lessons</div>
+                    </div>
+                    <div class="stat-item animate-counter">
+                        <div class="stat-number" data-target="4">0</div>
+                        <div class="stat-label">Games</div>
+                    </div>
+                    <div class="stat-item animate-counter">
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">Vocabulary Words</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 4. Footer -->
+    <div data-include="footer.html"></div>
+    
+    <!-- 5. Modals (Hidden by default) -->
+    <!-- Game Win/Lose Modal -->
+    <div id="game-message-modal" class="modal-overlay">
+        <div class="modal-content glass-box text-center">
+            <h2 id="game-message-title">Message</h2>
+            <p id="game-message-text">You did it!</p>
+            <button id="game-message-close" class="btn btn-primary" style="margin-top: 1rem;">Close</button>
+        </div>
+    </div>
+
+    <!-- 6. Audio Elements -->
+    <audio id="click-sound" src="audio/click-placeholder.mp3"></audio>
+    <audio id="vocab-audio" src=""></audio>
+
+    <!-- 7. External JavaScript -->
+    <script src="include.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="100" height="120">
+  <!-- Trophy Cup -->
+  <path d="M 30 10 Q 30 0, 50 0 Q 70 0, 70 10 L 70 50 Q 70 60, 50 60 Q 30 60, 30 50 Z" fill="#ffd700" stroke="#000" stroke-width="2"/>
+  <!-- Trophy Base -->
+  <rect x="35" y="60" width="30" height="8" fill="#ffd700" stroke="#000" stroke-width="2"/>
+  <!-- Trophy Stem -->
+  <rect x="47" y="68" width="6" height="20" fill="#ffd700" stroke="#000" stroke-width="1"/>
+  <!-- Trophy Handle Left -->
+  <path d="M 30 20 Q 15 20, 15 35" fill="none" stroke="#ffd700" stroke-width="5" stroke-linecap="round"/>
+  <!-- Trophy Handle Right -->
+  <path d="M 70 20 Q 85 20, 85 35" fill="none" stroke="#ffd700" stroke-width="5" stroke-linecap="round"/>
+  <!-- Confetti -->
+  <circle cx="10" cy="15" r="3" fill="#ff6b6b"/>
+  <circle cx="15" cy="10" r="2.5" fill="#4ecdc4"/>
+  <circle cx="85" cy="15" r="3" fill="#95e1d3"/>
+  <circle cx="90" cy="10" r="2.5" fill="#f38181"/>
+  <circle cx="5" cy="25" r="2" fill="#fce38a"/>
+  <circle cx="95" cy="25" r="2" fill="#aa96da"/>
+</svg>

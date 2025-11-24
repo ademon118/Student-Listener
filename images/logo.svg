@@ -1,0 +1,25 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Building/House Icon -->
+  <g transform="translate(5, 10)">
+    <!-- Orange Roof (Trapezoid) -->
+    <path d="M8 8 L20 2 L32 8 L32 8 L8 8 Z" fill="#ff7518" stroke="#fff" stroke-width="0.5"/>
+    
+    <!-- Blue Building Body -->
+    <rect x="8" y="8" width="24" height="20" fill="#007aff" stroke="#fff" stroke-width="0.5"/>
+    
+    <!-- Grid Pattern (Windows) -->
+    <line x1="14" y1="8" x2="14" y2="28" stroke="#64b5f6" stroke-width="0.8" opacity="0.8"/>
+    <line x1="20" y1="8" x2="20" y2="28" stroke="#64b5f6" stroke-width="0.8" opacity="0.8"/>
+    <line x1="26" y1="8" x2="26" y2="28" stroke="#64b5f6" stroke-width="0.8" opacity="0.8"/>
+    <line x1="8" y1="14" x2="32" y2="14" stroke="#64b5f6" stroke-width="0.8" opacity="0.8"/>
+    <line x1="8" y1="20" x2="32" y2="20" stroke="#64b5f6" stroke-width="0.8" opacity="0.8"/>
+  </g>
+  
+  <!-- Education Text -->
+  <text x="45" y="38" font-family="'Inter', Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="1px">
+    Education
+  </text>
+  
+  <!-- Orange Underline -->
+  <line x1="45" y1="42" x2="195" y2="42" stroke="#ff7518" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

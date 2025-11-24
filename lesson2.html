@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 6 - Unit 6 - Lesson 2</title>
+    <!-- Import Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="video-background">
+        <video autoplay muted loop playsinline aria-hidden="true">
+            <source src="https://cdn.coverr.co/videos/coverr-open-book-on-desk-2697/1080p.mp4" type="video/mp4">
+            <source src="videos/background-placeholder.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+        <!-- Header (Loaded from components) -->
+    <div data-include="header.html"></div>
+
+    <main id="app-container">
+        <section class="page active" id="page-lesson2" data-page="lesson2">
+
+            <h1 class="animate-fade-in">Lesson 2: Do you eat healthy food?</h1>
+            <div class="content-grid">
+                <div class="content-box animate-card" style="animation-delay: 0.1s;">
+                    <h3>Topics:</h3>
+                    <ul>
+                        <li>Food items</li>
+                    </ul>
+                </div>
+                <div class="content-box animate-card" style="animation-delay: 0.2s;">
+                    <h3>...</h3>
+                    <ul>
+                        <li>Health benefits</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <button id="open-lesson2-questions" class="btn btn-primary speak-btn">
+                <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1.2-9.1c0-.66.54-1.2 1.2-1.2s1.2.54 1.2 1.2v6.2c0 .66-.54 1.2-1.2 1.2s-1.2-.54-1.2-1.2V4.9zM17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"></path></svg>
+                Speaking Practice
+            </button>
+            
+            <h3 style="margin-top: 2rem;">2. Read the texts</h3>
+            <h4 style="color: #ccc;">Breakfast</h4>
+            <div class="content-grid" style="margin-top: 1rem;">
+                <div class="glass-box">
+                    <!-- REPLACE ENGLISH TEXT HERE -->
+                    <p id="text-kaythi">
+                        Kaythi had a glass of <span class="vocab-word" data-word="milk">milk</span> and two <span class="vocab-word" data-word="sardine">sardine</span> <span class="vocab-word" data-word="sandwiches">sandwiches</span> for her <span class="vocab-word" data-word="breakfast">breakfast</span> this morning at the school <span class="vocab-word" data-word="canteen">canteen</span>. Milk Is rich in <span class="vocab-word" data-word="calcium">calcium</span> that makes <span class="vocab-word" data-word="bones">bones</span> and teeth stronger. <span class="vocab-word" data-word="omega3">Omega-3</span> <span class="vocab-word" data-word="fattyacids">fatty acids</span> in sardines are good for our <span class="vocab-word" data-word="skin">skin</span> and <span class="vocab-word" data-word="brain">brain</span>.
+                    </p>
+                    <button class="translation-toggle-btn" data-target="translation-kaythi">See Translation</button>
+                    <!-- REPLACE BURMESE TEXT HERE -->
+                    <div id="translation-kaythi" style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
+                        ကေတီက ကျောင်းမုန့်ဆိုင်မှာ မနက်စာကို နွားနိုတစ်ခွက်နဲ့ ဆာဒင်းအသားညှပ်ပေါင်မုန့်စားခဲ့တယ်။နွားနိ ကယ်လ်ဆီယမ်ဓာတ်ကြွယ်ဝလို အရိုးနဲ့ သွားတွေကို ခိုင်မာစေတယ်။ဆာဒင်းမှာ Omega 3 fatty acids ပါဝင်လို ကျန်တော်တိုရဲ့ အသားအရေကို ကောင်းမွန်စေတယ်။                    </div>
+                </div>
+                <div class="glass-box">
+                    <!-- REPLACE ENGLISH TEXT HERE -->
+                    <p id="text-zawnaing">
+                        Yesterday, Zaw Naing had fried rice with <span class="vocab-word" data-word="peas">peas</span> and a fried egg for breakfast with his parents at home. Eggs and peas <span class="vocab-word" data-word="contain">contain</span> <span class="vocab-word" data-word="proteins">proteins</span> and rice has <span class="vocab-word" data-word="carbohydrates">carbohydrates</span>. Proteins and carbohydrates can build our body <span class="vocab-word" data-word="muscles">muscles</span>.
+                    </p>
+                    <button class="translation-toggle-btn" data-target="translation-zawnaing">See Translation</button>
+                    <!-- REPLACE BURMESE TEXT HERE -->
+                    <div id="translation-zawnaing" style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
+                        မနေ့က ဇော်နိုင်က သူ့အိမ်မှာ သူ့မိဘတွေနဲ့အတူ ထမင်းကြော်ကို စတော်ပဲ နဲ့ ကြက်ဥ ကြော်နဲ့ စားခဲ့တယ်။နဲ့ ပဲ က ပရိုတင်းဓာတ်ပါဝင်ပြီး ထမင်း မှာ ကာဗွန်ဟိုက်ဒရိတ် ပါဝင်သည်။ ပရိုတင်းနဲ့ ကာဗွန်ဟိုက်ဒရိတ်က ကျွန်တော်တို ခန္ဓာကိုယ်ရဲ့ ကြွက်သား တွေကို တည်ဆောက်ပေးတယ်။
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ✨ GEMINI API FEATURE ADDED HERE ✨ -->
+            <div class="glass-box" style="margin-top: 2rem; text-align: center;">
+                <h3>✨ AI Healthy Meal Planner</h3>
+                <p style="margin: 1rem 0; color: #ddd;">
+                    Click the button to ask our AI assistant to generate a healthy one-day meal plan for you!
+                </p>
+                <button id="open-gemini-planner" class="btn btn-gemini">✨ Generate Meal Plan</button>
+            </div>
+            
+            <h3 style="margin-top: 2rem;">Video Lesson</h3>
+            <div class="video-container">
+                <!-- <!-- REPLACE VIDEO HERE --> -->
+                <div class="video-placeholder">Replaceable Video 3</div>
+                <!-- <!-- REPLACE VIDEO HERE --> -->
+                <div class="video-placeholder">Replaceable Video 4</div>
+            </div>
+            
+            <a href="games.html">→</a>
+        
+        </section>
+    </main>
+
+<!-- 4. Footer -->
+    <!-- Footer (Loaded from components) -->
+    <div data-include="footer.html"></div>
+    
+<!-- 5. Modals (Hidden by default) -->
+
+    <!-- Lesson 1 Questions Modal -->
+    <div id="lesson1-questions-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="lesson1-questions-modal">&times;</button>
+            <h2>Speaking Practice</h2>
+            <!-- REPLACE ENGLISH TEXT HERE -->
+            <ul>
+                <li>1. Where do you usually eat out?</li>
+                <li>2. What do you usually have there?</li>
+                <li>3. Do you like the places? why?</li>
+            </ul>
+            <button class="translation-toggle-btn" data-target="lesson1-translation">See Translation</button>
+            <!-- REPLACE BURMESE TEXT HERE -->
+            <div id="lesson1-translation" style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
+                ၁။နင်ဘယ် အချိန်တွေမှာ အပြင်ထွက်စားလေ့ရှိလဲ?<br>
+                ၂။နင်အဲ့မှာ ဘာတွေ စားဖြစ်လဲ?<br>
+                ၃။နင်အဲ့နေရာကို ကြိုက်လား ဘာကြောင့်လဲ?
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lesson 2 Questions Modal -->
+    <div id="lesson2-questions-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="lesson2-questions-modal">&times;</button>
+            <h2>Speaking Practice</h2>
+            <!-- REPLACE ENGLISH TEXT HERE -->
+            <ul>
+                <li>1. Where do you usually have breakfast?</li>
+                <li>2. What do you usually have for breakfast at home?</li>
+            </ul>
+            <button class="translation-toggle-btn" data-target="lesson2-translation">See Translation</button>
+            <!-- REPLACE BURMESE TEXT HERE -->
+            <div id="lesson2-translation" style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
+                ၁။ နင်မနက်စာကိုဘယ်မှာစားလေ့ရှိလဲ?<br>
+                ၂။ နင့်အိမ်မှာ မနက်စာကို ဘနဲ့ စားလေ့ရှိလဲ?
+            </div>
+        </div>
+    </div>
+    
+    <!-- Vocabulary Modal -->
+    <div id="vocab-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-btn" data-modal="vocab-modal">&times;</button>
+            <h2 id="vocab-word-text">Word</h2>
+            <span id="vocab-word-phonetic">/pho-ne-tic/</span>
+            <button id="vocab-word-audio-btn">🔊</button>
+            <div><span id="vocab-word-type">type</span></div>
+            <div id="vocab-word-meaning">
+                <strong>Meaning:</strong> <span>...</span>
+            </div>
+            <div id="vocab-word-extra">
+                <strong>Opposites:</strong> <span>...</span><br>
+                <strong>Similars:</strong> <span>...</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Game Win/Lose Modal -->
+    <div id="game-message-modal" class="modal-overlay">
+        <div class="modal-content glass-box text-center">
+            <h2 id="game-message-title">Message</h2>
+            <p id="game-message-text">You did it!</p>
+            <button id="game-message-close" class="btn btn-primary" style="margin-top: 1rem;">Close</button>
+        </div>
+    </div>
+
+    <!-- ✨ GEMINI API MODAL ADDED HERE ✨ -->
+    <div id="gemini-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="gemini-modal">&times;</button>
+            <h2>✨ AI-Generated Meal Plan</h2>
+            <div id="gemini-loading" style="display: none;">
+                <p>Generating your healthy meal plan... please wait...</p>
+            </div>
+            <div id="gemini-response" class="scrollable">
+                <!-- AI response will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Audio Elements -->
+
+<!-- 6. Audio Elements -->
+    <!-- <!-- REPLACE AUDIO HERE --> -->
+    <audio id="click-sound" src="audio/click-placeholder.mp3"></audio>
+    <audio id="vocab-audio" src=""></audio>
+
+    <!-- 7. External JavaScript -->
+        <script src="components.js"></script>
+    <script src="include.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 6 - Unit 6 - Games</title>
+    <!-- Import Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="video-background">
+        <video autoplay muted loop playsinline aria-hidden="true">
+            <source src="https://cdn.coverr.co/videos/coverr-kids-playing-games-2703/1080p.mp4" type="video/mp4">
+            <source src="videos/background-placeholder.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+        <!-- Header (Loaded from components) -->
+    <div data-include="header.html"></div>
+
+    <main id="app-container">
+        <section class="page active" id="page-games" data-page="games">
+
+            <h1 class="game-font animate-fade-in">Games</h1>
+            <div class="game-grid">
+                <a href="game-hangman.html" class="game-card glass-box nav-link animate-card" data-sound="hangman" style="animation-delay: 0.1s;">
+                    <div class="game-cover gradient-orange game-cover-hangman">
+                        <div class="game-cover-icon">
+                            <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400&h=300&fit=crop&q=80" alt="Hangman Game" style="width: 100%; height: 100%; object-fit: cover; border-radius: 18px;">
+                        </div>
+                    </div>
+                    <h4>Round 1: Hangman</h4>
+                    <button class="btn btn-primary">Start</button>
+                </a>
+                <a href="game-mcq.html" class="game-card glass-box nav-link animate-card" data-sound="mcq" style="animation-delay: 0.2s;">
+                    <div class="game-cover gradient-blue game-cover-mcq">
+                        <div class="game-cover-icon">
+                            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=300&fit=crop&q=80" alt="Multiple Choice Game" style="width: 100%; height: 100%; object-fit: cover; border-radius: 18px;">
+                        </div>
+                    </div>
+                    <h4>Round 2: Multiple Choice</h4>
+                    <button class="btn btn-primary">Start</button>
+                </a>
+                <a href="game-listening.html" class="game-card glass-box nav-link animate-card" data-sound="listening" style="animation-delay: 0.3s;">
+                    <div class="game-cover gradient-purple game-cover-listening">
+                        <div class="game-cover-icon">
+                            <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=400&h=300&fit=crop&q=80" alt="Listening Game" style="width: 100%; height: 100%; object-fit: cover; border-radius: 18px;">
+                        </div>
+                    </div>
+                    <h4>Round 3: Listening</h4>
+                    <button class="btn btn-primary">Start</button>
+                </a>
+                <a href="game-ordering.html" class="game-card glass-box nav-link animate-card" data-sound="ordering" style="animation-delay: 0.4s;">
+                    <div class="game-cover gradient-green game-cover-ordering">
+                        <div class="game-cover-icon">
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&q=80" alt="Ordering Game" style="width: 100%; height: 100%; object-fit: cover; border-radius: 18px;">
+                        </div>
+                    </div>
+                    <h4>Round 4: Order It!</h4>
+                    <button class="btn btn-primary">Start</button>
+                </a>
+                <a href="game-wordsearch.html" class="game-card glass-box nav-link animate-card" data-sound="wordsearch" style="animation-delay: 0.5s;">
+                    <div class="game-cover gradient-red game-cover-wordsearch">
+                        <div class="game-cover-icon">
+                            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=300&fit=crop&q=80" alt="Word Search Game" style="width: 100%; height: 100%; object-fit: cover; border-radius: 18px;">
+                        </div>
+                    </div>
+                    <h4>Round 5: Word Search</h4>
+                    <button class="btn btn-primary">Start</button>
+                </a>
+            </div>
+        
+        </section>
+    </main>
+
+<!-- 4. Footer -->
+    <!-- Footer (Loaded from components) -->
+    <div data-include="footer.html"></div>
+    
+<!-- 5. Modals (Hidden by default) -->
+
+    <!-- Lesson 1 Questions Modal -->
+    <div id="lesson1-questions-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="lesson1-questions-modal">&times;</button>
+            <h2>Speaking Practice</h2>
+            <!-- REPLACE ENGLISH TEXT HERE -->
+            <ul>
+                <li>1. Where do you usually eat out?</li>
+                <li>2. What do you usually have there?</li>
+                <li>3. Do you like the places? why?</li>
+            </ul>
+            <button class="translation-toggle-btn" data-target="lesson1-translation">See Translation</button>
+            <!-- REPLACE BURMESE TEXT HERE -->
+            <div id="lesson1-translation" style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
+                ၁။နင်ဘယ် အချိန်တွေမှာ အပြင်ထွက်စားလေ့ရှိလဲ?<br>
+                ၂။နင်အဲ့မှာ ဘာတွေ စားဖြစ်လဲ?<br>
+                ၃။နင်အဲ့နေရာကို ကြိုက်လား ဘာကြောင့်လဲ?
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lesson 2 Questions Modal -->
+    <div id="lesson2-questions-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="lesson2-questions-modal">&times;</button>
+            <h2>Speaking Practice</h2>
+            <!-- REPLACE ENGLISH TEXT HERE -->
+            <ul>
+                <li>1. Where do you usually have breakfast?</li>
+                <li>2. What do you usually have for breakfast at home?</li>
+            </ul>
+            <button class="translation-toggle-btn" data-target="lesson2-translation">See Translation</button>
+            <!-- REPLACE BURMESE TEXT HERE -->
+            <div id="lesson2-translation" style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
+                ၁။ နင်မနက်စာကိုဘယ်မှာစားလေ့ရှိလဲ?<br>
+                ၂။ နင့်အိမ်မှာ မနက်စာကို ဘနဲ့ စားလေ့ရှိလဲ?
+            </div>
+        </div>
+    </div>
+    
+    <!-- Vocabulary Modal -->
+    <div id="vocab-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-btn" data-modal="vocab-modal">&times;</button>
+            <h2 id="vocab-word-text">Word</h2>
+            <span id="vocab-word-phonetic">/pho-ne-tic/</span>
+            <button id="vocab-word-audio-btn">🔊</button>
+            <div><span id="vocab-word-type">type</span></div>
+            <div id="vocab-word-meaning">
+                <strong>Meaning:</strong> <span>...</span>
+            </div>
+            <div id="vocab-word-extra">
+                <strong>Opposites:</strong> <span>...</span><br>
+                <strong>Similars:</strong> <span>...</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Game Win/Lose Modal -->
+    <div id="game-message-modal" class="modal-overlay">
+        <div class="modal-content glass-box text-center">
+            <h2 id="game-message-title">Message</h2>
+            <p id="game-message-text">You did it!</p>
+            <button id="game-message-close" class="btn btn-primary" style="margin-top: 1rem;">Close</button>
+        </div>
+    </div>
+
+    <!-- ✨ GEMINI API MODAL ADDED HERE ✨ -->
+    <div id="gemini-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="gemini-modal">&times;</button>
+            <h2>✨ AI-Generated Meal Plan</h2>
+            <div id="gemini-loading" style="display: none;">
+                <p>Generating your healthy meal plan... please wait...</p>
+            </div>
+            <div id="gemini-response" class="scrollable">
+                <!-- AI response will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Audio Elements -->
+
+<!-- 6. Audio Elements -->
+    <audio id="click-sound" src="audio/click-placeholder.mp3"></audio>
+    <audio id="vocab-audio" src=""></audio>
+
+    <!-- 7. External JavaScript -->
+        <script src="components.js"></script>
+    <script src="include.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

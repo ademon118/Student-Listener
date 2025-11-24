@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 6 - Unit 6 - Objectives</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop playsinline aria-hidden="true">
+            <source src="https://cdn.coverr.co/videos/coverr-notebook-and-pen-2696/1080p.mp4" type="video/mp4">
+            <source src="videos/background-placeholder.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+        <!-- Header (Loaded from components) -->
+    <div data-include="header.html"></div>
+
+    <main id="app-container">
+        <section class="page active" id="page-objectives" data-page="objectives">
+            <div class="objectives-page-container">
+                <div class="title-translate">
+                    <h1 class="objectives-title animate-fade-in">Objectives</h1>
+                <div class="translation-button-container">
+                    <button id="toggle-translation-obj" class="translation-toggle-btn">See Translation</button>
+                </div>
+                
+                </div>
+                <div class="objectives-cards-grid" id="objectives-content">
+                    <!-- Objective 1: Language Skills -->
+                    <div class="objective-card animate-card" style="animation-delay: 0.1s;">
+                        <div class="objective-card-icon">🗣️</div>
+                        <h2 class="objective-card-title">1. Language Skills</h2>
+                        <p class="objective-card-subtitle">Speaking and Reading Proficiency</p>
+                        <ul class="objective-card-list">
+                            <li>Develop the ability to recognize phonics and produce accurate pronunciation.</li>
+                            <li>Acquire new vocabulary effectively.</li>
+                            <li>Strengthen comprehension skills by reading sentences and listening attentively.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Objective 2: Listening and Speaking -->
+                    <div class="objective-card animate-card" style="animation-delay: 0.2s;">
+                        <div class="objective-card-icon">👂</div>
+                        <h2 class="objective-card-title">2. Listening and Speaking</h2>
+                        <p class="objective-card-subtitle">Communication Skills</p>
+                        <ul class="objective-card-list">
+                            <li>Enhance the ability to listen to and understand teachers and peers.</li>
+                            <li>Communicate using simple, clear sentences.</li>
+                            <li>Respond appropriately to questions.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Objective 3: Reading and Writing -->
+                    <div class="objective-card animate-card" style="animation-delay: 0.3s;">
+                        <div class="objective-card-icon">✍️</div>
+                        <h2 class="objective-card-title">3. Reading and Writing</h2>
+                        <p class="objective-card-subtitle">Literacy Development</p>
+                        <ul class="objective-card-list">
+                            <li>Write letters and words correctly with proper spelling.</li>
+                            <li>Construct sentences accurately and coherently.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Objective 4: Vocabulary and Grammar -->
+                    <div class="objective-card">
+                        <div class="objective-card-icon">📚</div>
+                        <h2 class="objective-card-title">4. Vocabulary and Grammar</h2>
+                        <p class="objective-card-subtitle">Language Foundation</p>
+                        <ul class="objective-card-list">
+                            <li>Expand knowledge of practical, everyday vocabulary.</li>
+                            <li>Apply basic vocabulary and fundamental sentence structures in communication.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Objective 5: Creative and Critical Thinking -->
+                    <div class="objective-card animate-card" style="animation-delay: 0.5s;">
+                        <div class="objective-card-icon">💡</div>
+                        <h2 class="objective-card-title">5. Creative and Critical Thinking</h2>
+                        <p class="objective-card-subtitle">Advanced Skills</p>
+                        <ul class="objective-card-list">
+                            <li>Generate new ideas and apply vocabulary creatively.</li>
+                            <li>Engage with topics by listening carefully and answering questions thoughtfully.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Loaded from components) -->
+    <div data-include="footer.html"></div>
+    
+    <div id="game-message-modal" class="modal-overlay">
+        <div class="modal-content glass-box text-center">
+            <h2 id="game-message-title">Message</h2>
+            <p id="game-message-text">You did it!</p>
+            <button id="game-message-close" class="btn btn-primary" style="margin-top: 1rem;">Close</button>
+        </div>
+    </div>
+
+    <audio id="click-sound" src="audio/click-placeholder.mp3"></audio>
+    <audio id="vocab-audio" src=""></audio>
+
+        <script src="components.js"></script>
+    <script src="include.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

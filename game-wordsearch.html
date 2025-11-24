@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 6 - Unit 6 - Word Search Game</title>
+    <!-- Import Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="video-background">
+        <video autoplay muted loop playsinline aria-hidden="true">
+            <source src="https://cdn.coverr.co/videos/coverr-letters-on-a-table-7062/1080p.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+        <!-- Header (Loaded from components) -->
+    <div data-include="header.html"></div>
+
+    <main id="app-container">
+        <section class="page active" id="page-game-wordsearch" data-page="game-wordsearch">
+            <h2 class="game-font text-center">Round 5: Word Search</h2>
+            <div class="wordsearch-container">
+                <div class="wordsearch-main">
+                    <div class="wordsearch-grid-container glass-box">
+                        <div id="wordsearch-grid"></div>
+                    </div>
+                    <div class="wordsearch-sidebar">
+                        <div class="wordsearch-timer glass-box">
+                            <div class="timer-label">Time</div>
+                            <div id="wordsearch-timer">00:00</div>
+                        </div>
+                        <div class="wordsearch-words glass-box">
+                            <div class="words-label">Find</div>
+                            <div id="wordsearch-word-list"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-controls">
+                    <a href="game-ordering.html" class="game-btn btn-back nav-link" title="Previous Game">←</a>
+                    <button class="game-btn btn-restart" id="wordsearch-restart" title="Restart">↻</button>
+                    <a href="games.html" class="game-btn btn-quit nav-link" title="Back to Games">⌂</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<!-- 4. Footer -->
+    <div data-include="footer.html"></div>
+    
+<!-- 5. Modals (Hidden by default) -->
+
+    <!-- Game Win/Lose Modal -->
+    <div id="game-message-modal" class="modal-overlay">
+        <div class="modal-content glass-box text-center">
+            <h2 id="game-message-title">Message</h2>
+            <p id="game-message-text">You did it!</p>
+            <button id="game-message-close" class="btn btn-primary" style="margin-top: 1rem;">Close</button>
+        </div>
+    </div>
+
+    <!-- 6. Audio Elements -->
+    <audio id="click-sound" src="audio/click-placeholder.mp3"></audio>
+
+    <!-- 7. External JavaScript -->
+        <script src="components.js"></script>
+    <script src="include.js"></script>
+    <script src="script.js"></script>
+    <script src="wordsearch-game.js"></script>
+
+</body>
+</html>
+

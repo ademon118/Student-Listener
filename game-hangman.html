@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 6 - Unit 6 - Hangman Game</title>
+    <!-- Import Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="video-background">
+        <video autoplay muted loop playsinline aria-hidden="true">
+            <source src="https://cdn.coverr.co/videos/coverr-chalkboard-typing-7061/1080p.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+        <!-- Header (Loaded from components) -->
+    <div data-include="header.html"></div>
+
+    <main id="app-container">
+        <section class="page active" id="page-game-hangman" data-page="game-hangman">
+
+            <h2 class="game-font text-center">Round 1: Hangman</h2>
+            <div class="game-page-container">
+                <div class="hangman-left glass-box">
+                    <svg id="hangman-svg" viewBox="0 0 100 120">
+                        <!-- Base -->
+                        <line x1="10" y1="110" x2="90" y2="110" stroke="white" stroke-width="2" /> <!-- Bottom line -->
+                        <line x1="30" y1="110" x2="30" y2="10" stroke="white" stroke-width="2" /> <!-- Vertical pole -->
+                        <line x1="30" y1="10" x2="70" y2="10" stroke="white" stroke-width="2" /> <!-- Top line -->
+                        <line x1="70" y1="10" x2="70" y2="30" stroke="white" stroke-width="2" /> <!-- Rope -->
+                        <!-- Person (hidden) -->
+                        <circle class="hangman-part" id="hangman-head" cx="70" cy="40" r="10" fill="none" stroke="white" stroke-width="2" />
+                        <line class="hangman-part" id="hangman-body" x1="70" y1="50" x2="70" y2="80" stroke="white" stroke-width="2" />
+                        <line class="hangman-part" id="hangman-arm-l" x1="70" y1="60" x2="60" y2="70" stroke="white" stroke-width="2" />
+                        <line class="hangman-part" id="hangman-arm-r" x1="70" y1="60" x2="80" y2="70" stroke="white" stroke-width="2" />
+                        <line class="hangman-part" id="hangman-leg-l" x1="70" y1="80" x2="60" y2="100" stroke="white" stroke-width="2" />
+                        <line class="hangman-part" id="hangman-leg-r" x1="70" y1="80" x2="80" y2="100" stroke="white" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="hangman-right">
+                    <div id="word-blanks">_ _ _ _ _</div>
+                    <div id="hint-container">
+                        <button id="hint-btn">💡</button>
+                        <div id="hint-text"></div>
+                    </div>
+                    <div id="alphabet-buttons"></div>
+                </div>
+            </div>
+            <div class="game-controls">
+                <a href="games.html" class="game-btn btn-back nav-link" title="Back to Menu">←</a>
+                <button class="game-btn btn-restart" id="hangman-restart" title="Restart">↻</button>
+                <a href="game-mcq.html" class="game-btn btn-next-game nav-link" title="Next Game">→</a>
+                <a href="games.html" class="game-btn btn-quit nav-link" title="Quit">⌂</a>
+            </div>
+        
+        </section>
+    </main>
+
+<!-- 4. Footer -->
+    <div data-include="footer.html"></div>
+    
+<!-- 5. Modals (Hidden by default) -->
+
+    <!-- Lesson 1 Questions Modal -->
+    <div id="lesson1-questions-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="lesson1-questions-modal">&times;</button>
+            <h2>Speaking Practice</h2>
+            <!-- REPLACE ENGLISH TEXT HERE -->
+            <ul>
+                <li>1. Where do you usually eat out?</li>
+                <li>2. What do you usually have there?</li>
+                <li>3. Do you like the places? why?</li>
+            </ul>
+            <button class="translation-toggle-btn" data-target="lesson1-translation">See Translation</button>
+            <!-- REPLACE BURMESE TEXT HERE -->
+            <div id="lesson1-translation" style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
+                ၁။နင်ဘယ် အချိန်တွေမှာ အပြင်ထွက်စားလေ့ရှိလဲ?<br>
+                ၂။နင်အဲ့မှာ ဘာတွေ စားဖြစ်လဲ?<br>
+                ၃။နင်အဲ့နေရာကို ကြိုက်လား ဘာကြောင့်လဲ?
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lesson 2 Questions Modal -->
+    <div id="lesson2-questions-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="lesson2-questions-modal">&times;</button>
+            <h2>Speaking Practice</h2>
+            <!-- REPLACE ENGLISH TEXT HERE -->
+            <ul>
+                <li>1. Where do you usually have breakfast?</li>
+                <li>2. What do you usually have for breakfast at home?</li>
+            </ul>
+            <button class="translation-toggle-btn" data-target="lesson2-translation">See Translation</button>
+            <!-- REPLACE BURMESE TEXT HERE -->
+            <div id="lesson2-translation" style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
+                ၁။ နင်မနက်စာကိုဘယ်မှာစားလေ့ရှိလဲ?<br>
+                ၂။ နင့်အိမ်မှာ မနက်စာကို ဘနဲ့ စားလေ့ရှိလဲ?
+            </div>
+        </div>
+    </div>
+    
+    <!-- Vocabulary Modal -->
+    <div id="vocab-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-btn" data-modal="vocab-modal">&times;</button>
+            <h2 id="vocab-word-text">Word</h2>
+            <span id="vocab-word-phonetic">/pho-ne-tic/</span>
+            <button id="vocab-word-audio-btn">🔊</button>
+            <div><span id="vocab-word-type">type</span></div>
+            <div id="vocab-word-meaning">
+                <strong>Meaning:</strong> <span>...</span>
+            </div>
+            <div id="vocab-word-extra">
+                <strong>Opposites:</strong> <span>...</span><br>
+                <strong>Similars:</strong> <span>...</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Game Win/Lose Modal -->
+    <div id="game-message-modal" class="modal-overlay">
+        <div class="modal-content glass-box text-center">
+            <h2 id="game-message-title">Message</h2>
+            <p id="game-message-text">You did it!</p>
+            <button id="game-message-close" class="btn btn-primary" style="margin-top: 1rem;">Close</button>
+        </div>
+    </div>
+
+    <!-- ✨ GEMINI API MODAL ADDED HERE ✨ -->
+    <div id="gemini-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="gemini-modal">&times;</button>
+            <h2>✨ AI-Generated Meal Plan</h2>
+            <div id="gemini-loading" style="display: none;">
+                <p>Generating your healthy meal plan... please wait...</p>
+            </div>
+            <div id="gemini-response" class="scrollable">
+                <!-- AI response will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Audio Elements -->
+
+<!-- 6. Audio Elements -->
+    <!-- <!-- REPLACE AUDIO HERE --> -->
+    <audio id="click-sound" src="audio/click-placeholder.mp3"></audio>
+    <audio id="vocab-audio" src=""></audio>
+
+    <!-- 7. External JavaScript -->
+        <script src="components.js"></script>
+    <script src="include.js"></script>
+    <script src="script.js"></script>
+    <script src="hangman-game.js"></script>
+
+</body>
+</html>

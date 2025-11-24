@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 6 - Unit 6 - References</title>
+    <!-- Import Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="video-background">
+        <video autoplay muted loop playsinline aria-hidden="true">
+            <source src="https://cdn.coverr.co/videos/coverr-books-on-shelf-2700/1080p.mp4" type="video/mp4">
+            <source src="videos/background-placeholder.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+        <!-- Header (Loaded from components) -->
+    <div data-include="header.html"></div>
+
+    <main id="app-container">
+        <section class="page active" id="page-references" data-page="references">
+            <div class="references-hero glass-box animate-fade-in">
+                <h1 class="references-title">📚 References</h1>
+                <p class="references-subtitle">Educational resources and learning materials</p>
+            </div>
+            
+            <div class="references-grid">
+                <!-- Ministry of Education Card -->
+                <div class="reference-card glass-box animate-card" style="animation-delay: 0.1s;">
+                    <div class="reference-card-header">
+                        <div class="reference-icon-wrapper moe-icon">
+                            <svg viewBox="0 0 100 100" width="60" height="60">
+                                <polygon points="50,10 90,80 10,80" fill="#FFD700" stroke="#00AA00" stroke-width="3"/>
+                                <text x="50" y="60" text-anchor="middle" fill="#000" font-size="20" font-weight="bold">ပညာ</text>
+                            </svg>
+                        </div>
+                        <div class="reference-card-title-group">
+                            <h3>Ministry of Education</h3>
+                            <span class="reference-tag">Official</span>
+                        </div>
+                    </div>
+                    <p class="reference-description">Official education portal for Myanmar</p>
+                    <div class="reference-link-wrapper">
+                        <a href="https://moe.gov.mm" target="_blank" rel="noopener" class="reference-link-btn">
+                            <span>Visit Website</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M7 7h10v10"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Textbook Card -->
+                <div class="reference-card glass-box animate-card" style="animation-delay: 0.2s;">
+                    <div class="reference-card-header">
+                        <div class="reference-icon-wrapper textbook-icon">
+                            <div class="textbook-cover-mini">
+                                <div class="textbook-front-mini">
+                                    <div class="textbook-title-mini">ENG</div>
+                                    <div class="textbook-grade-mini">6</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reference-card-title-group">
+                            <h3>Grade 6 English Textbook</h3>
+                            <span class="reference-tag textbook-tag">📖 Textbook</span>
+                        </div>
+                    </div>
+                    <p class="reference-description">Official curriculum textbook for Grade 6 students</p>
+                    <div class="reference-link-wrapper">
+                        <span class="reference-badge-static">Available in schools</span>
+                    </div>
+                </div>
+
+                <!-- YouTube Section -->
+                <div class="reference-card youtube-card glass-box animate-card" style="animation-delay: 0.3s;">
+                    <div class="reference-card-header">
+                        <div class="reference-icon-wrapper youtube-icon-wrapper">
+                            <svg viewBox="0 0 24 24" width="50" height="50" fill="#FF0000">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </div>
+                        <div class="reference-card-title-group">
+                            <h3>YouTube Channels</h3>
+                            <span class="reference-tag">Video Learning</span>
+                        </div>
+                    </div>
+                    <p class="reference-description">Educational YouTube channels for English learning</p>
+                    
+                    <div class="youtube-channels-grid">
+                        <div class="youtube-channel-mini">
+                            <div class="channel-avatar-mini" style="background: linear-gradient(135deg, #34c759, #28a745);">
+                                <span>TK</span>
+                            </div>
+                            <div class="channel-info-mini">
+                                <h4>Tom Known</h4>
+                                <p>96.4K subscribers</p>
+                            </div>
+                        </div>
+                        
+                        <div class="youtube-channel-mini">
+                            <div class="channel-avatar-mini" style="background: linear-gradient(135deg, #ff7518, #e65c00);">
+                                <span>HL</span>
+                            </div>
+                            <div class="channel-info-mini">
+                                <h4>Teacher Hanni Linn</h4>
+                                <p>22.8K subscribers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Oxford Dictionary Card -->
+                <div class="reference-card glass-box animate-card" style="animation-delay: 0.4s;">
+                    <div class="reference-card-header">
+                        <div class="reference-icon-wrapper oxford-icon-wrapper">
+                            <div class="oxford-icon-mini">
+                                <div class="oxford-icon-top-mini" style="background: #002147;">
+                                    <span>Oxford</span>
+                                </div>
+                                <div class="oxford-icon-bottom-mini">
+                                    <div class="wave-mini wave-green-mini"></div>
+                                    <div class="wave-mini wave-red-mini"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reference-card-title-group">
+                            <h3>Oxford Dictionary</h3>
+                            <span class="reference-tag">Dictionary</span>
+                        </div>
+                    </div>
+                    <p class="reference-description">Comprehensive English language reference and learning resource</p>
+                    <div class="reference-link-wrapper">
+                        <a href="https://www.oxfordlearnersdictionaries.com" target="_blank" rel="noopener" class="reference-link-btn">
+                            <span>Visit Website</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M7 7h10v10"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<!-- 4. Footer -->
+    <!-- Footer (Loaded from components) -->
+    <div data-include="footer.html"></div>
+    
+<!-- 5. Modals (Hidden by default) -->
+
+    <!-- Lesson 1 Questions Modal -->
+    <div id="lesson1-questions-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="lesson1-questions-modal">&times;</button>
+            <h2>Speaking Practice</h2>
+            <!-- REPLACE ENGLISH TEXT HERE -->
+            <ul>
+                <li>1. Where do you usually eat out?</li>
+                <li>2. What do you usually have there?</li>
+                <li>3. Do you like the places? why?</li>
+            </ul>
+            <button class="translation-toggle-btn" data-target="lesson1-translation">See Translation</button>
+            <!-- REPLACE BURMESE TEXT HERE -->
+            <div id="lesson1-translation" style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
+                ၁။နင်ဘယ် အချိန်တွေမှာ အပြင်ထွက်စားလေ့ရှိလဲ?<br>
+                ၂။နင်အဲ့မှာ ဘာတွေ စားဖြစ်လဲ?<br>
+                ၃။နင်အဲ့နေရာကို ကြိုက်လား ဘာကြောင့်လဲ?
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lesson 2 Questions Modal -->
+    <div id="lesson2-questions-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="lesson2-questions-modal">&times;</button>
+            <h2>Speaking Practice</h2>
+            <!-- REPLACE ENGLISH TEXT HERE -->
+            <ul>
+                <li>1. Where do you usually have breakfast?</li>
+                <li>2. What do you usually have for breakfast at home?</li>
+            </ul>
+            <button class="translation-toggle-btn" data-target="lesson2-translation">See Translation</button>
+            <!-- REPLACE BURMESE TEXT HERE -->
+            <div id="lesson2-translation" style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
+                ၁။ နင်မနက်စာကိုဘယ်မှာစားလေ့ရှိလဲ?<br>
+                ၂။ နင့်အိမ်မှာ မနက်စာကို ဘနဲ့ စားလေ့ရှိလဲ?
+            </div>
+        </div>
+    </div>
+    
+    <!-- Vocabulary Modal -->
+    <div id="vocab-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-btn" data-modal="vocab-modal">&times;</button>
+            <h2 id="vocab-word-text">Word</h2>
+            <span id="vocab-word-phonetic">/pho-ne-tic/</span>
+            <button id="vocab-word-audio-btn">🔊</button>
+            <div><span id="vocab-word-type">type</span></div>
+            <div id="vocab-word-meaning">
+                <strong>Meaning:</strong> <span>...</span>
+            </div>
+            <div id="vocab-word-extra">
+                <strong>Opposites:</strong> <span>...</span><br>
+                <strong>Similars:</strong> <span>...</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Game Win/Lose Modal -->
+    <div id="game-message-modal" class="modal-overlay">
+        <div class="modal-content glass-box text-center">
+            <h2 id="game-message-title">Message</h2>
+            <p id="game-message-text">You did it!</p>
+            <button id="game-message-close" class="btn btn-primary" style="margin-top: 1rem;">Close</button>
+        </div>
+    </div>
+
+    <!-- ✨ GEMINI API MODAL ADDED HERE ✨ -->
+    <div id="gemini-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="gemini-modal">&times;</button>
+            <h2>✨ AI-Generated Meal Plan</h2>
+            <div id="gemini-loading" style="display: none;">
+                <p>Generating your healthy meal plan... please wait...</p>
+            </div>
+            <div id="gemini-response" class="scrollable">
+                <!-- AI response will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Audio Elements -->
+
+<!-- 6. Audio Elements -->
+    <audio id="click-sound" src="audio/click-placeholder.mp3"></audio>
+    <audio id="vocab-audio" src=""></audio>
+
+    <!-- 7. External JavaScript -->
+        <script src="components.js"></script>
+    <script src="include.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

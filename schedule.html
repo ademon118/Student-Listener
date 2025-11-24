@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 6 - Unit 6 - Schedule</title>
+    <!-- Import Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="video-background">
+        <video autoplay muted loop playsinline aria-hidden="true">
+            <source src="https://cdn.coverr.co/videos/coverr-calendar-pages-2699/1080p.mp4" type="video/mp4">
+            <source src="videos/background-placeholder.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+        <!-- Header (Loaded from components) -->
+    <div data-include="header.html"></div>
+
+    <main id="app-container">
+        <section class="page active" id="page-schedule" data-page="schedule">
+
+            <h1 class="schedule-page-title animate-fade-in">Schedule</h1>
+            <div class="roadmap-container">
+                <svg class="roadmap-svg" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid meet">
+                    <!-- Winding Road Path - Adjusted for better spacing -->
+                    <path id="road-path" d="M 50 400 Q 180 320, 250 360 Q 320 400, 380 420 Q 450 440, 520 480 Q 600 520, 680 500 Q 750 480, 820 460 Q 900 440, 1000 480 Q 1120 520, 1200 500 Q 1280 480, 1350 460 Q 1420 440, 1500 450" 
+                          fill="none" stroke="#000" stroke-width="60" stroke-linecap="round"/>
+                    
+                    <!-- Dashed White Lines on Road -->
+                    <path d="M 50 400 Q 180 320, 250 360 Q 320 400, 380 420 Q 450 440, 520 480 Q 600 520, 680 500 Q 750 480, 820 460 Q 900 440, 1000 480 Q 1120 520, 1200 500 Q 1280 480, 1350 460 Q 1420 440, 1500 450" 
+                          fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="20,15" stroke-linecap="round"/>
+                    
+                    <!-- Checkpoint 1 - Pink -->
+                    <g class="checkpoint" data-checkpoint="1">
+                        <path d="M 200 360 L 190 340 L 210 340 Z" fill="#ff69b4" stroke="#fff" stroke-width="2"/>
+                        <circle cx="200" cy="360" r="20" fill="#ff69b4" stroke="#fff" stroke-width="2"/>
+                        <text x="200" y="366" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">1</text>
+                        <line x1="200" y1="340" x2="200" y2="280" stroke="#ff69b4" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="200" y="270" text-anchor="middle" fill="#ff69b4" font-size="11" font-weight="600">Read the lesson, collect data, and search for pictures.</text>
+                    </g>
+                    
+                    <!-- Checkpoint 2 - Teal Green -->
+                    <g class="checkpoint" data-checkpoint="2">
+                        <path d="M 320 400 L 310 380 L 330 380 Z" fill="#20b2aa" stroke="#fff" stroke-width="2"/>
+                        <circle cx="320" cy="400" r="20" fill="#20b2aa" stroke="#fff" stroke-width="2"/>
+                        <text x="320" y="406" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">2</text>
+                        <line x1="320" y1="380" x2="320" y2="220" stroke="#20b2aa" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="320" y="210" text-anchor="middle" fill="#20b2aa" font-size="11" font-weight="600">Sketch the website layout, plan the structure, manage data, and translate content.</text>
+                    </g>
+                    
+                    <!-- Checkpoint 3 - Orange -->
+                    <g class="checkpoint" data-checkpoint="3">
+                        <path d="M 450 440 L 440 420 L 460 420 Z" fill="#ff7518" stroke="#fff" stroke-width="2"/>
+                        <circle cx="450" cy="440" r="20" fill="#ff7518" stroke="#fff" stroke-width="2"/>
+                        <text x="450" y="446" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">3</text>
+                        <line x1="450" y1="420" x2="450" y2="330" stroke="#ff7518" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="450" y="320" text-anchor="middle" fill="#ff7518" font-size="11" font-weight="600">Edit collected materials and begin writing the homepage.</text>
+                    </g>
+                    
+                    <!-- Checkpoint 4 - Blue -->
+                    <g class="checkpoint" data-checkpoint="4">
+                        <path d="M 600 520 L 590 500 L 610 500 Z" fill="#007aff" stroke="#fff" stroke-width="2"/>
+                        <circle cx="600" cy="520" r="20" fill="#007aff" stroke="#fff" stroke-width="2"/>
+                        <text x="600" y="526" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">4</text>
+                        <line x1="600" y1="500" x2="600" y2="640" stroke="#007aff" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="600" y="650" text-anchor="middle" fill="#007aff" font-size="11" font-weight="600">Start coding the game.</text>
+                    </g>
+                    
+                    <!-- Checkpoint 5 - Red -->
+                    <g class="checkpoint" data-checkpoint="5">
+                        <path d="M 750 480 L 740 460 L 760 460 Z" fill="#ff3b30" stroke="#fff" stroke-width="2"/>
+                        <circle cx="750" cy="480" r="20" fill="#ff3b30" stroke="#fff" stroke-width="2"/>
+                        <text x="750" y="486" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">5</text>
+                        <line x1="750" y1="460" x2="750" y2="600" stroke="#ff3b30" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="750" y="610" text-anchor="middle" fill="#ff3b30" font-size="11" font-weight="600">Complete the game code.</text>
+                    </g>
+                    
+                    <!-- Checkpoint 6 - Blue -->
+                    <g class="checkpoint" data-checkpoint="6">
+                        <path d="M 1000 480 L 990 460 L 1010 460 Z" fill="#007aff" stroke="#fff" stroke-width="2"/>
+                        <circle cx="1000" cy="480" r="20" fill="#007aff" stroke="#fff" stroke-width="2"/>
+                        <text x="1000" y="486" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">6</text>
+                        <line x1="1000" y1="460" x2="1000" y2="620" stroke="#007aff" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="1000" y="630" text-anchor="middle" fill="#007aff" font-size="11" font-weight="600">Continue coding the website, including styling and navigation.</text>
+                    </g>
+                    
+                    <!-- Checkpoint 7 - Green -->
+                    <g class="checkpoint" data-checkpoint="7">
+                        <path d="M 1120 520 L 1110 500 L 1130 500 Z" fill="#34c759" stroke="#fff" stroke-width="2"/>
+                        <circle cx="1120" cy="520" r="20" fill="#34c759" stroke="#fff" stroke-width="2"/>
+                        <text x="1120" y="526" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">7</text>
+                        <line x1="1120" y1="500" x2="1120" y2="660" stroke="#34c759" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="1120" y="670" text-anchor="middle" fill="#34c759" font-size="11" font-weight="600">Check for errors and debug the project.</text>
+                    </g>
+                    
+                    <!-- Checkpoint 8 - Purple -->
+                    <g class="checkpoint" data-checkpoint="8">
+                        <path d="M 1280 480 L 1270 460 L 1290 460 Z" fill="#af52de" stroke="#fff" stroke-width="2"/>
+                        <circle cx="1280" cy="480" r="20" fill="#af52de" stroke="#fff" stroke-width="2"/>
+                        <text x="1280" y="486" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">8</text>
+                        <line x1="1280" y1="460" x2="1280" y2="290" stroke="#af52de" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="1280" y="280" text-anchor="middle" fill="#af52de" font-size="11" font-weight="600">Practice presentation and rehearse using the website and game.</text>
+                    </g>
+                    
+                    <!-- Checkpoint 9 - Yellow -->
+                    <g class="checkpoint" data-checkpoint="9">
+                        <path d="M 1420 440 L 1410 420 L 1430 420 Z" fill="#ffcc00" stroke="#fff" stroke-width="2"/>
+                        <circle cx="1420" cy="440" r="20" fill="#ffcc00" stroke="#fff" stroke-width="2"/>
+                        <text x="1420" y="446" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">9</text>
+                        <line x1="1420" y1="420" x2="1420" y2="250" stroke="#ffcc00" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="1420" y="240" text-anchor="middle" fill="#ffcc00" font-size="11" font-weight="600">Competition day present and showcase the final project.</text>
+                    </g>
+                    
+                    <!-- Trophy Image at Checkpoint 9 -->
+                    <image href="images/trophy.svg" x="1480" y="350" width="80" height="80" class="trophy-image" preserveAspectRatio="xMidYMid"/>
+                </svg>
+            </div>
+        
+        </section>
+    </main>
+
+<!-- 4. Footer -->
+    <!-- Footer (Loaded from components) -->
+    <div data-include="footer.html"></div>
+    
+<!-- 5. Modals (Hidden by default) -->
+
+    <!-- Lesson 1 Questions Modal -->
+    <div id="lesson1-questions-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="lesson1-questions-modal">&times;</button>
+            <h2>Speaking Practice</h2>
+            <!-- REPLACE ENGLISH TEXT HERE -->
+            <ul>
+                <li>1. Where do you usually eat out?</li>
+                <li>2. What do you usually have there?</li>
+                <li>3. Do you like the places? why?</li>
+            </ul>
+            <button class="translation-toggle-btn" data-target="lesson1-translation">See Translation</button>
+            <!-- REPLACE BURMESE TEXT HERE -->
+            <div id="lesson1-translation" style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
+                ၁။နင်ဘယ် အချိန်တွေမှာ အပြင်ထွက်စားလေ့ရှိလဲ?<br>
+                ၂။နင်အဲ့မှာ ဘာတွေ စားဖြစ်လဲ?<br>
+                ၃။နင်အဲ့နေရာကို ကြိုက်လား ဘာကြောင့်လဲ?
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lesson 2 Questions Modal -->
+    <div id="lesson2-questions-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="lesson2-questions-modal">&times;</button>
+            <h2>Speaking Practice</h2>
+            <!-- REPLACE ENGLISH TEXT HERE -->
+            <ul>
+                <li>1. Where do you usually have breakfast?</li>
+                <li>2. What do you usually have for breakfast at home?</li>
+            </ul>
+            <button class="translation-toggle-btn" data-target="lesson2-translation">See Translation</button>
+            <!-- REPLACE BURMESE TEXT HERE -->
+            <div id="lesson2-translation" style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
+                ၁။ နင်မနက်စာကိုဘယ်မှာစားလေ့ရှိလဲ?<br>
+                ၂။ နင့်အိမ်မှာ မနက်စာကို ဘနဲ့ စားလေ့ရှိလဲ?
+            </div>
+        </div>
+    </div>
+    
+    <!-- Vocabulary Modal -->
+    <div id="vocab-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-btn" data-modal="vocab-modal">&times;</button>
+            <h2 id="vocab-word-text">Word</h2>
+            <span id="vocab-word-phonetic">/pho-ne-tic/</span>
+            <button id="vocab-word-audio-btn">🔊</button>
+            <div><span id="vocab-word-type">type</span></div>
+            <div id="vocab-word-meaning">
+                <strong>Meaning:</strong> <span>...</span>
+            </div>
+            <div id="vocab-word-extra">
+                <strong>Opposites:</strong> <span>...</span><br>
+                <strong>Similars:</strong> <span>...</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Game Win/Lose Modal -->
+    <div id="game-message-modal" class="modal-overlay">
+        <div class="modal-content glass-box text-center">
+            <h2 id="game-message-title">Message</h2>
+            <p id="game-message-text">You did it!</p>
+            <button id="game-message-close" class="btn btn-primary" style="margin-top: 1rem;">Close</button>
+        </div>
+    </div>
+
+    <!-- ✨ GEMINI API MODAL ADDED HERE ✨ -->
+    <div id="gemini-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="gemini-modal">&times;</button>
+            <h2>✨ AI-Generated Meal Plan</h2>
+            <div id="gemini-loading" style="display: none;">
+                <p>Generating your healthy meal plan... please wait...</p>
+            </div>
+            <div id="gemini-response" class="scrollable">
+                <!-- AI response will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Audio Elements -->
+
+<!-- 6. Audio Elements -->
+    <!-- <!-- REPLACE AUDIO HERE --> -->
+    <audio id="click-sound" src="audio/click-placeholder.mp3"></audio>
+    <audio id="vocab-audio" src=""></audio>
+
+    <!-- 7. External JavaScript -->
+        <script src="components.js"></script>
+    <script src="include.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

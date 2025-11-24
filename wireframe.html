@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 6 - Unit 6 - Wireframe</title>
+    <!-- Import Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="video-background">
+        <video autoplay muted loop playsinline aria-hidden="true">
+            <source src="https://cdn.coverr.co/videos/coverr-diagram-and-wireframe-2704/1080p.mp4" type="video/mp4">
+            <source src="videos/background-placeholder.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+        <!-- Header (Loaded from components) -->
+    <div data-include="header.html"></div>
+
+    <main id="app-container">
+        <section class="page active" id="page-wireframe" data-page="wireframe">
+            <h1 class="text-center" style="margin-bottom: 2rem;">Website Navigation Wireframe</h1>
+            <div class="wireframe-container">
+                <svg class="wireframe-svg" viewBox="0 0 1800 1400" preserveAspectRatio="xMidYMid meet">
+                    <!-- Main Navigation Pages -->
+                    <!-- Objectives -->
+                    <line x1="900" y1="700" x2="600" y2="500" stroke="#ff7518" stroke-width="3"/>
+                    <circle cx="750" cy="600" r="20" fill="#ff7518" stroke="#fff" stroke-width="2"/>
+                    <rect x="450" y="450" width="150" height="50" rx="10" fill="rgba(255, 117, 24, 0.9)" stroke="#fff" stroke-width="2"/>
+                    <text x="525" y="480" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Objectives</text>
+                    
+                    <!-- Lessons -->
+                    <line x1="900" y1="700" x2="700" y2="300" stroke="#ff7518" stroke-width="3"/>
+                    <circle cx="800" cy="500" r="20" fill="#ff7518" stroke="#fff" stroke-width="2"/>
+                    <rect x="550" y="250" width="150" height="50" rx="10" fill="rgba(255, 117, 24, 0.9)" stroke="#fff" stroke-width="2"/>
+                    <text x="625" y="280" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Lessons</text>
+                    <!-- Sub-pages for Lessons -->
+                    <line x1="625" y1="250" x2="625" y2="180" stroke="#ff7518" stroke-width="2"/>
+                    <rect x="500" y="120" width="120" height="40" rx="8" fill="rgba(255, 117, 24, 0.7)" stroke="#fff" stroke-width="1"/>
+                    <text x="560" y="145" text-anchor="middle" fill="#fff" font-size="12">Lesson 1</text>
+                    <line x1="625" y1="300" x2="625" y2="370" stroke="#ff7518" stroke-width="2"/>
+                    <rect x="500" y="370" width="120" height="40" rx="8" fill="rgba(255, 117, 24, 0.7)" stroke="#fff" stroke-width="1"/>
+                    <text x="560" y="395" text-anchor="middle" fill="#fff" font-size="12">Lesson 2</text>
+                    
+                    <!-- Games -->
+                    <line x1="900" y1="700" x2="1100" y2="300" stroke="#ff7518" stroke-width="3"/>
+                    <circle cx="1000" cy="500" r="20" fill="#ff7518" stroke="#fff" stroke-width="2"/>
+                    <rect x="1200" y="250" width="150" height="50" rx="10" fill="rgba(255, 117, 24, 0.9)" stroke="#fff" stroke-width="2"/>
+                    <text x="1275" y="280" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Games</text>
+                    <!-- Sub-pages for Games -->
+                    <line x1="1275" y1="250" x2="1200" y2="180" stroke="#ff7518" stroke-width="2"/>
+                    <rect x="1100" y="120" width="100" height="35" rx="6" fill="rgba(255, 117, 24, 0.7)" stroke="#fff" stroke-width="1"/>
+                    <text x="1150" y="142" text-anchor="middle" fill="#fff" font-size="11">Hangman</text>
+                    <line x1="1275" y1="250" x2="1350" y2="180" stroke="#ff7518" stroke-width="2"/>
+                    <rect x="1300" y="120" width="100" height="35" rx="6" fill="rgba(255, 117, 24, 0.7)" stroke="#fff" stroke-width="1"/>
+                    <text x="1350" y="142" text-anchor="middle" fill="#fff" font-size="11">MCQ</text>
+                    <line x1="1275" y1="300" x2="1200" y2="370" stroke="#ff7518" stroke-width="2"/>
+                    <rect x="1100" y="370" width="100" height="35" rx="6" fill="rgba(255, 117, 24, 0.7)" stroke="#fff" stroke-width="1"/>
+                    <text x="1150" y="392" text-anchor="middle" fill="#fff" font-size="11">Listening</text>
+                    <line x1="1275" y1="300" x2="1350" y2="370" stroke="#ff7518" stroke-width="2"/>
+                    <rect x="1300" y="370" width="100" height="35" rx="6" fill="rgba(255, 117, 24, 0.7)" stroke="#fff" stroke-width="1"/>
+                    <text x="1350" y="392" text-anchor="middle" fill="#fff" font-size="11">Ordering</text>
+                    
+                    <!-- About -->
+                    <line x1="900" y1="700" x2="1300" y2="500" stroke="#ff7518" stroke-width="3"/>
+                    <circle cx="1100" cy="600" r="20" fill="#ff7518" stroke="#fff" stroke-width="2"/>
+                    <rect x="1300" y="450" width="150" height="50" rx="10" fill="rgba(255, 117, 24, 0.9)" stroke="#fff" stroke-width="2"/>
+                    <text x="1375" y="480" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">About Us</text>
+                    
+                    <!-- Knowledge -->
+                    <line x1="900" y1="700" x2="1300" y2="700" stroke="#ff7518" stroke-width="3"/>
+                    <circle cx="1100" cy="700" r="20" fill="#ff7518" stroke="#fff" stroke-width="2"/>
+                    <rect x="1300" y="650" width="150" height="50" rx="10" fill="rgba(255, 117, 24, 0.9)" stroke="#fff" stroke-width="2"/>
+                    <text x="1375" y="680" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Knowledge</text>
+                    
+                    <!-- Schedule -->
+                    <line x1="900" y1="700" x2="1300" y2="900" stroke="#ff7518" stroke-width="3"/>
+                    <circle cx="1100" cy="800" r="20" fill="#ff7518" stroke="#fff" stroke-width="2"/>
+                    <rect x="1300" y="850" width="150" height="50" rx="10" fill="rgba(255, 117, 24, 0.9)" stroke="#fff" stroke-width="2"/>
+                    <text x="1375" y="880" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Schedule</text>
+                    
+                    <!-- References -->
+                    <line x1="900" y1="700" x2="1100" y2="1000" stroke="#ff7518" stroke-width="3"/>
+                    <circle cx="1000" cy="850" r="20" fill="#ff7518" stroke="#fff" stroke-width="2"/>
+                    <rect x="1100" y="950" width="150" height="50" rx="10" fill="rgba(255, 117, 24, 0.9)" stroke="#fff" stroke-width="2"/>
+                    <text x="1175" y="980" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">References</text>
+                    
+                    <!-- Requirement -->
+                    <line x1="900" y1="700" x2="700" y2="1000" stroke="#ff7518" stroke-width="3"/>
+                    <circle cx="800" cy="850" r="20" fill="#ff7518" stroke="#fff" stroke-width="2"/>
+                    <rect x="550" y="950" width="150" height="50" rx="10" fill="rgba(255, 117, 24, 0.9)" stroke="#fff" stroke-width="2"/>
+                    <text x="625" y="980" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Requirement</text>
+                    
+                    <!-- Wireframe -->
+                    <line x1="900" y1="700" x2="600" y2="900" stroke="#ff7518" stroke-width="3"/>
+                    <circle cx="750" cy="800" r="20" fill="#ff7518" stroke="#fff" stroke-width="2"/>
+                    <rect x="450" y="850" width="150" height="50" rx="10" fill="rgba(255, 117, 24, 0.9)" stroke="#fff" stroke-width="2"/>
+                    <text x="525" y="880" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Wireframe</text>
+                    
+                    <!-- Appreciation -->
+                    <line x1="900" y1="700" x2="500" y2="700" stroke="#ff7518" stroke-width="3"/>
+                    <circle cx="700" cy="700" r="20" fill="#ff7518" stroke="#fff" stroke-width="2"/>
+                    <rect x="300" y="650" width="150" height="50" rx="10" fill="rgba(255, 117, 24, 0.9)" stroke="#fff" stroke-width="2"/>
+                    <text x="375" y="680" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Appreciation</text>
+                    
+                    <!-- Central Node - Home (rendered last so it appears on top) -->
+                    <circle cx="900" cy="700" r="90" fill="#ff7518" stroke="#fff" stroke-width="4"/>
+                    <text x="900" y="710" text-anchor="middle" fill="#fff" font-size="24" font-weight="bold">HOME</text>
+                </svg>
+            </div>
+        </section>
+    </main>
+
+<!-- 4. Footer -->
+    <!-- Footer (Loaded from components) -->
+    <div data-include="footer.html"></div>
+    
+<!-- 5. Modals (Hidden by default) -->
+
+    <!-- Lesson 1 Questions Modal -->
+    <div id="lesson1-questions-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="lesson1-questions-modal">&times;</button>
+            <h2>Speaking Practice</h2>
+            <!-- REPLACE ENGLISH TEXT HERE -->
+            <ul>
+                <li>1. Where do you usually eat out?</li>
+                <li>2. What do you usually have there?</li>
+                <li>3. Do you like the places? why?</li>
+            </ul>
+            <button class="translation-toggle-btn" data-target="lesson1-translation">See Translation</button>
+            <!-- REPLACE BURMESE TEXT HERE -->
+            <div id="lesson1-translation" style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
+                ၁။နင်ဘယ် အချိန်တွေမှာ အပြင်ထွက်စားလေ့ရှိလဲ?<br>
+                ၂။နင်အဲ့မှာ ဘာတွေ စားဖြစ်လဲ?<br>
+                ၃။နင်အဲ့နေရာကို ကြိုက်လား ဘာကြောင့်လဲ?
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lesson 2 Questions Modal -->
+    <div id="lesson2-questions-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="lesson2-questions-modal">&times;</button>
+            <h2>Speaking Practice</h2>
+            <!-- REPLACE ENGLISH TEXT HERE -->
+            <ul>
+                <li>1. Where do you usually have breakfast?</li>
+                <li>2. What do you usually have for breakfast at home?</li>
+            </ul>
+            <button class="translation-toggle-btn" data-target="lesson2-translation">See Translation</button>
+            <!-- REPLACE BURMESE TEXT HERE -->
+            <div id="lesson2-translation" style="display:none; margin-top: 1rem; color: #ddd; font-style: italic;">
+                ၁။ နင်မနက်စာကိုဘယ်မှာစားလေ့ရှိလဲ?<br>
+                ၂။ နင့်အိမ်မှာ မနက်စာကို ဘနဲ့ စားလေ့ရှိလဲ?
+            </div>
+        </div>
+    </div>
+    
+    <!-- Vocabulary Modal -->
+    <div id="vocab-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-btn" data-modal="vocab-modal">&times;</button>
+            <h2 id="vocab-word-text">Word</h2>
+            <span id="vocab-word-phonetic">/pho-ne-tic/</span>
+            <button id="vocab-word-audio-btn">🔊</button>
+            <div><span id="vocab-word-type">type</span></div>
+            <div id="vocab-word-meaning">
+                <strong>Meaning:</strong> <span>...</span>
+            </div>
+            <div id="vocab-word-extra">
+                <strong>Opposites:</strong> <span>...</span><br>
+                <strong>Similars:</strong> <span>...</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Game Win/Lose Modal -->
+    <div id="game-message-modal" class="modal-overlay">
+        <div class="modal-content glass-box text-center">
+            <h2 id="game-message-title">Message</h2>
+            <p id="game-message-text">You did it!</p>
+            <button id="game-message-close" class="btn btn-primary" style="margin-top: 1rem;">Close</button>
+        </div>
+    </div>
+
+    <!-- ✨ GEMINI API MODAL ADDED HERE ✨ -->
+    <div id="gemini-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" data-modal="gemini-modal">&times;</button>
+            <h2>✨ AI-Generated Meal Plan</h2>
+            <div id="gemini-loading" style="display: none;">
+                <p>Generating your healthy meal plan... please wait...</p>
+            </div>
+            <div id="gemini-response" class="scrollable">
+                <!-- AI response will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Audio Elements -->
+
+<!-- 6. Audio Elements -->
+    <audio id="click-sound" src="audio/click-placeholder.mp3"></audio>
+    <audio id="vocab-audio" src=""></audio>
+
+    <!-- 7. External JavaScript -->
+        <script src="components.js"></script>
+    <script src="include.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

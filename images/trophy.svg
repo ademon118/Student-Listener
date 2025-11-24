@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" width="120" height="140">
+  <!-- Trophy Cup - Classic rounded shape with metallic shading -->
+  <defs>
+    <linearGradient id="trophyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ffed4e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#daa520;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="trophyHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fff;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#fff;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#fff;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Trophy Cup - Wide at top, tapers down -->
+  <path d="M 30 20 Q 30 8, 60 8 Q 90 8, 90 20 L 90 58 Q 90 68, 60 68 Q 30 68, 30 58 Z" fill="url(#trophyGradient)" stroke="#000" stroke-width="2.5"/>
+  
+  <!-- Highlight on cup for metallic effect -->
+  <path d="M 30 20 Q 30 8, 60 8 Q 90 8, 90 20 L 90 58 Q 90 68, 60 68 Q 30 68, 30 58 Z" fill="url(#trophyHighlight)"/>
+  
+  <!-- White Five-Pointed Star on front of cup -->
+  <path d="M 60 25 L 63 33 L 71 33 L 65 38 L 67 46 L 60 41 L 53 46 L 55 38 L 49 33 L 57 33 Z" fill="#fff" stroke="#000" stroke-width="0.5"/>
+  
+  <!-- Trophy Base - Dark rectangular base -->
+  <rect x="25" y="68" width="70" height="12" fill="#2c2c2c" stroke="#000" stroke-width="2.5" rx="2"/>
+  <rect x="28" y="71" width="64" height="6" fill="#1a1a1a"/>
+  
+  <!-- Trophy Stem -->
+  <rect x="50" y="80" width="20" height="30" fill="url(#trophyGradient)" stroke="#000" stroke-width="2"/>
+  <rect x="52" y="82" width="16" height="26" fill="url(#trophyHighlight)"/>
+  
+  <!-- Trophy Handle Left - Curving outward and upward -->
+  <path d="M 30 30 Q 15 30, 12 45 Q 10 55, 15 58" fill="none" stroke="url(#trophyGradient)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 30 30 Q 15 30, 12 45 Q 10 55, 15 58" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 30 30 Q 15 30, 12 45 Q 10 55, 15 58" fill="none" stroke="url(#trophyHighlight)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Trophy Handle Right - Curving outward and upward -->
+  <path d="M 90 30 Q 105 30, 108 45 Q 110 55, 105 58" fill="none" stroke="url(#trophyGradient)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 90 30 Q 105 30, 108 45 Q 110 55, 105 58" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 90 30 Q 105 30, 108 45 Q 110 55, 105 58" fill="none" stroke="url(#trophyHighlight)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Confetti - Scattered around trophy in various colors and shapes -->
+  <!-- Dark Blue Confetti -->
+  <circle cx="15" cy="15" r="3.5" fill="#1e3a8a" stroke="#000" stroke-width="1"/>
+  <path d="M 8 25 L 10 28 L 8 31 L 5 28 Z" fill="#1e3a8a" stroke="#000" stroke-width="1"/>
+  <circle cx="25" cy="8" r="3" fill="#1e3a8a" stroke="#000" stroke-width="1"/>
+  
+  <!-- Pink Confetti -->
+  <circle cx="20" cy="12" r="3" fill="#ec4899" stroke="#000" stroke-width="1"/>
+  <path d="M 12 18 L 14 21 L 12 24 L 9 21 Z" fill="#ec4899" stroke="#000" stroke-width="1"/>
+  <circle cx="18" cy="5" r="2.5" fill="#ec4899" stroke="#000" stroke-width="1"/>
+  
+  <!-- Yellow Confetti -->
+  <circle cx="5" cy="20" r="3" fill="#fbbf24" stroke="#000" stroke-width="1"/>
+  <path d="M 105 12 L 107 15 L 105 18 L 102 15 Z" fill="#fbbf24" stroke="#000" stroke-width="1"/>
+  <circle cx="110" cy="8" r="3.5" fill="#fbbf24" stroke="#000" stroke-width="1"/>
+  
+  <!-- Purple Confetti -->
+  <circle cx="10" cy="10" r="3" fill="#9333ea" stroke="#000" stroke-width="1"/>
+  <path d="M 108 20 L 110 23 L 108 26 L 105 23 Z" fill="#9333ea" stroke="#000" stroke-width="1"/>
+  <circle cx="112" cy="15" r="2.5" fill="#9333ea" stroke="#000" stroke-width="1"/>
+  
+  <!-- Additional colorful confetti pieces -->
+  <path d="M 15 5 L 17 8 L 15 11 L 12 8 Z" fill="#06b6d4" stroke="#000" stroke-width="1"/>
+  <circle cx="22" cy="22" r="2.5" fill="#10b981" stroke="#000" stroke-width="1"/>
+  <path d="M 108 5 L 110 8 L 108 11 L 105 8 Z" fill="#f59e0b" stroke="#000" stroke-width="1"/>
+</svg>
