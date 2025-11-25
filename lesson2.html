@@ -24,7 +24,7 @@
         </video>
     </div>
 
-    <!-- Header (Loaded from components) -->
+        <!-- Header (Loaded from components) -->
     <div data-include="header.html"></div>
 
     <main id="app-container">
@@ -45,7 +45,7 @@
                     </ul>
                 </div>
             </div>
-
+            
             <button id="open-lesson2-questions" class="btn btn-primary speak-btn">
                 <svg viewBox="0 0 24 24">
                     <path
@@ -54,9 +54,8 @@
                 </svg>
                 Speaking Practice
             </button>
-
+            
             <h3 style="margin-top: 2rem;">2. Read the texts</h3>
-            <h4 style="color: #ccc;">Breakfast</h4>
             <div class="content-grid" style="margin-top: 1rem;">
                 <div class="glass-box">
                     <!-- REPLACE ENGLISH TEXT HERE -->
@@ -112,7 +111,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <!-- ✨ GEMINI API FEATURE ADDED HERE ✨ -->
             <div class="glass-box" style="margin-top: 2rem; text-align: center;">
                 <h3>✨ AI Healthy Meal Planner</h3>
@@ -121,7 +120,7 @@
                 </p>
                 <button id="open-gemini-planner" class="btn btn-gemini">✨ Generate Meal Plan</button>
             </div>
-
+            
             <h3 style="margin-top: 2rem;">Video Lesson</h3>
             <div class="video-container">
                 <video class="lesson-video" controls preload="metadata">
@@ -133,17 +132,17 @@
                     Your browser does not support the video tag.
                 </video>
             </div>
-
+            
             <a href="games.html">→</a>
-
+        
         </section>
     </main>
 
-    <!-- 4. Footer -->
+<!-- 4. Footer -->
     <!-- Footer (Loaded from components) -->
     <div data-include="footer.html"></div>
-
-    <!-- 5. Modals (Hidden by default) -->
+    
+<!-- 5. Modals (Hidden by default) -->
 
     <!-- Lesson 1 Questions Modal -->
     <div id="lesson1-questions-modal" class="modal-overlay">
@@ -165,7 +164,7 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Lesson 2 Questions Modal -->
     <div id="lesson2-questions-modal" class="modal-overlay">
         <div class="modal-content glass-box">
@@ -182,9 +181,23 @@
                 ၁။ နင်မနက်စာကိုဘယ်မှာစားလေ့ရှိလဲ?<br>
                 ၂။ နင့်အိမ်မှာ မနက်စာကို ဘနဲ့ စားလေ့ရှိလဲ?
             </div>
+            <div class="speaking-practice-panel" data-practice-id="lesson2">
+                <h3>Record &amp; Get Feedback</h3>
+                <p class="speaking-hint">Talk about your breakfast habits and review your pronunciation.</p>
+                <div class="speaking-controls">
+                    <button id="lesson2-record-btn" class="btn btn-secondary">🎙️ Start Recording</button>
+                    <button id="lesson2-stop-btn" class="btn btn-tertiary" disabled>⏹ Stop</button>
+                    <button id="lesson2-play-btn" class="btn btn-secondary" disabled>▶️ Play</button>
+                </div>
+                <p id="lesson2-recording-status" class="recording-status">Ready when you are.</p>
+                <audio id="lesson2-recording-audio" class="recording-audio" controls style="display:none"></audio>
+                <div id="lesson2-speaking-rating" class="speaking-rating">
+                    Record your answer to receive a rating.
+                </div>
+            </div>
         </div>
     </div>
-
+    
     <!-- Vocabulary Modal -->
     <div id="vocab-modal" class="modal-overlay">
         <div class="modal-content">
@@ -202,7 +215,7 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Game Win/Lose Modal -->
     <div id="game-message-modal" class="modal-overlay">
         <div class="modal-content glass-box text-center">
@@ -228,12 +241,12 @@
 
     <!-- 6. Audio Elements -->
 
-    <!-- 6. Audio Elements -->
+<!-- 6. Audio Elements -->
     <audio id="click-sound" src="audio/click-placeholder.mp3"></audio>
     <audio id="vocab-audio" src=""></audio>
 
     <!-- 7. External JavaScript -->
-    <script src="components.js"></script>
+        <script src="components.js"></script>
     <script src="include.js"></script>
     <script src="script.js"></script>
 

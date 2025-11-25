@@ -539,52 +539,210 @@ document.addEventListener('DOMContentLoaded', () => {
         lesson2QuestionsBtn.addEventListener('click', () => openModal('lesson2-questions-modal'));
     }
 
-    // --- Lesson 2 Vocabulary ---
-    const vocabData = {
-        // <!-- REPLACE VOCAB DATA HERE -->
-        'milk': { text: 'Milk', phonetic: '/mɪlk/', type: 'n.', meaning: 'နွားနို့', audio: 'audio/vocab/milk.mp3', opp: 'N/A', sim: 'Dairy' },
-        'sardine': { text: 'Sardine', phonetic: '/sɑːrˈdiːn/', type: 'n.', meaning: 'ဆာဒင်းငါး', audio: 'audio/vocab/sardine.mp3', opp: 'N/A', sim: 'Fish' },
-        'sandwiches': { text: 'Sandwiches', phonetic: '/ˈsænwɪdʒɪz/', type: 'n.', meaning: 'အသားညှပ်ပေါင်မုန့်', audio: 'audio/vocab/sandwiches.mp3', opp: 'N/A', sim: 'Bread' },
-        'breakfast': { text: 'Breakfast', phonetic: '/ˈbrekfəst/', type: 'n.', meaning: 'မနက်စာ', audio: 'audio/vocab/breakfast.mp3', opp: 'Dinner', sim: 'Meal' },
-        'canteen': { text: 'Canteen', phonetic: '/kænˈtiːn/', type: 'n.', meaning: 'ကျောင်းမုန့်ဆိုင်', audio: 'audio/vocab/canteen.mp3', opp: 'N/A', sim: 'Cafeteria' },
-        'calcium': { text: 'Calcium', phonetic: '/ˈkælsiəm/', type: 'n.', meaning: 'ကယ်လ်ဆီယမ်ဓာတ်', audio: 'audio/vocab/calcium.mp3', opp: 'N/A', sim: 'Mineral' },
-        'bones': { text: 'Bones', phonetic: '/boʊnz/', type: 'n.', meaning: 'အရိုးများ', audio: 'audio/vocab/bones.mp3', opp: 'N/A', sim: 'Skeleton' },
-        'omega3': { text: 'Omega-3', phonetic: '/oʊˈmiːɡə θriː/', type: 'n.', meaning: 'အိုမီဂါ ၃', audio: 'audio/vocab/omega3.mp3', opp: 'N/A', sim: 'Fatty Acid' },
-        'fattyacids': { text: 'Fatty Acids', phonetic: '/ˌfæti ˈæsɪdz/', type: 'n.', meaning: 'အဆီအက်ဆစ်', audio: 'audio/vocab/fattyacids.mp3', opp: 'N/A', sim: 'Lipids' },
-        'skin': { text: 'Skin', phonetic: '/skɪn/', type: 'n.', meaning: 'အသားအရေ', audio: 'audio/vocab/skin.mp3', opp: 'N/A', sim: 'Dermis' },
-        'brain': { text: 'Brain', phonetic: '/breɪn/', type: 'n.', meaning: 'ဦးနှောက်', audio: 'audio/vocab/brain.mp3', opp: 'N/A', sim: 'Mind' },
-        'peas': { text: 'Peas', phonetic: '/piːz/', type: 'n.', meaning: 'စတော်ပဲ', audio: 'audio/vocab/peas.mp3', opp: 'N/A', sim: 'Legume' },
-        'contain': { text: 'Contain', phonetic: '/kənˈteɪn/', type: 'v.', meaning: 'ပါဝင်သည်', audio: 'audio/vocab/contain.mp3', opp: 'Exclude', sim: 'Include' },
-        'proteins': { text: 'Proteins', phonetic: '/ˈproʊtiːnz/', type: 'n.', meaning: 'ပရိုတင်းဓာတ်', audio: 'audio/vocab/proteins.mp3', opp: 'N/A', sim: 'Nutrient' },
-        'carbohydrates': { text: 'Carbohydrates', phonetic: '/ˌkɑːrboʊˈhaɪdreɪts/', type: 'n.', meaning: 'ကာဗွန်ဟိုက်ဒရိတ်', audio: 'audio/vocab/carbohydrates.mp3', opp: 'N/A', sim: 'Carbs' },
-        'muscles': { text: 'Muscles', phonetic: '/ˈmʌsəlz/', type: 'n.', meaning: 'ကြွက်သားများ', audio: 'audio/vocab/muscles.mp3', opp: 'N/A', sim: 'Tissue' },
+    // --- Speaking Practice Recorder ---
+    const speakingPracticePrompts = {
+        lesson1: [
+            'Where do you usually eat out?',
+            'What do you usually have there?',
+            'Do you like the places? Why?'
+        ],
+        lesson2: [
+            'Where do you usually have breakfast?',
+            'What do you have for breakfast at home?'
+        ]
     };
     
-    const vocabAudio = document.getElementById('vocab-audio');
+    function setupSpeakingPractice() {
+        Object.keys(speakingPracticePrompts).forEach(practiceId => {
+            initSpeakingRecorder(practiceId, speakingPracticePrompts[practiceId]);
+        });
+    }
     
-    document.querySelectorAll('.vocab-word').forEach(wordEl => {
-        wordEl.addEventListener('click', () => {
-            const wordKey = wordEl.dataset.word;
-            const data = vocabData[wordKey];
-            if (data) {
-                document.getElementById('vocab-word-text').textContent = data.text;
-                document.getElementById('vocab-word-phonetic').textContent = data.phonetic;
-                document.getElementById('vocab-word-type').textContent = data.type;
-                document.getElementById('vocab-word-meaning').querySelector('span').textContent = data.meaning;
-                document.getElementById('vocab-word-extra').innerHTML = `<strong>Opposites:</strong> ${data.opp}<br><strong>Similars:</strong> ${data.sim}`;
+    function initSpeakingRecorder(practiceId, prompts = []) {
+        const recordBtn = document.getElementById(`${practiceId}-record-btn`);
+        const stopBtn = document.getElementById(`${practiceId}-stop-btn`);
+        const playBtn = document.getElementById(`${practiceId}-play-btn`);
+        const statusEl = document.getElementById(`${practiceId}-recording-status`);
+        const audioEl = document.getElementById(`${practiceId}-recording-audio`);
+        const ratingEl = document.getElementById(`${practiceId}-speaking-rating`);
+        
+        if (!recordBtn || !stopBtn || !playBtn || !statusEl || !audioEl || !ratingEl) {
+            return;
+        }
+        if (recordBtn.dataset.recorderReady === 'true') {
+            return;
+        }
+        recordBtn.dataset.recorderReady = 'true';
+        
+        let mediaRecorder = null;
+        let audioChunks = [];
+        let recordingStart = null;
+        let audioUrl = null;
+        let currentStream = null;
+        
+        async function startRecording() {
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                statusEl.textContent = 'Recording is not supported on this device.';
+                return;
+            }
+            
+            try {
+                currentStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(currentStream);
+                audioChunks = [];
                 
-                // Set audio source
-                vocabAudio.src = data.audio; // <!-- REPLACE AUDIO HERE -->
+                mediaRecorder.ondataavailable = (event) => {
+                    if (event.data.size > 0) {
+                        audioChunks.push(event.data);
+                    }
+                };
+                
+                mediaRecorder.onstop = () => {
+                    currentStream?.getTracks().forEach(track => track.stop());
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    const durationMs = Date.now() - recordingStart;
+                    if (audioUrl) {
+                        URL.revokeObjectURL(audioUrl);
+                    }
+                    audioUrl = URL.createObjectURL(audioBlob);
+                    audioEl.src = audioUrl;
+                    audioEl.style.display = 'block';
+                    playBtn.disabled = false;
+                    evaluateRecording(durationMs);
+                };
+                
+                mediaRecorder.start();
+                recordingStart = Date.now();
+                statusEl.textContent = 'Recording... speak clearly near your microphone.';
+                recordBtn.disabled = true;
+                stopBtn.disabled = false;
+                playBtn.disabled = true;
+                ratingEl.textContent = 'Listening... keep going!';
+            } catch (error) {
+                console.error('Recording error:', error);
+                statusEl.textContent = 'Unable to access microphone. Please check permissions.';
+            }
+        }
+        
+        function stopRecording() {
+            if (mediaRecorder && mediaRecorder.state === 'recording') {
+                mediaRecorder.stop();
+                statusEl.textContent = 'Recording stopped. Review your answer below.';
+                recordBtn.disabled = false;
+                stopBtn.disabled = true;
+            }
+        }
+        
+        function evaluateRecording(durationMs) {
+            const seconds = Math.max(0.5, durationMs / 1000);
+            let feedback = '';
+            let score = '';
+            
+            if (seconds < 4) {
+                score = '⭐';
+                feedback = 'Try speaking a little longer to cover all questions.';
+            } else if (seconds < 8) {
+                score = '⭐⭐';
+                feedback = 'Nice effort! Add more details for a stronger answer.';
+            } else {
+                score = '⭐⭐⭐';
+                feedback = 'Awesome! You gave a complete response.';
+            }
+            
+            const promptHint = prompts.length ? `Focus on: ${prompts.join(' · ')}` : '';
+            ratingEl.textContent = `${score} (${seconds.toFixed(1)}s) ${feedback} ${promptHint}`;
+        }
+        
+        recordBtn.addEventListener('click', startRecording);
+        stopBtn.addEventListener('click', stopRecording);
+        playBtn.addEventListener('click', () => {
+            if (audioEl.src) {
+                audioEl.play().catch(() => {});
+            }
+        });
+    }
+    
+    // --- Lesson 2 Vocabulary ---
+    const normalizeVocabKey = (value) => value ? value.toString().trim().toLowerCase().replace(/\s+/g, '') : '';
+    
+    const vocabData = {
+        milk: { text: 'Milk', phonetic: '/mɪlk/', type: 'n.', meaning: 'နို့', audio: 'audio/vocab/milk.mp3', synonyms: ['dairy milk', 'cow milk', 'fresh milk'], antonyms: ['juice', 'soda'] },
+        sardine: { text: 'Sardine', phonetic: '/sɑːrˈdiːn/', type: 'n.', meaning: 'ဆာဒင်းငါး', audio: 'audio/vocab/sardine.mp3', synonyms: ['small fish', 'pilchard', 'tinned fish'], antonyms: ['beef', 'pork'] },
+        sandwiches: { text: 'Sandwiches', phonetic: '/ˈsænwɪdʒɪz/', type: 'n.', meaning: 'အသားညှပ်ပေါင်မုန့်', audio: 'audio/vocab/sandwiches.mp3', synonyms: ['subs', 'filled bread', 'stacked bread'], antonyms: ['soup', 'stew'] },
+        breakfast: { text: 'Breakfast', phonetic: '/ˈbrekfəst/', type: 'n.', meaning: 'မနက်စာ', audio: 'audio/vocab/breakfast.mp3', synonyms: ['morning meal', 'first meal', 'daybreak meal'], antonyms: ['dinner', 'late-night meal'] },
+        canteen: { text: 'Canteen', phonetic: '/kænˈtiːn/', type: 'n.', meaning: 'မုန့်ဆိုင်', audio: 'audio/vocab/canteen.mp3', synonyms: ['cafeteria', 'dining hall', 'lunchroom'], antonyms: ['home kitchen', 'street stall'] },
+        calcium: { text: 'Calcium', phonetic: '/ˈkælsiəm/', type: 'n.', meaning: 'ကယ်လ်ဆီယမ်ဓာတ်', audio: 'audio/vocab/calcium.mp3', synonyms: ['bone mineral', 'Ca', 'nutrient'], antonyms: ['calcium deficit', 'calcium lack'] },
+        bones: { text: 'Bones', phonetic: '/boʊnz/', type: 'n.', meaning: 'အရိုးများ', audio: 'audio/vocab/bones.mp3', synonyms: ['skeleton', 'framework', 'bone structure'], antonyms: ['flesh', 'muscle'] },
+        omega3: { text: 'Omega-3', phonetic: '/oʊˈmiːɡə θriː/', type: 'n.', meaning: 'အိုမီဂါသုံး', audio: 'audio/vocab/omega3.mp3', synonyms: ['omega-three', 'healthy fat', 'essential fat'], antonyms: ['trans fat', 'bad fat'] },
+        fattyacids: { text: 'Fatty Acids', phonetic: '/ˌfæti ˈæsɪdz/', type: 'n.', meaning: 'အဆီအက်ဆစ်', audio: 'audio/vocab/fattyacids.mp3', synonyms: ['lipids', 'healthy fats', 'fat molecules'], antonyms: ['simple sugars', 'starches'] },
+        skin: { text: 'Skin', phonetic: '/skɪn/', type: 'n.', meaning: 'အသားအရေ', audio: 'audio/vocab/skin.mp3', synonyms: ['dermis', 'epidermis', 'outer layer'], antonyms: ['core', 'center'] },
+        brain: { text: 'Brain', phonetic: '/breɪn/', type: 'n.', meaning: 'ဦးနှောက်', audio: 'audio/vocab/brain.mp3', synonyms: ['mind', 'cerebrum', 'thinking organ'], antonyms: ['body', 'muscle'] },
+        peas: { text: 'Peas', phonetic: '/piːz/', type: 'n.', meaning: 'စတော်ပဲ', audio: 'audio/vocab/peas.mp3', synonyms: ['green peas', 'legumes', 'pea seeds'], antonyms: ['steak', 'pork'] },
+        contain: { text: 'Contain', phonetic: '/kənˈteɪn/', type: 'v.', meaning: 'ပါဝင်သည်', audio: 'audio/vocab/contain.mp3', synonyms: ['include', 'hold', 'carry'], antonyms: ['exclude', 'release', 'omit'] },
+        proteins: { text: 'Proteins', phonetic: '/ˈproʊtiːnz/', type: 'n.', meaning: 'ပရိုတင်းများ', audio: 'audio/vocab/proteins.mp3', synonyms: ['amino nutrients', 'protein chains', 'body builders'], antonyms: ['carbohydrates', 'fats'] },
+        protein: { text: 'Protein', phonetic: '/ˈproʊtiːn/', type: 'n.', meaning: 'ပရိုတင်းဓာတ်', audio: 'audio/vocab/protein.mp3', synonyms: ['lean protein', 'amino nutrient', 'muscle food'], antonyms: ['fat', 'sugar'] },
+        carbohydrates: { text: 'Carbohydrates', phonetic: '/ˌkɑːrboʊˈhaɪdreɪts/', type: 'n.', meaning: 'ကာဗိုဟိုက်ဒရိတ်', audio: 'audio/vocab/carbohydrates.mp3', synonyms: ['carbs', 'starches', 'energy sugars'], antonyms: ['proteins', 'fats'] },
+        muscles: { text: 'Muscles', phonetic: '/ˈmʌsəlz/', type: 'n.', meaning: 'ကြွက်သားများ', audio: 'audio/vocab/muscles.mp3', synonyms: ['muscle tissue', 'brawn', 'power fibers'], antonyms: ['fat', 'flab'] },
+        noodles: { text: 'Noodles', phonetic: '/ˈnuːdəlz/', type: 'n.', meaning: 'ခေါက်ဆွဲ', audio: 'audio/vocab/noodles.mp3', synonyms: ['pasta', 'egg noodles', 'noodle strands'], antonyms: ['rice cakes', 'flatbread'] },
+        chicken: { text: 'Chicken', phonetic: '/ˈtʃɪk.ən/', type: 'n.', meaning: 'ကြက်သား', audio: 'audio/vocab/chicken.mp3', synonyms: ['poultry', 'hen meat', 'roaster'], antonyms: ['beef', 'mutton'] },
+        broccoli: { text: 'Broccoli', phonetic: '/ˈbrɑːkəli/', type: 'n.', meaning: 'ဘရိုကိုလီ', audio: 'audio/vocab/broccoli.mp3', synonyms: ['green florets', 'crucifer', 'broc'], antonyms: ['candy', 'fried dough'] },
+        vitamink: { text: 'Vitamin K', phonetic: '/ˈvaɪtəmɪn ˈkeɪ/', type: 'n.', meaning: 'ဗီတာမင် K', audio: 'audio/vocab/vitamink.mp3', synonyms: ['nutrient K', 'phylloquinone', 'blood vitamin'], antonyms: ['vitamin deficiency'] },
+        darkchocolate: { text: 'Dark Chocolate', phonetic: '/dɑːrk ˈtʃɒkələt/', type: 'n.', meaning: 'အနက်ရောင်ချောကလက်', audio: 'audio/vocab/darkchocolate.mp3', synonyms: ['cocoa bar', 'bitter chocolate', 'black chocolate'], antonyms: ['white chocolate', 'milk chocolate'] },
+        rice: { text: 'Rice', phonetic: '/raɪs/', type: 'n.', meaning: 'ထမင်း', audio: 'audio/vocab/rice.mp3', synonyms: ['grain', 'white rice', 'steamed rice'], antonyms: ['bread', 'noodles'] },
+        fishcurry: { text: 'Fish Curry', phonetic: '/fɪʃ ˈkʌri/', type: 'n.', meaning: 'ငါးဟင်း', audio: 'audio/vocab/fishcurry.mp3', synonyms: ['seafood curry', 'fish stew', 'fish masala'], antonyms: ['meat stew', 'vegetable curry'] },
+        stringbeans: { text: 'String Beans', phonetic: '/strɪŋ biːnz/', type: 'n.', meaning: 'ပဲကြော်', audio: 'audio/vocab/stringbeans.mp3', synonyms: ['green beans', 'yard-long beans', 'snap beans'], antonyms: ['potato chips', 'fried snacks'] },
+        bananas: { text: 'Bananas', phonetic: '/bəˈnænəz/', type: 'n.', meaning: 'ငှက်ပျောသီးများ', audio: 'audio/vocab/bananas.mp3', synonyms: ['plantains', 'yellow fruit', 'banana fingers'], antonyms: ['lemons', 'sour berries'] },
+        fibre: { text: 'Fibre', phonetic: '/ˈfaɪbər/', type: 'n.', meaning: 'အမျှင်ဓာတ်', audio: 'audio/vocab/fibre.mp3', synonyms: ['roughage', 'dietary fiber', 'bran'], antonyms: ['refined sugar', 'white flour'] },
+        vegetables: { text: 'Vegetables', phonetic: '/ˈvedʒtəblz/', type: 'n.', meaning: 'ဟင်းသီးဟင်းရွက်များ', audio: 'audio/vocab/vegetables.mp3', synonyms: ['veggies', 'greens', 'garden produce'], antonyms: ['desserts', 'junk food'] },
+        eyes: { text: 'Eyes', phonetic: '/aɪz/', type: 'n.', meaning: 'မျက်လုံးများ', audio: 'audio/vocab/eyes.mp3', synonyms: ['vision organs', 'peepers', 'eyeballs'], antonyms: ['ears', 'mouth'] },
+        basketball: { text: 'Basketball', phonetic: '/ˈbæskɪtˌbɔːl/', type: 'n.', meaning: 'ဘတ်စကတ်ဘော', audio: 'audio/vocab/basketball.mp3', synonyms: ['hoops', 'court game', 'ball game'], antonyms: ['swimming', 'cycling'] },
+    };
+    
+    const vocabModalText = document.getElementById('vocab-word-text');
+    const vocabModalPhonetic = document.getElementById('vocab-word-phonetic');
+    const vocabModalType = document.getElementById('vocab-word-type');
+    const vocabModalMeaning = document.getElementById('vocab-word-meaning')?.querySelector('span');
+    const vocabModalExtra = document.getElementById('vocab-word-extra');
+    const vocabAudio = document.getElementById('vocab-audio');
+    const vocabAudioBtn = document.getElementById('vocab-word-audio-btn');
+    let currentVocabWordKey = null;
+    let currentVocabWordData = null;
+    
+    function showVocabModal(rawKey) {
+        const key = normalizeVocabKey(rawKey);
+        const data = vocabData[key];
+        if (!data || !vocabModalText || !vocabModalMeaning || !vocabModalExtra) {
+            console.warn('Missing vocab data for', rawKey);
+            return;
+        }
+        
+        currentVocabWordKey = key;
+        currentVocabWordData = data;
+        
+        vocabModalText.textContent = data.text;
+        vocabModalPhonetic.textContent = data.phonetic;
+        vocabModalType.textContent = data.type;
+        vocabModalMeaning.textContent = data.meaning;
+        const formatList = (list, fallback) => Array.isArray(list) && list.length ? list.join(', ') : fallback;
+        vocabModalExtra.innerHTML = `<strong>Synonyms:</strong> ${formatList(data.synonyms, '—')}<br><strong>Antonyms:</strong> ${formatList(data.antonyms, '—')}`;
+                
+        if (vocabAudio && data.audio) {
+            vocabAudio.src = data.audio;
+        }
                 
                 openModal('vocab-modal');
             }
-        });
-    });
     
-    const vocabAudioBtn = document.getElementById('vocab-word-audio-btn');
     if (vocabAudioBtn) {
         vocabAudioBtn.addEventListener('click', () => {
-            vocabAudio.play().catch(e => console.log("Audio play failed"));
+            if (currentVocabWordData) {
+                if (vocabAudio && currentVocabWordData.audio) {
+                    vocabAudio.currentTime = 0;
+                    vocabAudio.play().catch(() => speakWord(currentVocabWordData.text, vocabAudioBtn));
+                } else {
+                    speakWord(currentVocabWordData.text, vocabAudioBtn);
+                }
+            }
         });
     }
     
@@ -874,24 +1032,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const normalizedWord = word?.trim();
         if (!normalizedWord) {
             console.error('No word data found for pronunciation');
-            return;
-        }
-        
-        if (!('speechSynthesis' in window)) {
-            alert('Your browser does not support text-to-speech. Please use a modern browser.');
-            return;
-        }
-        
-        if (speechSynthesis.speaking) {
-            speechSynthesis.cancel();
-        }
-        
+                    return;
+                }
+                
+                if (!('speechSynthesis' in window)) {
+                    alert('Your browser does not support text-to-speech. Please use a modern browser.');
+                    return;
+                }
+                
+                if (speechSynthesis.speaking) {
+                    speechSynthesis.cancel();
+                }
+                
         const utterance = new SpeechSynthesisUtterance(normalizedWord);
-        utterance.lang = 'en-US';
+                utterance.lang = 'en-US';
         utterance.rate = 0.85;
-        utterance.pitch = 1;
-        utterance.volume = 1;
-        
+                utterance.pitch = 1;
+                utterance.volume = 1;
+                
         const toggleActiveState = (isActive) => {
             if (!targetElement) return;
             if (targetElement.classList.contains('vocab-word')) {
@@ -899,20 +1057,20 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 targetElement.style.background = isActive ? 'var(--color-blue)' : 'var(--color-pumpkin)';
             }
-        };
-        
+                };
+                
         utterance.onstart = () => toggleActiveState(true);
         utterance.onend = () => toggleActiveState(false);
-        utterance.onerror = (event) => {
-            console.error('Speech synthesis error:', event);
+                utterance.onerror = (event) => {
+                    console.error('Speech synthesis error:', event);
             toggleActiveState(false);
-        };
-        
-        speechSynthesis.speak(utterance);
-        
+                };
+                
+                speechSynthesis.speak(utterance);
+                
         if (targetElement) {
             targetElement.style.transform = 'scale(0.95)';
-            setTimeout(() => {
+                setTimeout(() => {
                 targetElement.style.transform = '';
             }, 160);
         }
@@ -941,8 +1099,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const pronounce = (event) => {
                 event.preventDefault();
-                const word = wordEl.dataset.word || wordEl.textContent;
-                speakWord(word, wordEl);
+                const rawKey = wordEl.dataset.word || wordEl.textContent;
+                showVocabModal(rawKey);
             };
             
             wordEl.addEventListener('click', pronounce);
@@ -955,6 +1113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Setup on page load
+    setupSpeakingPractice();
     setupVocabAudio();
     setupGameCardAtmosphere();
     setupNavigation();
@@ -963,6 +1122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupNavigation();
         setupVocabAudio();
         setupGameCardAtmosphere();
+        setupSpeakingPractice();
     };
 
 });

@@ -48,6 +48,68 @@
                 Speaking Practice
             </button>
             
+            <section class="lesson-food-section">
+                <h3>Tasty & Healthy Picks</h3>
+                <p class="section-lead">Explore these dishes before you start the conversation practice.</p>
+                <div class="lesson-food-grid">
+                    <article class="food-card glass-box">
+                        <img src="images/chickenCurry.png" alt="Chicken Curry" class="food-image">
+                        <div class="food-content">
+                            <h4>Chicken Curry</h4>
+                            <p>Perfect balance of tender chicken, warm spices and light coconut gravy.</p>
+                            <ul>
+                                <li>High in protein for muscle repair</li>
+                                <li>Spices like turmeric support immunity</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="food-card glass-box">
+                        <img src="images/fishCurry.png" alt="Fish Curry" class="food-image">
+                        <div class="food-content">
+                            <h4>Fish Curry</h4>
+                            <p>Fresh fish simmered in tangy tomato sauce with herbs.</p>
+                            <ul>
+                                <li>Omega-3 keeps brain sharp</li>
+                                <li>Light broth makes it easy to digest</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="food-card glass-box">
+                        <img src="images/friedVegetables.png" alt="Stir-fried Vegetables" class="food-image">
+                        <div class="food-content">
+                            <h4>Stir-fried Vegetables</h4>
+                            <p>Colorful mix of crunchy veggies tossed with garlic.</p>
+                            <ul>
+                                <li>Full of fibre for healthy digestion</li>
+                                <li>Vitamins A &amp; C boost immunity</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="food-card glass-box">
+                        <img src="images/chickenNoodelSoup.png" alt="Chicken Noodle Soup" class="food-image">
+                        <div class="food-content">
+                            <h4>Chicken Noodle Soup</h4>
+                            <p>Comforting bowl with noodles, veggies and shredded chicken.</p>
+                            <ul>
+                                <li>Hydrates the body with warm broth</li>
+                                <li>Balanced carbs + protein give lasting energy</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="food-card glass-box">
+                        <img src="images/limeJuice.png" alt="Fresh Lime Juice" class="food-image">
+                        <div class="food-content">
+                            <h4>Fresh Lime Juice</h4>
+                            <p>Zesty drink sweetened lightly to refresh you.</p>
+                            <ul>
+                                <li>Vitamin C protects skin</li>
+                                <li>Helps the body stay hydrated</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            
             <h3 style="margin-top: 2rem;">Video Lesson</h3>
             <div class="video-container">
                 <video class="lesson-video" controls preload="metadata">
@@ -88,6 +150,20 @@
                 ၁။နင်ဘယ် အချိန်တွေမှာ အပြင်ထွက်စားလေ့ရှိလဲ?<br>
                 ၂။နင်အဲ့မှာ ဘာတွေ စားဖြစ်လဲ?<br>
                 ၃။နင်အဲ့နေရာကို ကြိုက်လား ဘာကြောင့်လဲ?
+            </div>
+            <div class="speaking-practice-panel" data-practice-id="lesson1">
+                <h3>Record &amp; Get Feedback</h3>
+                <p class="speaking-hint">Answer the questions aloud, then listen to your recording.</p>
+                <div class="speaking-controls">
+                    <button id="lesson1-record-btn" class="btn btn-secondary">🎙️ Start Recording</button>
+                    <button id="lesson1-stop-btn" class="btn btn-tertiary" disabled>⏹ Stop</button>
+                    <button id="lesson1-play-btn" class="btn btn-secondary" disabled>▶️ Play</button>
+                </div>
+                <p id="lesson1-recording-status" class="recording-status">Ready when you are.</p>
+                <audio id="lesson1-recording-audio" class="recording-audio" controls style="display:none"></audio>
+                <div id="lesson1-speaking-rating" class="speaking-rating">
+                    Record your answer to receive a rating.
+                </div>
             </div>
         </div>
     </div>

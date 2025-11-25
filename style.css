@@ -190,7 +190,6 @@ html, body {
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     transition: color 0.3s ease;
-    display: inline-block;
 }
 
 .footer-column ul li a:hover {
@@ -938,6 +937,91 @@ h3 { font-size: 1.25rem; }
 .content-box ul {
     list-style-position: inside;
     font-size: 1.1rem;
+}
+
+.lesson-food-section {
+    margin-top: 2.5rem;
+}
+.section-lead {
+    margin-top: -0.5rem;
+    color: rgba(255,255,255,0.75);
+}
+.lesson-food-grid {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+.food-card {
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+.food-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+.food-content {
+    padding: 1.2rem 1.4rem 1.4rem;
+}
+.food-content h4 {
+    margin-bottom: 0.4rem;
+}
+.food-content p {
+    margin-bottom: 0.9rem;
+    color: rgba(255,255,255,0.85);
+}
+.food-content ul {
+    list-style: disc;
+    padding-left: 1.2rem;
+    color: rgba(255,255,255,0.9);
+}
+.food-content ul li {
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+}
+
+.speaking-practice-panel {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.07);
+}
+.speaking-hint {
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 1rem;
+}
+.speaking-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+.speaking-controls .btn {
+    flex: 1 1 140px;
+    min-width: 120px;
+}
+.recording-status {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+}
+.recording-audio {
+    width: 100%;
+    margin-bottom: 0.9rem;
+}
+.speaking-rating {
+    background: rgba(0,122,255,0.12);
+    border: 1px solid rgba(0,122,255,0.3);
+    border-radius: 999px;
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+    text-align: center;
+    color: #e0ecff;
 }
 
 .speak-btn {
@@ -2131,7 +2215,7 @@ h3 { font-size: 1.25rem; }
     text-shadow: 2px 2px #000, 4px 4px var(--color-pumpkin-dark);
 }
 
-/* Apply diagonal pattern background to all pages */
+/* Apply diagonal pattern background to all pages - DISABLED */
 .page::before,
 #page-home::before,
 #page-about::before,
@@ -2145,17 +2229,7 @@ h3 { font-size: 1.25rem; }
 #page-requirement::before,
 #page-appreciation::before,
 #page-wireframe::before {
-    content: "" !important;
-    position: absolute !important;
-    inset: 0 !important;
-    opacity: 1 !important;
-    z-index: 0 !important;
-    background-size: 300px 300px !important;
-    background-repeat: repeat !important;
-    background-image:
-        linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.05)),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2' stroke-opacity='0.15'%3E%3Cline x1='0' y1='0' x2='300' y2='300'/%3E%3Cline x1='0' y1='75' x2='300' y2='375'/%3E%3Cline x1='0' y1='150' x2='300' y2='450'/%3E%3Cline x1='0' y1='225' x2='300' y2='525'/%3E%3Cline x1='75' y1='0' x2='375' y2='300'/%3E%3Cline x1='150' y1='0' x2='450' y2='300'/%3E%3Cline x1='225' y1='0' x2='525' y2='300'/%3E%3C/g%3E%3C/svg%3E") !important;
-    pointer-events: none !important;
+    display: none !important;
 }
 
 .page::after,
@@ -2171,12 +2245,7 @@ h3 { font-size: 1.25rem; }
 #page-requirement::after,
 #page-appreciation::after,
 #page-wireframe::after {
-    content: "" !important;
-    position: absolute !important;
-    inset: 0 !important;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.5)) !important;
-    z-index: 1 !important;
-    pointer-events: none !important;
+    display: none !important;
 }
 
 .page > * {
@@ -2202,13 +2271,7 @@ h3 { font-size: 1.25rem; }
 #page-game-listening::before,
 #page-game-ordering::before,
 #page-game-wordsearch::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: 0.8;
-    z-index: 0;
-    background-size: cover;
-    background-repeat: repeat;
+    display: none !important;
 }
 
 #page-games::after,
@@ -2217,11 +2280,7 @@ h3 { font-size: 1.25rem; }
 #page-game-listening::after,
 #page-game-ordering::after,
 #page-game-wordsearch::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.55));
-    z-index: 1;
+    display: none !important;
 }
 
 #page-games > *,
@@ -2246,40 +2305,29 @@ h3 { font-size: 1.25rem; }
     }
 }
 
+/* Game page background images - DISABLED */
 #page-games::before {
-    background-image:
-        linear-gradient(135deg, rgba(255, 142, 86, 0.35), rgba(255, 255, 255, 0.05)),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360' viewBox='0 0 360 360'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='6' stroke-opacity='0.08'%3E%3Cpath d='M30 90 L110 20 L190 90' stroke-linecap='round'/%3E%3Ccircle cx='290' cy='90' r='34'/%3E%3Cpath d='M260 250 L310 200 L350 240' stroke-linecap='round'/%3E%3Ctext x='70' y='250' font-size='48' font-family='Arial' fill='%23ffffff' opacity='0.18'%3E?%3C/text%3E%3Ctext x='220' y='320' font-size='48' font-family='Arial' fill='%23ffffff' opacity='0.15'%3EA%3C/text%3E%3C/g%3E%3C/svg%3E");
+    display: none !important;
 }
 
 #page-game-hangman::before {
-    background-image:
-        linear-gradient(135deg, rgba(31, 29, 43, 0.92), rgba(46, 42, 60, 0.85)),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath d='M30 180 L70 40 L150 40 L150 90' stroke='%23ffffff' stroke-width='6' stroke-opacity='0.08' fill='none'/%3E%3Ccircle cx='150' cy='120' r='18' stroke='%23ffffff' stroke-width='6' stroke-opacity='0.08' fill='none'/%3E%3C/svg%3E");
+    display: none !important;
 }
 
 #page-game-mcq::before {
-    background-image:
-        linear-gradient(135deg, rgba(20, 35, 75, 0.9), rgba(15, 23, 42, 0.88)),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.08' stroke-width='6'%3E%3Ccircle cx='60' cy='60' r='24'/%3E%3Ctext x='52' y='68' font-size='28' font-family='Arial' opacity='0.25'%3E?%3C/text%3E%3Cpath d='M150 40 L190 80'/%3E%3Cpath d='M190 40 L150 80'/%3E%3Crect x='120' y='140' width='60' height='30' rx='10'/%3E%3C/g%3E%3C/svg%3E");
+    display: none !important;
 }
 
 #page-game-listening::before {
-    background-image:
-        linear-gradient(135deg, rgba(43, 20, 66, 0.9), rgba(29, 14, 60, 0.9)),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.08' stroke-width='6'%3E%3Cpath d='M60 120 a50 50 0 0 1 100 0'/%3E%3Cpath d='M40 120 a70 70 0 0 1 140 0' stroke-dasharray='12 12'/%3E%3Ccircle cx='50' cy='120' r='18'/%3E%3Ccircle cx='190' cy='120' r='18'/%3E%3C/g%3E%3C/svg%3E");
+    display: none !important;
 }
 
 #page-game-ordering::before {
-    background-image:
-        linear-gradient(135deg, rgba(18, 54, 42, 0.9), rgba(12, 36, 28, 0.92)),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.08' stroke-width='6'%3E%3Cpath d='M40 60 L100 60 L100 20 L180 100 L100 180 L100 140 L40 140 Z' stroke-linejoin='round'/%3E%3Cpath d='M60 200 L100 160 L140 200'/%3E%3C/g%3E%3C/svg%3E");
+    display: none !important;
 }
 
 #page-game-wordsearch::before {
-    background-image:
-        linear-gradient(135deg, rgba(110, 21, 21, 0.9), rgba(75, 12, 12, 0.92)),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='none'/%3E%3Cg fill='%23ffffff' fill-opacity='0.07' font-family='Arial' font-size='38' font-weight='700'%3E%3Ctext x='20' y='60'%3EA%3C/text%3E%3Ctext x='80' y='140'%3EO%3C/text%3E%3Ctext x='140' y='60'%3ER%3C/text%3E%3Ctext x='40' y='180'%3ED%3C/text%3E%3C/g%3E%3Cline x1='0' y1='0' x2='200' y2='200' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='6'/%3E%3C/svg%3E");
+    display: none !important;
 }
 
 #page-games h1 {
