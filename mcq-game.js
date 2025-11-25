@@ -135,14 +135,12 @@
 
         // Transition UI with countdown timer
         function showTransitionTimer(container, duration, callback) {
-            if (!container) {
+            const overlayParent = document.body || container;
+            if (!overlayParent) {
                 if (callback) callback();
                 return;
             }
-
-            // Ensure container has relative positioning
-            container.style.position = 'relative';
-
+            
             const transitionOverlay = document.createElement('div');
             transitionOverlay.className = 'mcq-transition-overlay';
             transitionOverlay.innerHTML = `
@@ -161,7 +159,7 @@
                     <p class="mcq-transition-message">Loading next question...</p>
                 </div>
             `;
-            container.appendChild(transitionOverlay);
+            overlayParent.appendChild(transitionOverlay);
 
             let countdown = duration;
             const timerText = transitionOverlay.querySelector('.mcq-timer-text');
