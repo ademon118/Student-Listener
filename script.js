@@ -256,7 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 if (hasHref && !clickedButton) {
-                    playUISound('click');
                     return;
                 }
 
@@ -270,7 +269,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const pageId = link.dataset.page ? `page-${link.dataset.page}` : null;
                 if (pageId) {
                     showPage(pageId);
-                    playUISound('click');
                 }
             });
         });
