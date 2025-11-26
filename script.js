@@ -246,6 +246,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const hasHref = link.href && link.href !== '#' && !link.href.endsWith('#');
                 const clickedButton = e.target.tagName === 'BUTTON' || e.target.closest('button');
 
+                // Close mobile menu when link is clicked
+                if (window.innerWidth <= 768) {
+                    const mainNavLinks = document.querySelector('.navbar-links ul');
+                    if (mainNavLinks) {
+                        mainNavLinks.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                    }
+                }
+
                 if (hasHref && !clickedButton) {
                     playUISound('click');
                     return;
@@ -268,12 +277,71 @@ document.addEventListener('DOMContentLoaded', () => {
 
         moreMenuBtn = document.getElementById('more-menu-btn');
         moreDropdown = document.getElementById('more-dropdown');
+        const mainNavLinks = document.querySelector('.navbar-links ul');
+
+        // On mobile, combine both menus into one
+        function setupMobileMenu() {
+            if (window.innerWidth <= 768 && mainNavLinks && moreDropdown) {
+                // Remove any existing separator and more menu items
+                const existingSeparator = mainNavLinks.querySelector('.mobile-menu-separator');
+                const existingMoreItems = mainNavLinks.querySelectorAll('.mobile-more-item');
+                
+                if (existingSeparator) existingSeparator.remove();
+                existingMoreItems.forEach(item => item.remove());
+                
+                // Add separator
+                const separator = document.createElement('li');
+                separator.className = 'mobile-menu-separator';
+                separator.innerHTML = '<div style="height: 1px; background: rgba(0,0,0,0.1); margin: 0.5rem 0;"></div>';
+                mainNavLinks.appendChild(separator);
+                
+                // Clone and add more menu items
+                const moreLinks = moreDropdown.querySelectorAll('a');
+                moreLinks.forEach(link => {
+                    const li = document.createElement('li');
+                    li.className = 'mobile-more-item';
+                    const clonedLink = link.cloneNode(true);
+                    li.appendChild(clonedLink);
+                    mainNavLinks.appendChild(li);
+                });
+            } else if (mainNavLinks) {
+                // Remove mobile items on desktop
+                const existingSeparator = mainNavLinks.querySelector('.mobile-menu-separator');
+                const existingMoreItems = mainNavLinks.querySelectorAll('.mobile-more-item');
+                if (existingSeparator) existingSeparator.remove();
+                existingMoreItems.forEach(item => item.remove());
+            }
+        }
+
+        // Setup mobile menu on load and resize
+        setupMobileMenu();
+        window.addEventListener('resize', setupMobileMenu);
 
         if (moreMenuBtn && !moreMenuBtn.dataset.listenerAttached) {
             moreMenuBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                if (moreDropdown) {
-                    moreDropdown.classList.toggle('active');
+                
+                if (window.innerWidth <= 768) {
+                    // On mobile: toggle main nav (which now includes more items)
+                    if (mainNavLinks) {
+                        const isActive = mainNavLinks.classList.toggle('active');
+                        // Prevent body scroll when menu is open
+                        if (isActive) {
+                            document.body.classList.add('menu-open');
+                        } else {
+                            document.body.classList.remove('menu-open');
+                        }
+                    }
+                    // Keep dropdown hidden on mobile
+                    if (moreDropdown) {
+                        moreDropdown.classList.remove('active');
+                    }
+                } else {
+                    // On desktop: toggle dropdown only
+                    if (moreDropdown) {
+                        moreDropdown.classList.toggle('active');
+                    }
+                    document.body.classList.remove('menu-open');
                 }
             });
             moreMenuBtn.dataset.listenerAttached = 'true';
@@ -360,13 +428,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close dropdown when clicking outside
     document.addEventListener('click', (e) => {
-        if (
-            moreDropdown &&
-            moreMenuBtn &&
-            !moreDropdown.contains(e.target) &&
-            !moreMenuBtn.contains(e.target)
-        ) {
-            moreDropdown.classList.remove('active');
+        const mainNavLinks = document.querySelector('.navbar-links ul');
+        const isMobile = window.innerWidth <= 768;
+        
+        if (isMobile) {
+            // On mobile: close main nav if clicking outside
+            if (
+                mainNavLinks &&
+                moreMenuBtn &&
+                !mainNavLinks.contains(e.target) &&
+                !moreMenuBtn.contains(e.target)
+            ) {
+                mainNavLinks.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        } else {
+            // On desktop: close dropdown if clicking outside
+            if (
+                moreDropdown &&
+                moreMenuBtn &&
+                !moreDropdown.contains(e.target) &&
+                !moreMenuBtn.contains(e.target)
+            ) {
+                moreDropdown.classList.remove('active');
+            }
         }
     });
 
@@ -764,11 +849,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- ✨ GEMINI API FUNCTIONALITY ---
-    
-    // !! IMPORTANT: If you want to use models other than gemini-2.5-flash-preview-09-2025, provide an API key here.
-    // Otherwise, leave this as-is and it will be handled by the environment.
-    const API_KEY = ""; 
+    // --- ✨ HEALTHY MEAL PLAN GENERATOR ---
     
     const geminiModal = document.getElementById('gemini-modal');
     const geminiLoadingEl = document.getElementById('gemini-loading');
@@ -779,75 +860,123 @@ document.addEventListener('DOMContentLoaded', () => {
         geminiPlannerBtn.addEventListener('click', generateMealPlan);
     }
 
+    // Pre-defined healthy meal plans for 6th-grade students
+    const mealPlans = [
+        {
+            breakfast: "Rice with fried egg and vegetables",
+            lunch: "Chicken curry with rice, string beans, and a banana",
+            dinner: "Fish curry with rice and mixed vegetables",
+            snack: "Fresh fruit (apple or orange)",
+            note: "This meal plan gives you energy for studying and playing!"
+        },
+        {
+            breakfast: "Mohinga (rice noodles with fish soup) - a healthy Myanmar breakfast",
+            lunch: "Rice with pork curry, broccoli, and a small bowl of soup",
+            dinner: "Fried rice with vegetables and chicken pieces",
+            snack: "Yogurt with fresh fruit",
+            note: "Great for growing strong and staying healthy!"
+        },
+        {
+            breakfast: "Boiled eggs with bread and a glass of milk",
+            lunch: "Rice with fish curry, fried string beans, and a banana",
+            dinner: "Chicken and vegetable stir-fry with rice",
+            snack: "Mixed nuts (almonds or peanuts)",
+            note: "Perfect for keeping your body and mind strong!"
+        },
+        {
+            breakfast: "Rice porridge with chicken and vegetables",
+            lunch: "Rice with beef curry, green vegetables, and a piece of fruit",
+            dinner: "Fried noodles with vegetables and egg",
+            snack: "Fresh mango or papaya",
+            note: "These foods help you grow taller and do well in school!"
+        },
+        {
+            breakfast: "Fried rice with vegetables and egg",
+            lunch: "Rice with chicken curry, mixed vegetables, and a banana",
+            dinner: "Fish soup with rice and vegetables",
+            snack: "A glass of milk with a small cookie",
+            note: "Eating healthy helps you stay active and learn better!"
+        },
+        {
+            breakfast: "Bread with peanut butter and a banana",
+            lunch: "Rice with pork curry, string beans, and a piece of fruit",
+            dinner: "Chicken curry with rice and green vegetables",
+            snack: "Fresh orange or apple slices",
+            note: "This balanced meal plan gives you all the nutrients you need!"
+        },
+        {
+            breakfast: "Rice with fried egg and a small bowl of soup",
+            lunch: "Rice with fish curry, broccoli, and a banana",
+            dinner: "Vegetable and chicken stir-fry with rice",
+            snack: "Yogurt or fresh fruit",
+            note: "Healthy eating makes you stronger and happier!"
+        },
+        {
+            breakfast: "Mohinga or rice noodles with vegetables",
+            lunch: "Rice with chicken curry, mixed vegetables, and fruit",
+            dinner: "Fried rice with vegetables, chicken, and egg",
+            snack: "A handful of mixed nuts",
+            note: "These meals provide energy for your whole day!"
+        }
+    ];
+
     /**
-     * Calls the Gemini API to generate a healthy meal plan.
+     * Generates a healthy meal plan from pre-defined data.
      */
-    async function generateMealPlan() {
-        // Show the modal and loading message
+    function generateMealPlan() {
+        // Show the modal
         openModal('gemini-modal');
         geminiLoadingEl.style.display = 'block';
         geminiResponseEl.innerHTML = '';
 
-        const systemPrompt = "You are a friendly nutritionist assisting a 6th-grade student in Myanmar. Your tone is encouraging and simple. You are an expert on healthy eating for children.";
-        const userQuery = "Please generate a simple, healthy 1-day meal plan (breakfast, lunch, dinner, and one healthy snack) for me. I am a 6th grader. Please use simple English. You can include healthy Burmese or Southeast Asian food ideas if you know any. Format the response clearly with headings for each meal and a short, encouraging sentence at the end.";
+        // Simulate a brief loading delay for better UX
+        setTimeout(() => {
+            // Randomly select a meal plan
+            const randomIndex = Math.floor(Math.random() * mealPlans.length);
+            const selectedPlan = mealPlans[randomIndex];
 
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${API_KEY}`;
-        
-        const payload = {
-            contents: [{ parts: [{ text: userQuery }] }],
-            systemInstruction: {
-                parts: [{ text: systemPrompt }]
-            },
-        };
+            // Format and display the meal plan
+            const html = `
+                <div style="padding: 1rem;">
+                    <h3 style="color: var(--color-primary); margin-bottom: 1rem; font-size: 1.2rem;">🍽️ Your Healthy Meal Plan</h3>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--color-text); margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center;">
+                            <span style="margin-right: 0.5rem;">🌅</span> Breakfast
+                        </h4>
+                        <p style="color: var(--color-subtext); margin-left: 2rem; line-height: 1.6;">${selectedPlan.breakfast}</p>
+                    </div>
 
-        try {
-            // Exponential backoff retry logic
-            let response;
-            for (let i = 0; i < 5; i++) { // Max 5 retries
-                response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--color-text); margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center;">
+                            <span style="margin-right: 0.5rem;">☀️</span> Lunch
+                        </h4>
+                        <p style="color: var(--color-subtext); margin-left: 2rem; line-height: 1.6;">${selectedPlan.lunch}</p>
+                    </div>
 
-                if (response.ok) {
-                    break; // Success
-                }
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--color-text); margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center;">
+                            <span style="margin-right: 0.5rem;">🌙</span> Dinner
+                        </h4>
+                        <p style="color: var(--color-subtext); margin-left: 2rem; line-height: 1.6;">${selectedPlan.dinner}</p>
+                    </div>
 
-                if (response.status === 429 || response.status >= 500) {
-                    // Throttling or server error, wait and retry
-                    const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                } else {
-                    // Other client-side error, don't retry
-                    throw new Error(`API request failed with status ${response.status}: ${response.statusText}`);
-                }
-            }
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--color-text); margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center;">
+                            <span style="margin-right: 0.5rem;">🍎</span> Healthy Snack
+                        </h4>
+                        <p style="color: var(--color-subtext); margin-left: 2rem; line-height: 1.6;">${selectedPlan.snack}</p>
+                    </div>
 
-            if (!response.ok) {
-                throw new Error(`API request failed after retries with status ${response.status}: ${response.statusText}`);
-            }
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--color-accent); border-radius: 4px;">
+                        <p style="color: var(--color-text); margin: 0; font-style: italic;">✨ ${selectedPlan.note}</p>
+                    </div>
+                </div>
+            `;
 
-            const result = await response.json();
-            
-            if (result.candidates && result.candidates[0] && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts[0].text) {
-                const text = result.candidates[0].content.parts[0].text;
-                // Format with line breaks and basic bolding
-                let html = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Bold
-                html = html.replace(/\*/g, '<br>• '); // Bullets
-                html = html.replace(/\n/g, '<br>');
-                geminiResponseEl.innerHTML = html;
-            } else {
-                throw new Error("Invalid response structure from API.");
-            }
-
-        } catch (error) {
-            console.error("Gemini API Error:", error);
-            geminiResponseEl.innerHTML = `<p style="color:var(--color-red); font-weight:bold;">Sorry, I couldn't generate a meal plan right now. Please check your connection and try again later.</p><p style="font-size: 0.8rem; color: #ccc;">Error: ${error.message}</p>`;
-        } finally {
-            // Hide loading message
+            geminiResponseEl.innerHTML = html;
             geminiLoadingEl.style.display = 'none';
-        }
+        }, 500); // Small delay for better user experience
     }
     
     // Game logic moved to separate files:

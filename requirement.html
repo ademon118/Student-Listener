@@ -27,71 +27,98 @@
     <main id="app-container">
         <section class="page active" id="page-requirement" data-page="requirement">
             <div class="requirement-presentation-container">
-                <div class="requirement-presentation-content">
-                    <!-- Hardware Requirements Column (Left) -->
-                    <div class="requirement-column requirement-hardware-column">
-                        <h2 class="requirement-column-title">Hardware requirements</h2>
-                        <div class="requirement-list">
-                            <div class="requirement-item">
-                                <div class="requirement-item-icon hardware-icon">📱</div>
-                                <span class="requirement-item-name">phone</span>
+                <div class="requirement-circular-design-wrapper">
+                    <!-- Hardware Requirements - Circular Design -->
+                    <div class="requirement-circular-section requirement-hardware-section">
+                        <h2 class="requirement-section-title">Hardware Requirements</h2>
+                        <div class="requirement-circular-container">
+                            <div class="requirement-central-icon hardware-central">
+                                <div class="central-icon-bg hardware-bg">
+                                    <div class="central-icon-content">💻</div>
+                                </div>
                             </div>
-                            <div class="requirement-item">
-                                <div class="requirement-item-icon hardware-icon">💻</div>
-                                <span class="requirement-item-name">computer</span>
-                            </div>
-                            <div class="requirement-item">
-                                <div class="requirement-item-icon hardware-icon">🖨️</div>
-                                <span class="requirement-item-name">printer</span>
-                            </div>
-                            <div class="requirement-item">
-                                <div class="requirement-item-icon hardware-icon">💿</div>
-                                <span class="requirement-item-name">CD</span>
+                            <div class="requirement-orbital-icons">
+                                <div class="orbital-icon hardware-orbital" style="--angle: 0deg;">
+                                    <div class="orbital-circle hardware-circle-1">
+                                        <div class="orbital-icon-content">📱</div>
+                                    </div>
+                                    <div class="orbital-label">Phone</div>
+                                </div>
+                                <div class="orbital-icon hardware-orbital" style="--angle: 90deg;">
+                                    <div class="orbital-circle hardware-circle-2">
+                                        <div class="orbital-icon-content">💻</div>
+                                    </div>
+                                    <div class="orbital-label">Computer</div>
+                                </div>
+                                <div class="orbital-icon hardware-orbital" style="--angle: 180deg;">
+                                    <div class="orbital-circle hardware-circle-3">
+                                        <div class="orbital-icon-content">🖨️</div>
+                                    </div>
+                                    <div class="orbital-label">Printer</div>
+                                </div>
+                                <div class="orbital-icon hardware-orbital" style="--angle: 270deg;">
+                                    <div class="orbital-circle hardware-circle-4">
+                                        <div class="orbital-icon-content">💿</div>
+                                    </div>
+                                    <div class="orbital-label">CD</div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Wave Separator (Middle) -->
-                    <div class="requirement-wave-separator">
-                        <svg class="wave-svg" viewBox="0 0 100 500" preserveAspectRatio="none">
-                            <path d="M 0,0 Q 25,50 50,100 T 100,200 Q 75,250 50,300 T 0,400 Q 25,450 50,500" 
-                                  fill="none" 
-                                  stroke="rgba(255, 255, 255, 0.4)" 
-                                  stroke-width="4" 
-                                  stroke-linecap="round"/>
-                        </svg>
-                    </div>
-
-                    <!-- Software Requirements Column (Right) -->
-                    <div class="requirement-column requirement-software-column animate-card" style="animation-delay: 0.2s;">
-                        <h2 class="requirement-column-title">Software requirements</h2>
-                        <div class="requirement-list">
-                            <div class="requirement-item">
-                                <div class="requirement-item-icon software-icon" style="background: linear-gradient(135deg, #d04423, #b83a1c);">P</div>
-                                <span class="requirement-item-name">Powerpoint</span>
-                            </div>
-                            <div class="requirement-item">
-                                <div class="requirement-item-icon software-icon" style="background: linear-gradient(135deg, #4285f4, #1a73e8);">
-                                    <svg viewBox="0 0 24 24" width="24" height="24">
-                                        <circle cx="12" cy="12" r="10" fill="#4285f4"/>
-                                        <circle cx="12" cy="12" r="8" fill="#34a853"/>
-                                        <circle cx="12" cy="12" r="6" fill="#fbbc04"/>
-                                        <circle cx="12" cy="12" r="4" fill="#ea4335"/>
-                                    </svg>
+                    <!-- Software Requirements - Circular Design -->
+                    <div class="requirement-circular-section requirement-software-section">
+                        <h2 class="requirement-section-title">Software Requirements</h2>
+                        <div class="requirement-circular-container">
+                            <div class="requirement-central-icon software-central">
+                                <div class="central-icon-bg software-bg">
+                                    <div class="central-icon-content">⚙️</div>
                                 </div>
-                                <span class="requirement-item-name">Google Chrome</span>
                             </div>
-                            <div class="requirement-item">
-                                <div class="requirement-item-icon software-icon" style="background: linear-gradient(135deg, #00c4cc, #00a8b0);">X</div>
-                                <span class="requirement-item-name">CapCut</span>
-                            </div>
-                            <div class="requirement-item">
-                                <div class="requirement-item-icon software-icon" style="background: linear-gradient(135deg, #ff6b6b, #ee5a6f);">V</div>
-                                <span class="requirement-item-name">vidMate</span>
-                            </div>
-                            <div class="requirement-item">
-                                <div class="requirement-item-icon software-icon" style="background: linear-gradient(135deg, #e60023, #bd001c);">P</div>
-                                <span class="requirement-item-name">Pinterest</span>
+                            <div class="requirement-orbital-icons">
+                                <div class="orbital-icon software-orbital" style="--angle: 0deg;">
+                                    <div class="orbital-circle software-circle-1">
+                                        <div class="orbital-icon-content">P</div>
+                                    </div>
+                                    <div class="orbital-label">Powerpoint</div>
+                                </div>
+                                <div class="orbital-icon software-orbital" style="--angle: 60deg;">
+                                    <div class="orbital-circle software-circle-2">
+                                        <div class="orbital-icon-content">
+                                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                                <circle cx="12" cy="12" r="10" fill="#4285f4"/>
+                                                <circle cx="12" cy="12" r="8" fill="#34a853"/>
+                                                <circle cx="12" cy="12" r="6" fill="#fbbc04"/>
+                                                <circle cx="12" cy="12" r="4" fill="#ea4335"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="orbital-label">Chrome</div>
+                                </div>
+                                <div class="orbital-icon software-orbital" style="--angle: 120deg;">
+                                    <div class="orbital-circle software-circle-3">
+                                        <div class="orbital-icon-content">X</div>
+                                    </div>
+                                    <div class="orbital-label">CapCut</div>
+                                </div>
+                                <div class="orbital-icon software-orbital" style="--angle: 180deg;">
+                                    <div class="orbital-circle software-circle-4">
+                                        <div class="orbital-icon-content">V</div>
+                                    </div>
+                                    <div class="orbital-label">vidMate</div>
+                                </div>
+                                <div class="orbital-icon software-orbital" style="--angle: 240deg;">
+                                    <div class="orbital-circle software-circle-5">
+                                        <div class="orbital-icon-content">P</div>
+                                    </div>
+                                    <div class="orbital-label">Pinterest</div>
+                                </div>
+                                <div class="orbital-icon software-orbital" style="--angle: 300deg;">
+                                    <div class="orbital-circle software-circle-6">
+                                        <div class="orbital-icon-content">📄</div>
+                                    </div>
+                                    <div class="orbital-label">Files</div>
+                                </div>
                             </div>
                         </div>
                     </div>

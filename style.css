@@ -33,6 +33,8 @@ html, body {
     background-color: var(--color-background);
     color: var(--color-text);
     overflow-x: hidden;
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 
 /* --- Global Elements --- */
@@ -2442,9 +2444,449 @@ h3 { font-size: 1.25rem; }
 
 /* Requirement Page */
 #page-requirement {
-    padding: 0;
-    overflow: hidden;
+    padding: 2rem;
+    overflow: visible;
     position: relative;
+    background: var(--color-background);
+}
+
+/* Circular Design for Requirements */
+.requirement-circular-design-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.requirement-circular-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.requirement-section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text);
+    text-align: center;
+    margin: 0 0 2rem 0;
+}
+
+.requirement-circular-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    overflow: visible;
+    /* Prevent rendering issues */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+/* Central Icon */
+.requirement-central-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.central-icon-bg {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
+    animation: central-pulse 3s ease-in-out infinite;
+    position: relative;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.central-icon-bg::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    background: inherit;
+    opacity: 0.2;
+    filter: blur(15px);
+    z-index: -1;
+    animation: central-glow 3s ease-in-out infinite;
+}
+
+@keyframes central-pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes central-glow {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.1);
+    }
+}
+
+.hardware-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.software-bg {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.central-icon-content {
+    font-size: 4rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Orbital Icons */
+.requirement-orbital-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+    /* Ensure proper isolation */
+    isolation: isolate;
+}
+
+.orbital-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    pointer-events: auto;
+    z-index: 5;
+    --radius: 140px;
+    --angle: 0deg;
+    --orbit-duration: 20s;
+    /* Initial position */
+    transform: translate(-50%, -50%) 
+              rotate(var(--angle)) 
+              translateY(calc(-1 * var(--radius)))
+              rotate(calc(-1 * var(--angle)));
+    /* Continuous orbital rotation */
+    animation: orbital-rotate var(--orbit-duration) linear infinite;
+    transform-origin: center center;
+    /* Prevent duplication/rendering issues */
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Hardware orbital icons - 4 items, slower rotation */
+.hardware-orbital {
+    --orbit-duration: 25s;
+}
+
+.hardware-orbital:nth-child(1) {
+    --angle: 0deg;
+    animation-delay: 0s;
+}
+
+.hardware-orbital:nth-child(2) {
+    --angle: 90deg;
+    animation-delay: -6.25s;
+}
+
+.hardware-orbital:nth-child(3) {
+    --angle: 180deg;
+    animation-delay: -12.5s;
+}
+
+.hardware-orbital:nth-child(4) {
+    --angle: 270deg;
+    animation-delay: -18.75s;
+}
+
+/* Software orbital icons - 6 items, faster rotation */
+.software-orbital {
+    --orbit-duration: 20s;
+}
+
+.software-orbital:nth-child(1) {
+    --angle: 0deg;
+    animation-delay: 0s;
+}
+
+.software-orbital:nth-child(2) {
+    --angle: 60deg;
+    animation-delay: -3.33s;
+}
+
+.software-orbital:nth-child(3) {
+    --angle: 120deg;
+    animation-delay: -6.67s;
+}
+
+.software-orbital:nth-child(4) {
+    --angle: 180deg;
+    animation-delay: -10s;
+}
+
+.software-orbital:nth-child(5) {
+    --angle: 240deg;
+    animation-delay: -13.33s;
+}
+
+.software-orbital:nth-child(6) {
+    --angle: 300deg;
+    animation-delay: -16.67s;
+}
+
+@keyframes orbital-rotate {
+    from {
+        transform: translate(-50%, -50%) 
+                  rotate(calc(var(--angle) + 0deg)) 
+                  translateY(calc(-1 * var(--radius)))
+                  rotate(calc(-1 * var(--angle) - 0deg));
+    }
+    to {
+        transform: translate(-50%, -50%) 
+                  rotate(calc(var(--angle) + 360deg)) 
+                  translateY(calc(-1 * var(--radius)))
+                  rotate(calc(-1 * var(--angle) - 360deg));
+    }
+}
+
+/* Orbital Circles */
+.orbital-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.orbital-circle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.orbital-circle:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.orbital-circle:hover {
+    transform: scale(1.15);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.orbital-circle:hover .orbital-icon-content {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.orbital-icon-content {
+    font-size: 2rem;
+    color: white;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.orbital-icon-content svg {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Hardware Circle Colors */
+.hardware-circle-1 {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.hardware-circle-2 {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.hardware-circle-3 {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.hardware-circle-4 {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+/* Software Circle Colors */
+.software-circle-1 {
+    background: linear-gradient(135deg, #d04423, #b83a1c);
+}
+
+.software-circle-2 {
+    background: linear-gradient(135deg, #4285f4, #1a73e8);
+}
+
+.software-circle-3 {
+    background: linear-gradient(135deg, #00c4cc, #00a8b0);
+}
+
+.software-circle-4 {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+}
+
+.software-circle-5 {
+    background: linear-gradient(135deg, #e60023, #bd001c);
+}
+
+.software-circle-6 {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+}
+
+/* Orbital Labels */
+.orbital-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+    text-align: center;
+    white-space: nowrap;
+    padding: 0.25rem 0.5rem;
+    background: var(--color-card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design for Circular Layout */
+@media (max-width: 968px) {
+    .requirement-circular-design-wrapper {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 2rem 1rem;
+    }
+    
+    .requirement-circular-container {
+        width: 350px;
+        height: 350px;
+    }
+    
+    .orbital-icon {
+        --radius: 120px;
+    }
+    
+    .orbital-circle {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .orbital-icon-content {
+        font-size: 1.75rem;
+    }
+    
+    .central-icon-bg {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .central-icon-content {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .requirement-circular-design-wrapper {
+        padding: 1.5rem 0.75rem;
+        gap: 2.5rem;
+    }
+    
+    .requirement-section-title {
+        font-size: 1.5rem;
+    }
+    
+    .requirement-circular-container {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .orbital-icon {
+        --radius: 100px;
+    }
+    
+    .orbital-circle {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .orbital-icon-content {
+        font-size: 1.5rem;
+    }
+    
+    .orbital-label {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.4rem;
+    }
+    
+    .central-icon-bg {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .central-icon-content {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .requirement-circular-container {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .orbital-icon {
+        --radius: 90px;
+    }
+    
+    .orbital-circle {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .orbital-icon-content {
+        font-size: 1.25rem;
+    }
+    
+    .central-icon-bg {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .central-icon-content {
+        font-size: 2.5rem;
+    }
 }
 
 /* Requirement Presentation Style */
@@ -2454,11 +2896,9 @@ h3 { font-size: 1.25rem; }
     align-items: center;
     justify-content: center;
     padding: 3rem 2rem;
-    background: linear-gradient(135deg, #ff8c69 0%, #ff7f50 25%, #ffa07a 50%, #ffb347 75%, #ff8c69 100%);
-    background-size: 200% 200%;
-    animation: gradient-shift 10s ease infinite;
+    background: transparent;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 @keyframes gradient-shift {
@@ -3825,12 +4265,27 @@ h3 { font-size: 1.25rem; }
 @media (max-width: 768px) {
     .navbar {
         padding: 1rem;
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
     .navbar-links ul {
         display: none; /* Hide horizontal links */
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        max-width: 100%;
+        box-sizing: border-box;
     }
     .navbar-links {
         gap: 1rem;
+    }
+    /* Hide dropdown on mobile - items will be combined in main nav */
+    .more-dropdown {
+        display: none !important;
     }
     .page {
         padding: 1rem;
@@ -4746,6 +5201,762 @@ h3 { font-size: 1.25rem; }
     
     .appreciation-hearts {
         gap: 1rem;
+    }
+}
+
+/* ============================================
+   COMPREHENSIVE MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+/* Mobile First - Base styles for mobile */
+@media (max-width: 480px) {
+    /* Typography */
+    h1 { font-size: 1.75rem !important; }
+    h2 { font-size: 1.5rem !important; }
+    h3 { font-size: 1.25rem !important; }
+    h4 { font-size: 1.1rem !important; }
+    
+    /* Navbar Mobile */
+    .navbar {
+        padding: 0.75rem 1rem;
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    
+    .navbar-logo img {
+        height: 40px;
+    }
+    
+    .navbar {
+        position: relative;
+        overflow: visible;
+    }
+    
+    .navbar-links {
+        position: relative;
+    }
+    
+    .navbar-links ul {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        max-width: 100%;
+        background: var(--color-card-bg);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+        gap: 0.5rem;
+        margin: 0;
+        box-sizing: border-box;
+        overflow-y: auto;
+        max-height: calc(100vh - 60px);
+    }
+    
+    .navbar-links ul.active {
+        display: flex;
+    }
+    
+    .navbar-links ul li {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .navbar-links ul li a {
+        display: block;
+        padding: 0.75rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: left;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    /* Prevent body scroll when menu is open on mobile */
+    body.menu-open {
+        overflow: hidden;
+    }
+    
+    #more-menu-btn {
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        z-index: 1002;
+    }
+    
+    /* Hide more-dropdown on mobile - items will be in main nav */
+    .more-dropdown {
+        display: none !important;
+    }
+    
+    /* Ensure mobile menu items have proper styling */
+    .navbar-links ul li.mobile-more-item a {
+        display: block;
+        padding: 0.75rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: left;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    /* Mobile menu separator */
+    .navbar-links ul li.mobile-menu-separator {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0.5rem 0;
+    }
+    
+    .navbar-links ul li.mobile-menu-separator div {
+        width: calc(100% - 2rem);
+        margin: 0 1rem;
+        height: 1px;
+        background: rgba(0, 0, 0, 0.1);
+    }
+    
+    /* When main nav is active, add the more menu items after main nav items */
+    .navbar-links ul.active::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: rgba(0, 0, 0, 0.1);
+        margin: 0.5rem 0;
+    }
+    
+    /* Page Container */
+    .page {
+        padding: 1rem 0.75rem !important;
+    }
+    
+    #app-container {
+        padding-top: 60px;
+    }
+    
+    /* Hero Section Mobile */
+    .hero-section {
+        min-height: 60vh;
+        padding: 2rem 1rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem !important;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem !important;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
+    
+    .hero-btn {
+        width: 100%;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    /* Content Grids - Stack on Mobile */
+    .content-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .lesson-food-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+    
+    .game-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+    
+    .stats-container {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+    
+    /* Cards and Boxes */
+    .glass-box,
+    .content-box,
+    .food-card,
+    .game-card,
+    .feature-card {
+        padding: 1.25rem !important;
+    }
+    
+    .food-image {
+        height: 180px;
+    }
+    
+    /* Buttons - Touch Friendly */
+    .btn {
+        padding: 0.875rem 1.25rem;
+        font-size: 0.95rem;
+        min-height: 44px; /* Touch target size */
+    }
+    
+    .speak-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .translation-toggle-btn {
+        width: 100%;
+        padding: 0.875rem 1.25rem;
+    }
+    
+    /* Modals Mobile */
+    .modal-content {
+        width: 95% !important;
+        max-width: 95% !important;
+        max-height: 90vh !important;
+        padding: 1.5rem 1rem !important;
+        margin: 1rem !important;
+    }
+    
+    .modal-close-btn {
+        top: 0.75rem;
+        right: 1rem;
+        font-size: 1.75rem;
+    }
+    
+    /* Video Container */
+    .video-container {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+        padding: 0;
+    }
+    
+    .lesson-video {
+        width: 100%;
+        max-height: 250px;
+    }
+    
+    .listening-video {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 16/9;
+    }
+    
+    /* Game Pages Mobile */
+    .game-page-container {
+        flex-direction: column !important;
+        gap: 1.5rem;
+    }
+    
+    .hangman-left,
+    .hangman-right {
+        width: 100%;
+    }
+    
+    #hangman-svg {
+        width: 200px;
+        height: 240px;
+    }
+    
+    #word-blanks {
+        font-size: 1.5rem;
+        letter-spacing: 0.25rem;
+    }
+    
+    #alphabet-buttons {
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 0.5rem;
+    }
+    
+    #alphabet-buttons button {
+        padding: 0.625rem 0.25rem;
+        font-size: 0.85rem;
+    }
+    
+    #mcq-options {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem;
+    }
+    
+    .mcq-option {
+        padding: 1.25rem 1rem;
+        font-size: 0.95rem;
+    }
+    
+    #page-game-listening #dialogue-container {
+        padding: 1.5rem 1rem !important;
+        font-size: 1rem;
+        min-height: auto !important;
+    }
+    
+    .ordering-zones {
+        flex-direction: column !important;
+        gap: 1rem;
+    }
+    
+    #sentence-pool,
+    #sentence-dropzone {
+        min-height: 300px;
+    }
+    
+    /* Game Controls */
+    .game-controls {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+    
+    .game-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    /* Word Search Mobile */
+    #wordsearch-grid {
+        grid-template-columns: repeat(8, 1fr) !important;
+        gap: 2px;
+        padding: 1rem;
+    }
+    
+    .wordsearch-cell {
+        font-size: 1rem;
+        min-width: 28px;
+        min-height: 28px;
+        padding: 0.25rem;
+    }
+    
+    .wordsearch-sidebar {
+        width: 100% !important;
+        flex-direction: column;
+    }
+    
+    /* Promotional Section Mobile */
+    .promotional-section {
+        padding: 2rem 1rem !important;
+    }
+    
+    .promotional-container {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+    
+    .promotional-headline {
+        font-size: 1.75rem !important;
+    }
+    
+    .promotional-subtext {
+        font-size: 1rem !important;
+    }
+    
+    .stat-card {
+        padding: 1.25rem;
+    }
+    
+    .stat-number-large {
+        font-size: 2rem !important;
+    }
+    
+    /* Study Tools Mobile */
+    .study-tools-section {
+        padding: 2rem 1rem !important;
+    }
+    
+    .study-tools-container {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+    
+    .study-tools-title {
+        font-size: 1.75rem !important;
+    }
+    
+    .tools-grid {
+        grid-template-columns: 1fr !important;
+        max-height: none;
+    }
+    
+    .tool-button {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+    
+    /* Footer Mobile */
+    .footer-container {
+        grid-template-columns: 1fr !important;
+        padding: 1.5rem 1rem !important;
+        gap: 1.5rem;
+    }
+    
+    .footer-bottom {
+        padding: 1rem !important;
+        font-size: 0.8rem;
+    }
+    
+    /* Objectives Mobile */
+    .objectives-page-container {
+        padding: 1rem 0.75rem !important;
+    }
+    
+    .objectives-title {
+        font-size: 1.5rem !important;
+    }
+    
+    .objectives-cards-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+    
+    .objective-card {
+        padding: 1.25rem !important;
+    }
+    
+    .objective-card-icon {
+        font-size: 2.5rem !important;
+    }
+    
+    /* Lessons Page Mobile */
+    .lessons-page-container {
+        padding: 1rem 0.75rem !important;
+    }
+    
+    .lessons-page-title {
+        font-size: 1.75rem !important;
+        margin-bottom: 2rem;
+    }
+    
+    .lesson-showcase-container {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+    
+    .info-block {
+        padding: 1.25rem !important;
+    }
+    
+    .info-block-title {
+        font-size: 1.5rem !important;
+    }
+    
+    /* About Page Mobile */
+    #page-about {
+        padding: 1rem 0.75rem !important;
+    }
+    
+    .about-hero-title {
+        font-size: 1.75rem !important;
+    }
+    
+    .about-hero-subtitle {
+        font-size: 1.1rem !important;
+    }
+    
+    .mission-vision-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+    
+    .mission-card,
+    .vision-card {
+        padding: 1.5rem !important;
+    }
+    
+    #page-about .profile-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+    
+    .profile-card img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+    
+    /* Knowledge Page Mobile */
+    #page-knowledge {
+        padding: 1rem 0.75rem !important;
+    }
+    
+    .knowledge-title {
+        font-size: 1.75rem !important;
+    }
+    
+    .knowledge-subtitle {
+        font-size: 1rem !important;
+    }
+    
+    .vocabulary-grid,
+    .video-grid,
+    .resources-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+    
+    /* Requirement Page Mobile */
+    .requirement-presentation-container {
+        padding: 2rem 1rem !important;
+    }
+    
+    .requirement-presentation-content {
+        padding: 1.5rem 1rem !important;
+        grid-template-columns: 1fr !important;
+    }
+    
+    .requirement-column-title {
+        font-size: 1.5rem !important;
+    }
+    
+    .requirement-item {
+        padding: 0.75rem 1rem !important;
+        gap: 1rem;
+    }
+    
+    .requirement-item-icon {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 1.3rem !important;
+    }
+    
+    .requirement-item-name {
+        font-size: 0.95rem !important;
+    }
+    
+    /* Schedule Page Mobile */
+    #page-schedule {
+        padding: 1rem 0.75rem !important;
+    }
+    
+    .schedule-page-title {
+        font-size: 1.75rem !important;
+    }
+    
+    .roadmap-container {
+        padding: 1rem 0.5rem !important;
+    }
+    
+    .roadmap-svg {
+        min-height: 300px !important;
+    }
+    
+    /* References Page Mobile */
+    .references-hero {
+        padding: 1.5rem 1rem !important;
+    }
+    
+    .references-title {
+        font-size: 1.75rem !important;
+    }
+    
+    .references-grid {
+        grid-template-columns: 1fr !important;
+        padding: 0 1rem 2rem !important;
+    }
+    
+    .reference-card {
+        padding: 1.25rem !important;
+    }
+    
+    .reference-card-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    /* Appreciation Page Mobile */
+    #page-appreciation {
+        padding: 1rem 0.75rem !important;
+    }
+    
+    .appreciation-title {
+        font-size: 1.75rem !important;
+    }
+    
+    .appreciation-content {
+        padding: 1.5rem 1rem !important;
+    }
+    
+    .appreciation-paragraph {
+        font-size: 0.95rem !important;
+    }
+    
+    /* Speaking Practice Mobile */
+    .speaking-practice-panel {
+        padding: 1.25rem !important;
+    }
+    
+    .speaking-controls {
+        flex-direction: column;
+    }
+    
+    .speaking-controls .btn {
+        width: 100%;
+    }
+    
+    /* Glass Box Text Mobile */
+    .glass-box p,
+    .glass-box ul {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    /* Next Button Mobile */
+    .next-btn {
+        bottom: 1rem;
+        right: 1rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+    }
+    
+    /* Scrollable Content Mobile */
+    .scrollable {
+        max-height: 50vh;
+    }
+    
+    /* Gemini Modal Mobile */
+    #gemini-response {
+        max-height: 50vh;
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablet and Small Mobile (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .navbar {
+        padding: 1rem 1.5rem;
+    }
+    
+    .page {
+        padding: 1.5rem;
+    }
+    
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .game-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .modal-content {
+        width: 90%;
+        max-width: 600px;
+    }
+    
+    #alphabet-buttons {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+    .lesson-food-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large Mobile and Small Tablet (769px - 968px) */
+@media (min-width: 769px) and (max-width: 968px) {
+    .game-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .content-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Ensure touch targets are at least 44x44px */
+    .btn,
+    .nav-link,
+    .game-btn,
+    .modal-close-btn,
+    .translation-toggle-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Remove hover effects on touch devices */
+    .btn:hover,
+    .nav-link:hover,
+    .game-card:hover {
+        transform: none;
+    }
+    
+    /* Increase tap target sizes */
+    .vocab-word {
+        padding: 0.25rem 0.5rem;
+        min-height: 32px;
+        display: inline-block;
+    }
+    
+    /* Better spacing for touch */
+    .navbar-links a,
+    .nav-link {
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* Landscape Mobile Optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero-section {
+        min-height: 50vh;
+    }
+    
+    .modal-content {
+        max-height: 85vh;
+    }
+    
+    .video-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    #page-game-listening .game-page-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .listening-video {
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+    
+    #page-game-listening #dialogue-container {
+        flex: 0 0 50%;
+        max-width: 50%;
     }
 }
 
