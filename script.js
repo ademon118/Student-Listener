@@ -1132,12 +1132,54 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
+    // --- Global Scroll-based Reveal Animations ---
+    function setupScrollAnimations() {
+        const animatedElements = document.querySelectorAll(
+            '.animate-card, .animate-fade-in, .animate-fade-in-delay, .animate-slide-up, .animate-slide-up-delay'
+        );
+
+        if (animatedElements.length === 0) return;
+
+        // Fallback for browsers without IntersectionObserver
+        if (!('IntersectionObserver' in window)) {
+            animatedElements.forEach(el => el.classList.add('in-view'));
+            return;
+        }
+
+        const scrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -10% 0px'
+        });
+
+        animatedElements.forEach(el => {
+            // If element is already in viewport (e.g., top of page), reveal immediately
+            const rect = el.getBoundingClientRect();
+            const inViewNow = rect.top < window.innerHeight && rect.bottom > 0;
+            if (inViewNow) {
+                el.classList.add('in-view');
+            } else {
+                scrollObserver.observe(el);
+            }
+        });
+    }
+    
     // Setup on DOMContentLoaded
     setupCounterAnimations();
+    setupScrollAnimations();
     
     // Also setup on window load as fallback
     window.addEventListener('load', () => {
-        setTimeout(setupCounterAnimations, 300);
+        setTimeout(() => {
+            setupCounterAnimations();
+            setupScrollAnimations();
+        }, 300);
     });
     
     // Additional trigger when page becomes visible (for single-page navigation)
@@ -1253,6 +1295,176 @@ document.addEventListener('DOMContentLoaded', () => {
         setupGameCardAtmosphere();
         setupSpeakingPractice();
     };
+
+    // --- Lesson Exercise Functionality ---
+    function setupLessonExercises() {
+        // Fill in the blank answers
+        const fillBlankButtons = document.querySelectorAll('.check-answer-btn');
+        fillBlankButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const questionNum = this.getAttribute('data-question');
+                const input = this.parentElement.querySelector('.fill-blank-input');
+                const feedback = document.querySelector(`[data-feedback="${questionNum}"]`);
+                const correctAnswer = input.getAttribute('data-answer').toLowerCase().trim();
+                const userAnswer = input.value.toLowerCase().trim();
+                
+                if (userAnswer === '') {
+                    feedback.textContent = 'Please enter an answer.';
+                    feedback.style.color = '#ff6b6b';
+                    return;
+                }
+                
+                if (userAnswer === correctAnswer) {
+                    feedback.textContent = '✓ Correct!';
+                    feedback.style.color = '#10ac84';
+                    input.style.borderColor = '#10ac84';
+                    input.style.backgroundColor = '#d4edda';
+                    playSound('correct');
+                } else {
+                    feedback.textContent = `✗ Incorrect. The answer is "${correctAnswer}".`;
+                    feedback.style.color = '#ff6b6b';
+                    input.style.borderColor = '#ff6b6b';
+                    input.style.backgroundColor = '#f8d7da';
+                    playSound('wrong');
+                }
+            });
+        });
+        
+        // Multiple choice answers
+        const mcqButtons = document.querySelectorAll('.check-mcq-btn');
+        mcqButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const mcqNum = this.getAttribute('data-mcq');
+                const correctValue = this.getAttribute('data-correct');
+                const feedback = document.querySelector(`[data-mcq-feedback="${mcqNum}"]`);
+                const selectedRadio = document.querySelector(`input[name="mcq-${mcqNum}"]:checked`);
+                
+                if (!selectedRadio) {
+                    feedback.textContent = 'Please select an answer.';
+                    feedback.style.color = '#ff6b6b';
+                    return;
+                }
+                
+                const userAnswer = selectedRadio.value;
+                const labels = this.parentElement.querySelectorAll('label');
+                
+                if (userAnswer === correctValue) {
+                    feedback.textContent = '✓ Correct!';
+                    feedback.style.color = '#10ac84';
+                    labels.forEach(label => {
+                        if (label.querySelector('input').value === correctValue) {
+                            label.style.backgroundColor = '#d4edda';
+                            label.style.border = '2px solid #10ac84';
+                        }
+                    });
+                    playSound('correct');
+                } else {
+                    feedback.textContent = `✗ Incorrect. The correct answer is "${correctValue}".`;
+                    feedback.style.color = '#ff6b6b';
+                    labels.forEach(label => {
+                        const input = label.querySelector('input');
+                        if (input.value === userAnswer) {
+                            label.style.backgroundColor = '#f8d7da';
+                            label.style.border = '2px solid #ff6b6b';
+                        }
+                        if (input.value === correctValue) {
+                            label.style.backgroundColor = '#d4edda';
+                            label.style.border = '2px solid #10ac84';
+                        }
+                    });
+                    playSound('wrong');
+                }
+            });
+        });
+    }
+    
+    // Initialize lesson exercises
+    setupLessonExercises();
+
+    // --- Objectives Chat Functionality ---
+    const objectivesSendBtn = document.getElementById('objectives-send-btn');
+    const objectivesInputField = document.getElementById('objectives-input-field');
+    const objectivesChatMessages = document.getElementById('objectives-chat-messages');
+    const objectivesSuggestionBtns = document.querySelectorAll('.objectives-suggestion-btn');
+
+    // Responses based on keywords
+    const objectivesResponses = {
+        'goals': 'The main learning goals include developing language skills, enhancing communication abilities, building literacy, expanding vocabulary, and cultivating creative thinking.',
+        'achieve': 'You can achieve these objectives by practicing regularly, engaging in interactive activities, completing exercises, playing educational games, and actively participating in lessons.',
+        'skills': 'You will develop speaking and reading proficiency, listening and communication skills, reading and writing abilities, vocabulary and grammar knowledge, and creative critical thinking capabilities.',
+        'language': 'Language skills focus on recognizing phonics, accurate pronunciation, acquiring vocabulary, and strengthening comprehension through reading and listening.',
+        'listening': 'Listening and speaking skills help you understand teachers and peers, communicate with clear sentences, and respond appropriately to questions.',
+        'reading': 'Reading and writing skills enable you to write letters and words correctly with proper spelling, and construct sentences accurately and coherently.',
+        'vocabulary': 'Vocabulary and grammar knowledge helps you expand practical everyday vocabulary and apply basic sentence structures in communication.',
+        'thinking': 'Creative and critical thinking allows you to generate new ideas, apply vocabulary creatively, and engage thoughtfully with topics.',
+        'default': 'I can help you understand the learning objectives! Try asking about goals, skills, or how to achieve them. You can also click the suggestion buttons above for quick answers.'
+    };
+
+    function getResponse(message) {
+        const lowerMessage = message.toLowerCase();
+        
+        // Check for keywords
+        for (const [keyword, response] of Object.entries(objectivesResponses)) {
+            if (keyword !== 'default' && lowerMessage.includes(keyword)) {
+                return response;
+            }
+        }
+        
+        return objectivesResponses.default;
+    }
+
+    function addMessage(text, isUser = false) {
+        if (!text.trim()) return;
+        
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `objectives-chat-message ${isUser ? 'user' : 'assistant'}`;
+        messageDiv.textContent = text;
+        
+        if (objectivesChatMessages) {
+            objectivesChatMessages.appendChild(messageDiv);
+            objectivesChatMessages.scrollTop = objectivesChatMessages.scrollHeight;
+        }
+    }
+
+    function sendMessage() {
+        const message = objectivesInputField.value.trim();
+        if (!message) return;
+
+        // Add user message
+        addMessage(message, true);
+        objectivesInputField.value = '';
+
+        // Simulate thinking delay
+        setTimeout(() => {
+            const response = getResponse(message);
+            addMessage(response, false);
+        }, 500);
+    }
+
+    // Send button click
+    if (objectivesSendBtn && objectivesInputField) {
+        objectivesSendBtn.addEventListener('click', sendMessage);
+        
+        // Enter key press
+        objectivesInputField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    }
+
+    // Suggestion buttons
+    if (objectivesSuggestionBtns.length > 0) {
+        objectivesSuggestionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const text = btn.querySelector('span:last-child').textContent;
+                if (objectivesInputField) {
+                    objectivesInputField.value = text;
+                    objectivesInputField.focus();
+                }
+            });
+        });
+    }
 
 });
 

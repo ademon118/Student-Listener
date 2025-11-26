@@ -31,20 +31,6 @@
         <section class="page active" id="page-lesson2" data-page="lesson2">
 
             <h1 class="animate-fade-in">Lesson 2: Do you eat healthy food?</h1>
-            <div class="content-grid">
-                <div class="content-box animate-card" style="animation-delay: 0.1s;">
-                    <h3>Topics:</h3>
-                    <ul>
-                        <li>Food items</li>
-                    </ul>
-                </div>
-                <div class="content-box animate-card" style="animation-delay: 0.2s;">
-                    <h3>...</h3>
-                    <ul>
-                        <li>Health benefits</li>
-                    </ul>
-                </div>
-            </div>
             
             <button id="open-lesson2-questions" class="btn btn-primary speak-btn">
                 <svg viewBox="0 0 24 24">
@@ -131,6 +117,77 @@
                     <source src="images/lesson2part2.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+            </div>
+            
+            <!-- Practice Exercises -->
+            <div class="lesson-exercises glass-box" style="margin-top: 2rem; padding: 2rem;">
+                <h3 style="margin-bottom: 1.5rem; color: var(--color-primary);">📝 Practice Exercises</h3>
+                
+                <!-- Fill in the Blank Section -->
+                <div class="exercise-section" style="margin-bottom: 2rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--color-text);">Fill in the Blank</h4>
+                    <p style="margin-bottom: 1rem; color: #666;">Complete the sentences with the correct words about food and health.</p>
+                    
+                    <div class="fill-blank-question" style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                        <p style="margin-bottom: 0.5rem;">1. Rice and noodles contain <input type="text" class="fill-blank-input" data-answer="carbohydrates" placeholder="_____" style="border: 2px solid var(--color-primary); border-radius: 4px; padding: 0.3rem 0.5rem; font-size: 1rem; background: white; color: var(--color-text-dark);"> which give us energy.</p>
+                        <button class="check-answer-btn" data-question="1" style="margin-top: 0.5rem; padding: 0.5rem 1rem; background: var(--color-primary); color: white; border: none; border-radius: 4px; cursor: pointer;">Check Answer</button>
+                        <span class="answer-feedback" data-feedback="1" style="margin-left: 1rem; font-weight: 600;"></span>
+                    </div>
+                    
+                    <div class="fill-blank-question" style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                        <p style="margin-bottom: 0.5rem;">2. Chicken and fish are rich in <input type="text" class="fill-blank-input" data-answer="protein" placeholder="_____" style="border: 2px solid var(--color-primary); border-radius: 4px; padding: 0.3rem 0.5rem; font-size: 1rem; background: white; color: var(--color-text-dark);"> which helps our body grow.</p>
+                        <button class="check-answer-btn" data-question="2" style="margin-top: 0.5rem; padding: 0.5rem 1rem; background: var(--color-primary); color: white; border: none; border-radius: 4px; cursor: pointer;">Check Answer</button>
+                        <span class="answer-feedback" data-feedback="2" style="margin-left: 1rem; font-weight: 600;"></span>
+                    </div>
+                    
+                    <div class="fill-blank-question" style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                        <p style="margin-bottom: 0.5rem;">3. Vegetables are rich in <input type="text" class="fill-blank-input" data-answer="fibre" placeholder="_____" style="border: 2px solid var(--color-primary); border-radius: 4px; padding: 0.3rem 0.5rem; font-size: 1rem; background: white; color: var(--color-text-dark);"> which is good for digestion.</p>
+                        <button class="check-answer-btn" data-question="3" style="margin-top: 0.5rem; padding: 0.5rem 1rem; background: var(--color-primary); color: white; border: none; border-radius: 4px; cursor: pointer;">Check Answer</button>
+                        <span class="answer-feedback" data-feedback="3" style="margin-left: 1rem; font-weight: 600;"></span>
+                    </div>
+                    
+                    <div class="fill-blank-question" style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                        <p style="margin-bottom: 0.5rem;">4. Fruits and vegetables contain <input type="text" class="fill-blank-input" data-answer="vitamins" placeholder="_____" style="border: 2px solid var(--color-primary); border-radius: 4px; padding: 0.3rem 0.5rem; font-size: 1rem; background: white; color: var(--color-text-dark);"> which keep us healthy.</p>
+                        <button class="check-answer-btn" data-question="4" style="margin-top: 0.5rem; padding: 0.5rem 1rem; background: var(--color-primary); color: white; border: none; border-radius: 4px; cursor: pointer;">Check Answer</button>
+                        <span class="answer-feedback" data-feedback="4" style="margin-left: 1rem; font-weight: 600;"></span>
+                    </div>
+                </div>
+                
+                <!-- Multiple Choice Section -->
+                <div class="exercise-section">
+                    <h4 style="margin-bottom: 1rem; color: var(--color-text);">Multiple Choice</h4>
+                    <p style="margin-bottom: 1rem; color: #666;">Choose the best answer based on what you learned about healthy eating.</p>
+                    
+                    <div class="mcq-question" style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                        <p style="margin-bottom: 1rem; font-weight: 600;">5. Which nutrient helps our body grow and repair muscles?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 4px; cursor: pointer;">
+                            <input type="radio" name="mcq-1" value="carbohydrates" style="margin-right: 0.5rem;"> Carbohydrates
+                        </label>
+                        <label style="display: block; margin-bottom: 0.5rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 4px; cursor: pointer;">
+                            <input type="radio" name="mcq-1" value="protein" style="margin-right: 0.5rem;"> Protein
+                        </label>
+                        <label style="display: block; margin-bottom: 0.5rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 4px; cursor: pointer;">
+                            <input type="radio" name="mcq-1" value="fibre" style="margin-right: 0.5rem;"> Fibre
+                        </label>
+                        <button class="check-mcq-btn" data-mcq="1" data-correct="protein" style="margin-top: 0.5rem; padding: 0.5rem 1rem; background: var(--color-primary); color: white; border: none; border-radius: 4px; cursor: pointer;">Check Answer</button>
+                        <span class="mcq-feedback" data-mcq-feedback="1" style="margin-left: 1rem; font-weight: 600;"></span>
+                    </div>
+                    
+                    <div class="mcq-question" style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                        <p style="margin-bottom: 1rem; font-weight: 600;">6. What is good for healthy digestion?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 4px; cursor: pointer;">
+                            <input type="radio" name="mcq-2" value="protein" style="margin-right: 0.5rem;"> Protein
+                        </label>
+                        <label style="display: block; margin-bottom: 0.5rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 4px; cursor: pointer;">
+                            <input type="radio" name="mcq-2" value="fibre" style="margin-right: 0.5rem;"> Fibre
+                        </label>
+                        <label style="display: block; margin-bottom: 0.5rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 4px; cursor: pointer;">
+                            <input type="radio" name="mcq-2" value="carbohydrates" style="margin-right: 0.5rem;"> Carbohydrates
+                        </label>
+                        <button class="check-mcq-btn" data-mcq="2" data-correct="fibre" style="margin-top: 0.5rem; padding: 0.5rem 1rem; background: var(--color-primary); color: white; border: none; border-radius: 4px; cursor: pointer;">Check Answer</button>
+                        <span class="mcq-feedback" data-mcq-feedback="2" style="margin-left: 1rem; font-weight: 600;"></span>
+                    </div>
+                </div>
             </div>
             
             <a href="games.html">→</a>

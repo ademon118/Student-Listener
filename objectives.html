@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grade 6 - Unit 6 - Objectives</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="video-background">
         <video autoplay muted loop playsinline aria-hidden="true">
@@ -18,7 +21,7 @@
         </video>
     </div>
 
-        <!-- Header (Loaded from components) -->
+    <!-- Header (Loaded from components) -->
     <div data-include="header.html"></div>
 
     <main id="app-container">
@@ -26,11 +29,12 @@
             <div class="objectives-page-container">
                 <div class="title-translate">
                     <h1 class="objectives-title animate-fade-in">Objectives</h1>
-                <div class="translation-button-container">
+                </div>
+
+                <div class="translation-button-container" style="margin-bottom: 20px;">
                     <button id="toggle-translation-obj" class="translation-toggle-btn">See Translation</button>
                 </div>
-                
-                </div>
+
                 <div class="objectives-cards-grid" id="objectives-content">
                     <!-- Objective 1: Language Skills -->
                     <div class="objective-card animate-card" style="animation-delay: 0.1s;">
@@ -89,13 +93,82 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- Hero Section with Two-Column Design -->
+                <div class="objectives-hero-section">
+                    <!-- Left: Interactive Objectives Card -->
+                    <div class="objectives-interactive-card animate-card">
+                        <div class="objectives-card-header">
+                            <div class="objectives-card-avatar">
+                                <div class="objectives-avatar-icon">🎯</div>
+                            </div>
+                            <div class="objectives-card-title-wrapper">
+                                <h2 class="objectives-card-main-title">Learning Objectives</h2>
+                            </div>
+                        </div>
+                        <div class="objectives-card-suggestions">
+                            <button class="objectives-suggestion-btn">
+                                <span class="suggestion-icon">💡</span>
+                                <span>What are the main learning goals?</span>
+                            </button>
+                            <button class="objectives-suggestion-btn">
+                                <span class="suggestion-icon">💡</span>
+                                <span>How can I achieve these objectives?</span>
+                            </button>
+                            <button class="objectives-suggestion-btn">
+                                <span class="suggestion-icon">💡</span>
+                                <span>What skills will I develop?</span>
+                            </button>
+                        </div>
+                        <div class="objectives-card-input">
+                            <input type="text" placeholder="Ask about learning objectives..."
+                                class="objectives-input-field" id="objectives-input-field">
+                            <button class="objectives-send-btn" id="objectives-send-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="objectives-chat-messages" id="objectives-chat-messages"></div>
+                    </div>
+
+                    <!-- Right: Objectives Features List -->
+                    <div class="objectives-features-section">
+                        <h2 class="objectives-features-title animate-fade-in">Key Learning Objectives</h2>
+                        <div class="objectives-features-list">
+                            <div class="objectives-feature-item animate-card">
+                                <div class="objectives-feature-icon">🗣️</div>
+                                <p>Develop language skills through speaking and reading proficiency</p>
+                            </div>
+                            <div class="objectives-feature-item animate-card">
+                                <div class="objectives-feature-icon">👂</div>
+                                <p>Enhance listening and speaking communication abilities</p>
+                            </div>
+                            <div class="objectives-feature-item animate-card">
+                                <div class="objectives-feature-icon">✍️</div>
+                                <p>Build reading and writing literacy development skills</p>
+                            </div>
+                            <div class="objectives-feature-item animate-card">
+                                <div class="objectives-feature-icon">📚</div>
+                                <p>Expand vocabulary and grammar knowledge foundation</p>
+                            </div>
+                            <div class="objectives-feature-item animate-card">
+                                <div class="objectives-feature-icon">💡</div>
+                                <p>Cultivate creative and critical thinking capabilities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </section>
     </main>
 
     <!-- Footer (Loaded from components) -->
     <div data-include="footer.html"></div>
-    
+
     <div id="game-message-modal" class="modal-overlay">
         <div class="modal-content glass-box text-center">
             <h2 id="game-message-title">Message</h2>
@@ -107,9 +180,9 @@
     <audio id="click-sound" src="audio/click-placeholder.mp3"></audio>
     <audio id="vocab-audio" src=""></audio>
 
-        <script src="components.js"></script>
+    <script src="components.js"></script>
     <script src="include.js"></script>
     <script src="script.js"></script>
 </body>
-</html>
 
+</html>
