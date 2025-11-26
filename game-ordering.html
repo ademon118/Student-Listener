@@ -26,6 +26,13 @@
     <main id="app-container">
         <section class="page active" id="page-game-ordering" data-page="game-ordering">
 
+            <div class="game-music-toggle">
+                <button id="music-toggle" class="music-toggle-btn">
+                    <span class="music-icon">🔊</span>
+                    <span class="music-label">Music: On</span>
+                </button>
+            </div>
+
             <h2 class="game-font text-center">Round 4: Order It!</h2>
             <p class="text-center">Listen to the dialogue and put the sentences in the correct order.</p>
             <div class="game-page-container">
@@ -143,9 +150,9 @@
     </div>
 
     <!-- 6. Audio Elements -->
-
-<!-- 6. Audio Elements -->
-    <!-- <!-- REPLACE AUDIO HERE --> -->
+    <!-- Background music for Ordering game (replace file with your own track) -->
+    <audio id="bg-music" src="audio/ordering-bg.mp3" loop></audio>
+    <!-- Click and vocab sounds -->
     <audio id="click-sound" src="audio/click-placeholder.mp3"></audio>
     <audio id="vocab-audio" src=""></audio>
 

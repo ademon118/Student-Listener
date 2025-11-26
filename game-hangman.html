@@ -26,6 +26,13 @@
     <main id="app-container">
         <section class="page active" id="page-game-hangman" data-page="game-hangman">
 
+            <div class="game-music-toggle">
+                <button id="music-toggle" class="music-toggle-btn">
+                    <span class="music-icon">🔊</span>
+                    <span class="music-label">Music: On</span>
+                </button>
+            </div>
+
             <h2 class="game-font text-center">Round 1: Hangman</h2>
             <div class="game-page-container">
                 <div class="hangman-left glass-box">
@@ -150,9 +157,9 @@
     </div>
 
     <!-- 6. Audio Elements -->
-
-<!-- 6. Audio Elements -->
-    <!-- <!-- REPLACE AUDIO HERE --> -->
+    <!-- Background music for Hangman (replace file with your own track) -->
+    <audio id="bg-music" src="audio/hangman-bg.mp3" loop></audio>
+    <!-- Click and vocab sounds -->
     <audio id="click-sound" src="audio/click-placeholder.mp3"></audio>
     <audio id="vocab-audio" src=""></audio>
 

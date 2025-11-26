@@ -26,6 +26,13 @@
     <main id="app-container">
         <section class="page active" id="page-game-listening" data-page="game-listening">
 
+            <div class="game-music-toggle">
+                <button id="music-toggle" class="music-toggle-btn">
+                    <span class="music-icon">🔊</span>
+                    <span class="music-label">Music: On</span>
+                </button>
+            </div>
+
             <h2 class="game-font text-center">Round 3: Listening</h2>
             <p class="text-center">Listen and complete the dialogue with the food items.</p>
             <div class="game-page-container">
@@ -145,9 +152,9 @@
     </div>
 
     <!-- 6. Audio Elements -->
-
-<!-- 6. Audio Elements -->
-    <!-- <!-- REPLACE AUDIO HERE --> -->
+    <!-- Background music for Listening game (replace file with your own track) -->
+    <audio id="bg-music" src="audio/listening-bg.mp3" loop></audio>
+    <!-- Click and vocab sounds -->
     <audio id="click-sound" src="audio/click-placeholder.mp3"></audio>
     <audio id="vocab-audio" src=""></audio>
 

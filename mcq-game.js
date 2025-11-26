@@ -10,6 +10,49 @@
     }
     
     function initMCQGame() {
+        // Background music + toggle for MCQ game
+        const bgMusic = document.getElementById('bg-music');
+        const musicToggleBtn = document.getElementById('music-toggle');
+
+        function updateMusicToggleUI() {
+            if (!musicToggleBtn) return;
+            const label = musicToggleBtn.querySelector('.music-label');
+            const icon = musicToggleBtn.querySelector('.music-icon');
+            const isPlaying = bgMusic && !bgMusic.paused;
+            if (label) label.textContent = isPlaying ? 'Music: On' : 'Music: Off';
+            if (icon) icon.textContent = isPlaying ? '🔊' : '🔈';
+        }
+
+        function startBackgroundMusic() {
+            if (!bgMusic) return;
+            bgMusic.loop = true;
+            bgMusic.volume = 0.35;
+            bgMusic.play().then(updateMusicToggleUI).catch(() => {
+                const resumeOnInteraction = () => {
+                    bgMusic.play().finally(updateMusicToggleUI);
+                    document.removeEventListener('click', resumeOnInteraction);
+                    document.removeEventListener('touchstart', resumeOnInteraction);
+                };
+                document.addEventListener('click', resumeOnInteraction, { once: true });
+                document.addEventListener('touchstart', resumeOnInteraction, { once: true });
+            });
+        }
+
+        if (bgMusic) {
+            startBackgroundMusic();
+        }
+
+        if (musicToggleBtn && bgMusic) {
+            musicToggleBtn.addEventListener('click', () => {
+                if (bgMusic.paused) {
+                    bgMusic.play().finally(updateMusicToggleUI);
+                } else {
+                    bgMusic.pause();
+                    updateMusicToggleUI();
+                }
+            });
+        }
+        
         const mcqQuestions = [
             { q: "Which food item contains vitamin B6 and is good for the brain?", options: ["Bananas", "Dark chocolate", "Broccoli"], answer: "Bananas" },
             { q: "What polite phrase can a customer use to order food?", options: ["Can I have noodles, please?", "Give me noodles", "I want noodles"], answer: "Can I have noodles, please?" },

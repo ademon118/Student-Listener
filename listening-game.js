@@ -10,6 +10,49 @@
     }
     
     function initListeningGame() {
+        // Background music + toggle for Listening game
+        const bgMusic = document.getElementById('bg-music');
+        const musicToggleBtn = document.getElementById('music-toggle');
+
+        function updateMusicToggleUI() {
+            if (!musicToggleBtn) return;
+            const label = musicToggleBtn.querySelector('.music-label');
+            const icon = musicToggleBtn.querySelector('.music-icon');
+            const isPlaying = bgMusic && !bgMusic.paused;
+            if (label) label.textContent = isPlaying ? 'Music: On' : 'Music: Off';
+            if (icon) icon.textContent = isPlaying ? '🔊' : '🔈';
+        }
+
+        function startBackgroundMusic() {
+            if (!bgMusic) return;
+            bgMusic.loop = true;
+            bgMusic.volume = 0.35;
+            bgMusic.play().then(updateMusicToggleUI).catch(() => {
+                const resumeOnInteraction = () => {
+                    bgMusic.play().finally(updateMusicToggleUI);
+                    document.removeEventListener('click', resumeOnInteraction);
+                    document.removeEventListener('touchstart', resumeOnInteraction);
+                };
+                document.addEventListener('click', resumeOnInteraction, { once: true });
+                document.addEventListener('touchstart', resumeOnInteraction, { once: true });
+            });
+        }
+
+        if (bgMusic) {
+            startBackgroundMusic();
+        }
+
+        if (musicToggleBtn && bgMusic) {
+            musicToggleBtn.addEventListener('click', () => {
+                if (bgMusic.paused) {
+                    bgMusic.play().finally(updateMusicToggleUI);
+                } else {
+                    bgMusic.pause();
+                    updateMusicToggleUI();
+                }
+            });
+        }
+        
         const listeningInputs = document.querySelectorAll('#dialogue-container input');
         const listeningCheckBtn = document.getElementById('listening-check');
         

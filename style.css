@@ -33,8 +33,38 @@ html, body {
     background-color: var(--color-background);
     color: var(--color-text);
     overflow-x: hidden;
-    max-width: 100vw;
+    max-width: 100%;
     box-sizing: border-box;
+    margin: 0;
+}
+
+/* Make media elements responsive and prevent horizontal overflow */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+#app-container, main, section, .page {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+.features-section,
+.stats-section,
+.hero-section,
+.promotional-section,
+.study-tools-section,
+.objectives-page-container,
+.objectives-hero-section,
+.lessons-page-container,
+.references-grid,
+.knowledge-hero,
+.about-hero,
+.about-mission-vision,
+.games-page-container {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 /* --- Global Elements --- */
@@ -4207,8 +4237,8 @@ h3 { font-size: 1.25rem; }
 .mcq-transition-overlay {
     position: fixed;
     inset: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background: rgba(15, 23, 42, 0.55);
     backdrop-filter: blur(8px);
     display: flex;
@@ -4641,7 +4671,7 @@ h3 { font-size: 1.25rem; }
     .navbar {
         padding: 1rem;
         width: 100%;
-        max-width: 100vw;
+        max-width: 100%;
         box-sizing: border-box;
         overflow-x: hidden;
     }
@@ -4651,7 +4681,7 @@ h3 { font-size: 1.25rem; }
         top: 60px;
         left: 0;
         right: 0;
-        width: 100vw;
+        width: 100%;
         max-width: 100%;
         box-sizing: border-box;
     }
@@ -4848,6 +4878,49 @@ h3 { font-size: 1.25rem; }
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+}
+
+/* Game music toggle (top-right) */
+.game-music-toggle {
+    position: absolute;
+    top: 40px;
+    left: 1.5rem;
+    z-index: 10;
+}
+
+.music-toggle-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.8);
+    background: rgba(15, 23, 42, 0.75);
+    color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
+}
+
+.music-toggle-btn span {
+    font-size: 0.9rem;
+}
+
+.music-toggle-btn .music-icon {
+    font-size: 1rem;
+}
+
+.music-toggle-btn:hover {
+    background: rgba(30, 64, 175, 0.9);
+    border-color: rgba(129, 140, 248, 0.9);
+}
+
+@media (max-width: 768px) {
+    .game-music-toggle {
+        top: 10px;
+        left: 1rem;
+    }
 }
 
 .reference-card {
@@ -5596,7 +5669,7 @@ h3 { font-size: 1.25rem; }
         padding: 0.75rem 1rem;
         flex-wrap: wrap;
         width: 100%;
-        max-width: 100vw;
+        max-width: 100%;
         box-sizing: border-box;
         overflow-x: hidden;
     }
@@ -5620,7 +5693,7 @@ h3 { font-size: 1.25rem; }
         top: 60px;
         left: 0;
         right: 0;
-        width: 100vw;
+        width: 100%;
         max-width: 100%;
         background: var(--color-card-bg);
         flex-direction: column;
