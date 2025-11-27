@@ -302,6 +302,62 @@ img, video, iframe {
     font-size: 0.85rem;
 }
 
+/* Scroll to Top Button */
+.scroll-to-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 56px;
+    height: 56px;
+    background: #60A5FA;
+    border: none;
+    border-radius: 16px;
+    color: white;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.scroll-to-top-btn.visible {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-to-top-btn:hover {
+    background: #3B82F6;
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(96, 165, 250, 0.5);
+}
+
+.scroll-to-top-btn:active {
+    transform: translateY(-2px);
+}
+
+.scroll-to-top-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 768px) {
+    .scroll-to-top-btn {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 48px;
+        height: 48px;
+    }
+    
+    .scroll-to-top-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+}
 
 /* --- Page Container --- */
 #app-container {
@@ -511,6 +567,33 @@ h3 { font-size: 1.25rem; }
 .btn-secondary:hover {
     background: var(--color-primary-light);
     border-color: var(--color-primary);
+}
+
+.btn-tertiary {
+    background: #E5E7EB;
+    color: var(--color-text);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.btn-tertiary:not(:disabled) {
+    background: #F3F4F6;
+    color: var(--color-text);
+    border-color: var(--color-primary);
+    cursor: pointer;
+}
+
+.btn-tertiary:not(:disabled):hover {
+    background: var(--color-primary-light);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #E5E7EB !important;
+    color: #9CA3AF !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
 }
 
 .translation-toggle-btn {
