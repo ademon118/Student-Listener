@@ -314,20 +314,23 @@ img, video, iframe {
     border-radius: 16px;
     color: white;
     cursor: pointer;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 12px rgba(96, 165, 250, 0.4);
     transition: all 0.3s ease;
-    z-index: 1000;
+    z-index: 10000;
     opacity: 0;
+    visibility: hidden;
     transform: translateY(20px);
+    pointer-events: none;
 }
 
 .scroll-to-top-btn.visible {
-    display: flex;
     opacity: 1;
+    visibility: visible;
     transform: translateY(0);
+    pointer-events: auto;
 }
 
 .scroll-to-top-btn:hover {

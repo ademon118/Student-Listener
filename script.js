@@ -1200,105 +1200,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Scroll to Top Button ---
-    function setupScrollToTop() {
+    function initScrollToTopButton() {
         const scrollBtn = document.getElementById('scroll-to-top-btn');
-        if (!scrollBtn) return;
+        if (!scrollBtn) {
+            setTimeout(initScrollToTopButton, 300);
+            return;
+        }
 
-        // Function to check scroll position and show/hide button
-        function toggleScrollButton() {
-            const scrollY = window.scrollY || document.documentElement.scrollTop;
-            const appContainer = document.getElementById('app-container');
-            const pageScroll = appContainer ? appContainer.scrollTop : 0;
-            const totalScroll = scrollY + pageScroll;
+        if (scrollBtn.dataset.initialized === 'true') {
+            return;
+        }
+        scrollBtn.dataset.initialized = 'true';
 
-            // Show button when scrolled down more than 300px
-            if (totalScroll > 300) {
+        const getScrollPosition = () => (
+            window.pageYOffset ||
+            document.documentElement.scrollTop ||
+            document.body.scrollTop ||
+            0
+        );
+
+        const toggleButton = () => {
+            if (getScrollPosition() > 300) {
                 scrollBtn.classList.add('visible');
             } else {
                 scrollBtn.classList.remove('visible');
             }
-        }
+        };
 
-        // Scroll to top function
-        function scrollToTop() {
+        const scrollToTop = () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+            document.body.scrollTo({ top: 0, behavior: 'smooth' });
             const appContainer = document.getElementById('app-container');
-            const activePage = document.querySelector('.page.active');
-            
-            // Try scrolling the app container first
             if (appContainer) {
                 appContainer.scrollTo({ top: 0, behavior: 'smooth' });
             }
-            
-            // Also scroll window
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            // Scroll active page if it exists
-            if (activePage) {
-                activePage.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-            
-            // Scroll body and html as fallback
-            document.body.scrollTo({ top: 0, behavior: 'smooth' });
-            document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        };
 
-        // Event listeners
         scrollBtn.addEventListener('click', scrollToTop);
-        
-        // Listen to scroll events on window, app container, and active page
-        window.addEventListener('scroll', toggleScrollButton, { passive: true });
-        
+        window.addEventListener('scroll', toggleButton, { passive: true });
+
         const appContainer = document.getElementById('app-container');
         if (appContainer) {
-            appContainer.addEventListener('scroll', toggleScrollButton, { passive: true });
+            appContainer.addEventListener('scroll', toggleButton, { passive: true });
         }
 
-        // Also check on page changes (for single-page navigation)
-        const observer = new MutationObserver(() => {
-            toggleScrollButton();
-        });
-
-        if (appContainer) {
-            observer.observe(appContainer, {
-                childList: true,
-                subtree: true,
-                attributes: true,
-                attributeFilter: ['class']
-            });
-        }
-
-        // Initial check
-        toggleScrollButton();
+        toggleButton();
     }
 
-    // Setup scroll to top button
-    setupScrollToTop();
-    
-    // Re-check scroll position when pages change (for single-page navigation)
-    // Hook into the showPage function to hide button when switching pages
-    const originalShowPage = showPage;
-    if (typeof originalShowPage === 'function') {
-        window.showPage = function(pageId) {
-            originalShowPage(pageId);
-            // Hide button when page changes (since scroll resets to top)
-            setTimeout(() => {
-                const scrollBtn = document.getElementById('scroll-to-top-btn');
-                if (scrollBtn) {
-                    scrollBtn.classList.remove('visible');
-                }
-                // Re-check after a moment in case page has content
-                setTimeout(() => {
-                    const scrollY = window.scrollY || document.documentElement.scrollTop;
-                    const appContainer = document.getElementById('app-container');
-                    const pageScroll = appContainer ? appContainer.scrollTop : 0;
-                    const totalScroll = scrollY + pageScroll;
-                    
-                    if (totalScroll > 300 && scrollBtn) {
-                        scrollBtn.classList.add('visible');
-                    }
-                }, 200);
-            }, 100);
-        };
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initScrollToTopButton);
+    } else {
+        initScrollToTopButton();
     }
 
     // --- Knowledge Page Vocabulary Audio ---
