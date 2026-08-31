@@ -2,6 +2,12 @@
 (function() {
     let globalComponentsLoaded = false;
 
+    function sanitizeIncludeHTML(html) {
+        return html
+            .replace(/<!-- Code injected by live-server -->[\s\S]*?<\/script>/gi, '')
+            .trim();
+    }
+
     function includeHTML() {
         const elements = document.querySelectorAll('[data-include]');
         elements.forEach(function(el) {
@@ -10,7 +16,7 @@
                 fetch(file)
                     .then(response => response.text())
                     .then(data => {
-                        el.innerHTML = data;
+                        el.innerHTML = sanitizeIncludeHTML(data);
                         // Re-initialize any scripts that need to run after include
                         if (typeof initAfterInclude === 'function') {
                             initAfterInclude();
@@ -34,7 +40,7 @@
             .then(html => {
                 if (!document.getElementById('scroll-to-top-btn')) {
                     const temp = document.createElement('div');
-                    temp.innerHTML = html.trim();
+                    temp.innerHTML = sanitizeIncludeHTML(html).trim();
                     const component = temp.firstElementChild;
                     if (component) {
                         document.body.appendChild(component);

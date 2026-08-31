@@ -30,7 +30,7 @@ html, body {
     min-height: 100%;
     width: 100%;
     font-family: var(--font-main);
-    background-color: transparent;
+    background-color: var(--color-background);
     color: var(--color-text);
     overflow-x: hidden;
     max-width: 100%;
@@ -70,15 +70,7 @@ img, video, iframe {
 /* --- Global Elements --- */
 
 .video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    overflow: hidden;
-    pointer-events: none;
-    background-color: var(--color-background);
+    display: none;
 }
 
 .video-background video {
@@ -196,7 +188,6 @@ img, video, iframe {
     position: relative;
     width: 100%;
     background: var(--color-card-bg);
-    backdrop-filter: blur(15px);
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding: 0;
     margin-top: auto;
@@ -214,6 +205,16 @@ img, video, iframe {
 .footer-column {
     display: flex;
     flex-direction: column;
+}
+
+.footer-brand .footer-logo {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+}
+
+.footer-brand .footer-logo img {
+    height: 40px;
+    width: auto;
 }
 
 .footer-column h3 {
@@ -246,34 +247,12 @@ img, video, iframe {
 .footer-column ul li a {
     color: var(--color-subtext);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
 }
 
 .footer-column ul li a:hover {
     color: var(--color-primary);
-    transform: translateX(5px);
-}
-
-/* Social Media Icons */
-.social-link {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    transition: all 0.3s ease;
-}
-
-.social-icon {
-    color: var(--color-subtext);
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-}
-
-.social-link:hover .social-icon {
-    color: var(--color-primary);
-    transform: scale(1.2);
-}
-
-.social-link:hover {
     transform: translateX(5px);
 }
 
@@ -289,6 +268,10 @@ img, video, iframe {
     color: var(--color-subtext);
     transition: all 0.3s ease;
     flex-shrink: 0;
+    font-size: 1rem;
+    line-height: 1;
+    width: 18px;
+    text-align: center;
 }
 
 .contact-item:hover .contact-icon {
@@ -298,12 +281,6 @@ img, video, iframe {
 
 .contact-item:hover {
     transform: translateX(3px);
-}
-
-.footer-column h3:hover {
-    color: var(--color-primary);
-    transform: translateX(3px);
-    transition: all 0.3s ease;
 }
 
 .footer-bottom {
@@ -2879,14 +2856,17 @@ h3 { font-size: 1.25rem; }
 
 /* About Us */
 #page-about {
-    padding: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
+    padding: 0;
+    max-width: none;
+    margin: 0;
+    background: var(--color-background);
 }
 
 /* Hero Section */
 .about-hero {
-    margin: 2rem 0 4rem;
+    padding: 2rem 2rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .about-hero-content {
@@ -2894,6 +2874,32 @@ h3 { font-size: 1.25rem; }
     padding: 3rem 2rem;
     max-width: 900px;
     margin: 0 auto;
+}
+
+.about-card,
+.mission-card,
+.vision-card,
+.value-card {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    background: var(--color-card-bg);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover,
+.mission-card:hover,
+.vision-card:hover,
+.value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
 }
 
 .about-hero-title {
@@ -2922,7 +2928,9 @@ h3 { font-size: 1.25rem; }
 
 /* Mission & Vision */
 .about-mission-vision {
-    margin: 4rem 0;
+    padding: 0 2rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .mission-vision-grid {
@@ -2931,54 +2939,6 @@ h3 { font-size: 1.25rem; }
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.mission-card,
-.vision-card {
-    padding: 2.5rem;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(40px) saturate(180%);
-    -webkit-backdrop-filter: blur(40px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 24px;
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.1),
-        0 2px 8px rgba(0, 0, 0, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 0.6);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.mission-card::before,
-.vision-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.8) 50%,
-        transparent
-    );
-    pointer-events: none;
-}
-
-.mission-card:hover,
-.vision-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(45px) saturate(200%);
-    -webkit-backdrop-filter: blur(45px) saturate(200%);
-    border-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 
-        0 12px 40px rgba(0, 0, 0, 0.15),
-        0 4px 12px rgba(0, 0, 0, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .mission-icon,
@@ -3000,6 +2960,8 @@ h3 { font-size: 1.25rem; }
     font-size: 1.1rem;
     line-height: 1.8;
     color: var(--color-text);
+    margin-bottom: 0;
+    flex: 1;
 }
 
 /* Team Section */
@@ -3118,7 +3080,13 @@ h3 { font-size: 1.25rem; }
 
 /* Values Section */
 .about-values {
-    margin: 4rem 0;
+    padding: 0 2rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.about-values .section-title {
+    margin-bottom: 2rem;
 }
 
 .values-grid {
@@ -3127,51 +3095,7 @@ h3 { font-size: 1.25rem; }
     gap: 2rem;
     max-width: 1400px;
     margin: 0 auto;
-}
-
-.value-card {
-    padding: 2rem;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(40px) saturate(180%);
-    -webkit-backdrop-filter: blur(40px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 24px;
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.1),
-        0 2px 8px rgba(0, 0, 0, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 0.6);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.value-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.8) 50%,
-        transparent
-    );
-    pointer-events: none;
-}
-
-.value-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(45px) saturate(200%);
-    -webkit-backdrop-filter: blur(45px) saturate(200%);
-    border-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 
-        0 12px 40px rgba(0, 0, 0, 0.15),
-        0 4px 12px rgba(0, 0, 0, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    align-items: stretch;
 }
 
 .value-icon {
@@ -3187,7 +3111,7 @@ h3 { font-size: 1.25rem; }
 
 .value-card h3 {
     font-size: 1.3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     color: var(--color-primary);
 }
 
@@ -3195,15 +3119,21 @@ h3 { font-size: 1.25rem; }
     font-size: 1rem;
     line-height: 1.7;
     color: var(--color-text);
+    margin-bottom: 0;
+    flex: 1;
 }
 
 /* Story Section */
 .about-story {
-    margin: 4rem 0;
+    background: var(--color-card-bg);
+    border-radius: 32px 32px 0 0;
+    padding: 4rem 2rem;
+    margin-top: 1rem;
+    box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.04);
 }
 
 .story-content {
-    padding: 3rem;
+    padding: 0;
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -3230,7 +3160,8 @@ h3 { font-size: 1.25rem; }
 
 /* Stats Section */
 .about-stats {
-    margin: 4rem 0;
+    background: var(--color-card-bg);
+    padding: 3rem 2rem 4rem;
 }
 
 .about-stats .stats-container {
@@ -3243,13 +3174,33 @@ h3 { font-size: 1.25rem; }
 
 .about-stats .stat-item {
     text-align: center;
-    padding: 2rem;
+    padding: 2rem 1.5rem;
+    background: var(--color-background);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     #page-about {
-        padding: 1rem;
+        padding: 0;
+    }
+
+    .about-hero,
+    .about-mission-vision,
+    .about-values {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .about-story {
+        padding: 3rem 1rem;
+        border-radius: 24px 24px 0 0;
+    }
+
+    .about-stats {
+        padding: 2rem 1rem 3rem;
     }
 
     .about-hero-title {
@@ -5772,6 +5723,8 @@ h3 { font-size: 1.25rem; }
     background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
 }
 
 .youtube-channel-mini:hover {
@@ -6847,7 +6800,23 @@ h3 { font-size: 1.25rem; }
     
     /* About Page Mobile */
     #page-about {
-        padding: 1rem 0.75rem !important;
+        padding: 0 !important;
+    }
+
+    .about-hero,
+    .about-mission-vision,
+    .about-values {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .about-story {
+        padding: 3rem 1rem;
+        border-radius: 24px 24px 0 0;
+    }
+
+    .about-stats {
+        padding: 2rem 1rem 3rem;
     }
     
     .about-hero-title {
