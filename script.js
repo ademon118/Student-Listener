@@ -236,6 +236,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function getCurrentPageFile() {
+        const path = window.location.pathname;
+        const file = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+        return file.toLowerCase();
+    }
+
+    function resolveActiveNavHref(file) {
+        if (!file || file === '' || file === '/') return 'index.html';
+        if (file === 'index.html' || file === 'index.htm') return 'index.html';
+        if (file.startsWith('lesson')) return 'lessons.html';
+        if (file.startsWith('game-') || file === 'games.html') return 'games.html';
+        return file;
+    }
+
+    function highlightActiveNav() {
+        const currentFile = resolveActiveNavHref(getCurrentPageFile());
+        const links = document.querySelectorAll('.nav-link');
+
+        links.forEach(link => {
+            const href = (link.getAttribute('href') || '').split('#')[0].toLowerCase();
+            const hrefFile = href.substring(href.lastIndexOf('/') + 1);
+            if (hrefFile && hrefFile === currentFile) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+
     function setupNavigation() {
         navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
@@ -309,11 +338,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (existingSeparator) existingSeparator.remove();
                 existingMoreItems.forEach(item => item.remove());
             }
+
+            highlightActiveNav();
         }
 
         // Setup mobile menu on load and resize
         setupMobileMenu();
         window.addEventListener('resize', setupMobileMenu);
+        highlightActiveNav();
 
         if (moreMenuBtn && !moreMenuBtn.dataset.listenerAttached) {
             moreMenuBtn.addEventListener('click', (e) => {
@@ -1347,6 +1379,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.initAfterInclude = function() {
         setupNavigation();
+        highlightActiveNav();
         setupVocabAudio();
         setupGameCardAtmosphere();
         setupSpeakingPractice();

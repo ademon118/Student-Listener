@@ -134,6 +134,7 @@ img, video, iframe {
     border-radius: 8px;
     transition: all 0.3s ease;
     cursor: pointer;
+    position: relative;
 }
 
 .navbar-links a:hover, .nav-link:hover, #more-menu-btn:hover {
@@ -141,6 +142,33 @@ img, video, iframe {
     background: var(--color-primary-light);
     color: var(--color-primary);
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+/* Active page underline animation */
+.navbar-links > ul > li > a.nav-link::after,
+.more-dropdown > a.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.2rem;
+    height: 2.5px;
+    border-radius: 2px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.navbar-links > ul > li > a.nav-link.active,
+.more-dropdown > a.nav-link.active {
+    color: var(--color-primary);
+}
+
+.navbar-links > ul > li > a.nav-link.active::after,
+.more-dropdown > a.nav-link.active::after {
+    transform: scaleX(1);
 }
 
 #more-menu-btn {
